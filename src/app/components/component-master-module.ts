@@ -6,23 +6,33 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { HomeComponent } from './home/home.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { HeaderComponent } from './header/header.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatOptionModule } from '@angular/material/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
   declarations: [
     SidebarComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     TranslateModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatOptionModule,
+    BrowserAnimationsModule,
+
   ],
   exports: [
     SidebarComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderComponent
   ]
 })
 export class ComponentMasterModule {}

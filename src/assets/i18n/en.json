@@ -1,4 +1,9 @@
 {
+  "header": {
+    "login": "Sign in",
+    "greek": "Ελληνικά",
+    "english": "English"
+  },
   "home": {
     "title": "Home page"
   }

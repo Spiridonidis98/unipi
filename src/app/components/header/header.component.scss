@@ -1,0 +1,45 @@
+.headerRow {
+  width: 98%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: var(--light-background-color);
+  box-shadow: 3px 1px 3px var(--shadow-grey-color);
+  padding: 1%;
+  .headerDiv {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    justify-content: space-between;
+
+    img {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+
+    p {
+      color: var(--blue-app-color);
+      font-weight: bold;
+    }
+  }
+  .languageSelect{
+    z-index: 9999999;
+    width: 80px;
+    height: 20px;
+    font-size: 12px;
+    border-radius: 3px;
+    border: 1px solid var(--grey-text-color);
+    padding: 2px;
+    color: var(--grey-text-color);
+    outline: none;
+    background:  var(--light-background-color);
+    margin-right: 2%;
+
+    mat-option {
+      text-align: center;
+      font-size: 12px;
+    }
+  }
+
+}

@@ -8,6 +8,10 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ComponentMasterModule } from './components/component-master-module';
 import { MainComponent } from './pages/main/main.component';
+import {MatSelectModule} from '@angular/material/select'
+import { MatOptionModule } from '@angular/material/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -21,6 +25,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     AppRoutingModule,
     ComponentMasterModule,
+    MatSelectModule,
+    MatOptionModule,
+    BrowserAnimationsModule,
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,

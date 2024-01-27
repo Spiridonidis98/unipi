@@ -1,0 +1,11 @@
+<div class="headerRow">
+
+  <mat-select *ngIf="isLoading" class="languageSelect" [(value)]="language" (selectionChange)="changeLang()">
+    <mat-option *ngFor="let lang of languages" [value]="lang.id">{{lang.descr | translate}}</mat-option>
+  </mat-select>
+
+  <div class="headerDiv cursor">
+    <img src="assets/imgs/header/person.svg"/>
+    <p>{{'header.login' | translate}}</p>
+  </div>
+</div>

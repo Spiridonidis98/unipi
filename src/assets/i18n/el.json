@@ -1,4 +1,9 @@
 {
+  "header": {
+    "login": "Σύνδεση",
+    "greek": "Ελληνικά",
+    "english": "English"
+  },
   "home": {
     "title": "Αρχική σελίδα"
   },
