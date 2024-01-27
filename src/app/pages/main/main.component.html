@@ -1,3 +1,4 @@
+<app-login *ngIf="showLoginValue" (showLoginEmitter)="showLoginFunction('login',$event)"></app-login>
 <div class="mainPage">
   <div class="siderbarDiv">
     <app-sidebar (sidebarValue)="changeView($event)"></app-sidebar>
@@ -6,11 +7,13 @@
   <div class="componentDiv">
 
     <!-- Header -->
-    <app-header></app-header>
+    <app-header (showLoginEmitter)="showLoginFunction('header',$event)"></app-header>
     <!-- Header -->
 
     <app-home *ngIf="selectedComponent==='home'"></app-home>
     <!-- <app-comingsoon *ngIf="selectedComponent==='comingsoon'"></app-comingsoon> -->
   </div>
 </div>
+
+
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { HelperService } from '../../services/helper/helper.service';
 
 @Component({
@@ -20,10 +20,11 @@ export class HeaderComponent {
     }
   ]
   isLoading = false;
+  @Output() showLoginEmitter: EventEmitter<boolean> = new EventEmitter();
+
   constructor(private helper: HelperService) {
     setTimeout(() => {
       this.isLoading = true;
-
     }, 1000)
     this.language = 'el';
   }
@@ -34,5 +35,9 @@ export class HeaderComponent {
 
   changeLang() {
     this.helper.changeLanguage(this.language)
+  }
+
+  showLogin() {
+    this.showLoginEmitter.emit(true)
   }
 }

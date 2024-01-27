@@ -4,8 +4,8 @@
     <mat-option *ngFor="let lang of languages" [value]="lang.id">{{lang.descr | translate}}</mat-option>
   </mat-select>
 
-  <div class="headerDiv cursor">
-    <img src="assets/imgs/header/person.svg"/>
+  <div class="headerDiv cursor" (click)="showLogin()" >
+    <img  src="assets/imgs/header/person.svg"/>
     <p>{{'header.login' | translate}}</p>
   </div>
 </div>
