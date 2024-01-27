@@ -8,12 +8,18 @@
     "title": "Starlight Cinemas"
   },
   "home": {
-    "title": "Αρχική σελίδα"
+    "title": "Αρχική σελίδα",
+    "recommend": "Προτεινόμενα"
   },
   "sidebar": {
     "homepage": "Αρχική σελίδα",
-    "comingSoon": "Προσεχώς",
     "playingNow": "Παιζονταί τώρα",
-    "contact": "Επικοινωνία"
+    "contact": "Επικοινωνία",
+    "comingsoon": "Προσεχώς"
+  },
+  "login": {
+    "title": "Σύνδεθείτε",
+    "username": "Όνομα χρήστη",
+    "password": "Κωδικός χρήστη"
   }
 }

@@ -1,0 +1,11 @@
+.titleRow {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  p {
+    color: var(--black-text-color);
+    font-weight: bold;
+  }
+}
