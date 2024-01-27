@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,9 +10,14 @@ export class SidebarComponent implements OnInit {
   listOfOptions = [
 
   ]
+  @Output() sidebarValue: EventEmitter<string> = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
   }
 
+
+  changeView(type: string) {
+    this.sidebarValue.emit(type);
+  }
 }

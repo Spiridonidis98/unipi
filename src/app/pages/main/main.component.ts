@@ -8,4 +8,8 @@ import { Component } from '@angular/core';
 export class MainComponent {
 
   selectedComponent: string = 'home';
+
+  changeView(type: string) {
+    this.selectedComponent = type;
+  }
 }
