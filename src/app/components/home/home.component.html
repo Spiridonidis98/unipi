@@ -1,1 +1,18 @@
-<p>{{"home.title" | translate}}</p>
+<div class="mainComponent">
+  <div class="recommended">
+    <p class="reccomendLabel">{{'home.recommend' | translate}}</p>
+
+    <div class="movies-container">
+      <div class="movie" *ngFor="let movie of movies">
+        <div class="movieImg">
+          <img [src]="movie.img"/>
+        </div>
+        <div class="movieInfo">
+          <p class="title">{{movie.title}}</p>
+          <p class="descr">{{movie.descr}}</p>
+          <p class="duration">{{movie.duration}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
