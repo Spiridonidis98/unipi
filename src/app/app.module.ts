@@ -11,6 +11,9 @@ import { MainComponent } from './pages/main/main.component';
 import {MatSelectModule} from '@angular/material/select'
 import { MatOptionModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PlayingNowComponent } from './components/playing-now/playing-now.component';
+import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -18,7 +21,10 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent
+    MainComponent,
+    PlayingNowComponent,
+    ComingSoonComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,

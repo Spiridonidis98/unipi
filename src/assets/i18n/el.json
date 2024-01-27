@@ -4,12 +4,16 @@
     "greek": "Ελληνικά",
     "english": "English"
   },
+  "pageTitle": {
+    "title": "Starlight Cinemas"
+  },
   "home": {
     "title": "Αρχική σελίδα"
   },
   "sidebar": {
     "homepage": "Αρχική σελίδα",
-    "comingsoon": "Προσεχώς",
-    "playingNow": "Παιζονταί τώρα"
+    "comingSoon": "Προσεχώς",
+    "playingNow": "Παιζονταί τώρα",
+    "contact": "Επικοινωνία"
   }
 }

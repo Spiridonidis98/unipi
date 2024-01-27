@@ -4,7 +4,16 @@
     "greek": "Ελληνικά",
     "english": "English"
   },
+  "pageTitle": {
+    "title": "Starlight Cinemas"
+  },
   "home": {
-    "title": "Home page"
+    "title": "Home Page"
+  },
+  "sidebar": {
+    "homepage": "Home Page",
+    "comingSoon": "Coming Soon",
+    "playingNow": "Playing Now",
+    "contact": "Contact"
   }
 }

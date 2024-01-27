@@ -10,7 +10,9 @@
     <!-- Header -->
 
     <app-home *ngIf="selectedComponent==='home'"></app-home>
-    <!-- <app-comingsoon *ngIf="selectedComponent==='comingsoon'"></app-comingsoon> -->
+    <app-playing-now *ngIf="selectedComponent==='playingNow'"></app-playing-now>
+    <app-coming-soon *ngIf="selectedComponent==='comingsoon'"></app-coming-soon>
+    <app-contact *ngIf="selectedComponent==='contact'"></app-contact>
   </div>
 </div>
 

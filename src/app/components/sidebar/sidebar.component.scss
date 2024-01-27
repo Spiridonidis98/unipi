@@ -6,13 +6,18 @@
   background: var(--light-background-color);
   box-shadow: 1px 1px 3px var(--shadow-grey-color);
   border-right: 3px solid var(--blue-app-color);
+  :hover {
+    background-color: var(--bright-blue-color);
+  }
 
   .logoRow {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    
     img {
       width: 40px;
       height: 40px;
@@ -22,7 +27,7 @@
       color: var(--black-text-color);
       font-size: 25px;
       font-weight: bold;
-      letter-spacing: .5cm;
+      //letter-spacing: .5cm;
       width: fit-content;
       text-align: center;
     }
