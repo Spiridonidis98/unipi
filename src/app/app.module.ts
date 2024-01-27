@@ -18,6 +18,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     ComponentMasterModule,
     TranslateModule.forRoot({
