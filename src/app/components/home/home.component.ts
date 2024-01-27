@@ -7,6 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  movies = [
+    {
+      title: 'Movie Title',
+      descr: 'some Movie description',
+      duration: '140 min',
+      img: 'assets/imgs/film.svg'
+    },
+    {
+      title: 'Movie Title',
+      descr: 'some Movie description',
+      duration: '140 min',
+      img: 'assets/imgs/film.svg'
+    }
+  ]
   constructor() { }
 
   ngOnInit(): void {
