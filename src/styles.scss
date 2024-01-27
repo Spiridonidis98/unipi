@@ -1,1 +1,55 @@
+body {
+  margin: 0 !important;
+}
+
+p {
+  margin: 0;
+}
+// Global Font Family
+@font-face {
+  font-family: "SF Pro Text";
+  src: url("./assets/fonts/SF_Pro_Text_Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+// GENERAL FONT FAMILY EVERYWHERE IN THE APP
+* {
+  text-transform: none;
+  font-family: "SF Pro Text";
+}
 /* You can add global styles to this file, and also import other style files */
+:root {
+/** CUSTOM COLOR **/
+  --light-background-color: #F0F8FF;
+  --darker-light-background-color: #D2EAFF;
+  --ion-color-primaryContrastAppColor: #fefeff;
+  --blue-app-color: #1640A9;
+  --very-light-grey-color: #F6F6F6;
+  --white-app-color: #FFFFFF;
+  --black-text-color: #212121;
+  --grey-text-color: #707070;
+  --shadow-grey-color: #808080;
+  --light-red-color: #FFF0F0;
+  --green-text-color: #3A9833;
+  --brown-text-color: #A95B16;
+  --greyC0: #c0c0c0;
+  --very-light-blue: #e7f3fc;
+  --light-grey-42: #424242;
+  --light-red-color-background: #FFF0F0;
+  --red-color: #ff0000;
+  --blue: #cbecff;
+  --purple-color: #BF40BF;
+  --olive-green-color: #7C933D;
+  --light-grey-border: #ddebeb;
+  --line-color-grey: #cae0e0;
+  --grey-color75: #757575;
+  --smooth-red-color: #B3404A;
+  --very-light-red-color: #fadadc;
+  --border-grey-color: #E6E4E4;
+  --bright-blue-color: #cfe6fb;
+  --badge-news-red: #D22B2B;
+  --light-grey-background1 : #EAECF0;
+  --light-grey-background2 : #F8F8FA;
+  --smooth-red-color: #932222;
+}

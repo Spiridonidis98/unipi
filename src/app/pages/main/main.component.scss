@@ -1,0 +1,15 @@
+.mainPage {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 100vh;
+  .siderbarDiv {
+    width: 20%;
+    height: 100%;
+  }
+
+  .componentDiv {
+    width: 80%;
+  }
+}

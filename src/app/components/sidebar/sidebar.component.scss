@@ -1,0 +1,30 @@
+.sidebar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--light-background-color);
+  box-shadow: 1px 1px 3px var(--shadow-grey-color);
+  border-right: 3px solid var(--blue-app-color);
+
+  .logoRow {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    img {
+      width: 40px;
+      height: 40px;
+      margin-right: 15px;
+    }
+    p {
+      color: var(--black-text-color);
+      font-size: 25px;
+      font-weight: bold;
+      letter-spacing: .5cm;
+      width: fit-content;
+      text-align: center;
+    }
+  }
+}
