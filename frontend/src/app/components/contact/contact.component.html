@@ -1,1 +1,20 @@
-<p>contact works!</p>
+<div class="mainComponent">
+    <div class="border">
+        <p class="pageTitle">{{'contact.title' | translate}}</p>
+        <form action="#" method="post">
+        <label for="name">{{'contact.name' | translate}} :</label>
+        <input type="text" id="name" name="name" placeholder="{{'contact.name' | translate}}" required>
+
+        <label for="surname">{{'contact.surname' | translate}} :</label>
+        <input type="text" id="surname" name="surname" placeholder="{{'contact.surname' | translate}}" required>
+
+        <label for="email">{{'contact.email' | translate}} :</label>
+        <input type="email" id="email" name="email" placeholder="{{'contact.email' | translate}}" required>
+
+        <label for="message">{{'contact.message' | translate}} :</label>
+        <textarea id="message" name="message" rows="10" maxLength="300" style="resize: none;" required></textarea>
+
+        <button type="submit">{{'contact.submit' | translate}}</button>
+        </form>
+    </div>
+</div>

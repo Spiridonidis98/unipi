@@ -1,0 +1,46 @@
+  form {
+    max-width: 500px;
+    margin: 20px auto;
+  }
+
+  label, input, textarea {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+
+  button {
+    background-color: var(--green-button-color);
+    color: var(--white-app-color);
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: var(--green-button-color-hover);
+  }
+  
+  .mainComponent {
+    padding: 20px;
+    .border {
+        width: 90%;
+        margin: auto;
+        min-width: fit-content;
+        padding: 20px;
+        background: var(--light-background-color);
+        box-shadow: 0 0 3px var(--shadow-grey-color);
+        border-radius: 10px;
+        .pageTitle {
+            color: var(--black-text-color);
+            font-weight: bold;
+            font-size: 25px;
+            margin-bottom: 5%;
+        }
+    }
+}
