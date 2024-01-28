@@ -1,6 +1,6 @@
 {
   "header": {
-    "login": "Σύνδεση",
+    "loginSignUp": "Σύνδεση / Εγγραφή",
     "greek": "Ελληνικά",
     "english": "English"
   },
@@ -18,9 +18,20 @@
     "comingSoon": "Προσεχώς"
   },
   "login": {
-    "title": "Σύνδεθείτε",
-    "username": "Όνομα χρήστη",
-    "password": "Κωδικός χρήστη"
+    "title": "Σύνδεθείτε / Εγγραφείτε",
+    "email": "Email",
+    "password": "Κωδικός χρήστη",
+    "login": "Σύνδεση",
+    "registerMsg": "Δεν έχετε λογαριασμό; Εγγραφή",
+    "or": "ή",
+    "name": "Όνομα",
+    "lastname": "Επώνυμο",
+    "phone": "Τηλέφωνο",
+    "confirmPassword": "Επιβεβαίωση Κωδικού",
+    "register": "Εγγραφή",
+    "loginMsg": "Έχετε ήδη λογαριασμό; Συνδεθείτε",
+    "googleLogin": "Σύνδεση με Google",
+    "facebookLogin": "Σύνδεση με Facebook"
   },
   "contact": {
     "title":"Επικοινωνήστε μαζί μας",

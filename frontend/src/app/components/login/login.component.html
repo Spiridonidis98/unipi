@@ -10,6 +10,115 @@
           <img src="assets/imgs/general/close.svg"/>
         </div>
       </div>
+
+      <div class="loginForm">
+        <form *ngIf="loginOrRegister === 'login'" [formGroup]="loginForm" (submit)="loginAction()">
+          <!-- Email -->
+          <div class="formLabel">
+            <p>{{'login.email' | translate}}</p>
+          </div>
+          <div class="formInput" [ngClass]="checkIfFieldIsValid(loginForm, 'email') ? '' : 'invalidInput'">
+            <img class="blueIcon" src="assets/imgs/general/mail.svg"/>
+            <input formControlName="email" placeholder="{{'login.email' | translate}}">
+          </div>
+
+          <!-- Password -->
+          <div class="formLabel">
+            <p>{{'login.password' | translate}}</p>
+          </div>
+          <div class="formInput" [ngClass]="checkIfFieldIsValid(loginForm, 'password') ? '' : 'invalidInput'">
+            <img class="blueIcon" src="assets/imgs/login/lock.svg"/>
+            <input [type]="loginForm.value.isPasswordShown ? 'text' : 'password'" formControlName="password" placeholder="{{'login.password' | translate}}">
+            <img class="cursor blueIcon" [src]="loginForm.value.isPasswordShown ? 'assets/imgs/login/eye.svg' :'assets/imgs/login/eye-off.svg'" (click)="viewHidePassword(loginForm, 'isPasswordShown')"/>
+          </div>
+
+          <div class="buttonRow">
+            <p (click)="changeToLoginRegister('register')">{{'login.registerMsg' | translate}}</p>
+            <button type="submit">{{'login.login' | translate}}</button>
+          </div>
+        </form>
+
+        <form *ngIf="loginOrRegister === 'register'" [formGroup]="registerForm">
+          <!-- name -->
+          <div class="formLabel">
+            <p>{{'login.name' | translate}}</p>
+          </div>
+          <div class="formInput" [ngClass]="checkIfFieldIsValid(registerForm, 'name') ? '' : 'invalidInput'">
+            <img class="blueIcon" src="assets/imgs/general/mail.svg"/>
+            <input formControlName="name" placeholder="{{'login.name' | translate}}">
+          </div>
+
+          <!-- Lastname -->
+          <div class="formLabel">
+            <p>{{'login.lastname' | translate}}</p>
+          </div>
+          <div class="formInput" [ngClass]="checkIfFieldIsValid(registerForm, 'lastname') ? '' : 'invalidInput'">
+            <img class="blueIcon" src="assets/imgs/login/lock.svg"/>
+            <input formControlName="lastname" placeholder="{{'login.lastname' | translate}}">
+          </div>
+
+          <!-- Email -->
+          <div class="formLabel">
+            <p>{{'login.email' | translate}}</p>
+          </div>
+          <div class="formInput" [ngClass]="checkIfFieldIsValid(registerForm, 'email') ? '' : 'invalidInput'">
+            <img class="blueIcon" src="assets/imgs/general/mail.svg"/>
+            <input formControlName="email" placeholder="{{'login.email' | translate}}">
+          </div>
+
+          <!-- Phone -->
+          <div class="formLabel">
+            <p>{{'login.phone' | translate}}</p>
+          </div>
+          <div class="formInput" [ngClass]="checkIfFieldIsValid(registerForm, 'phone') ? '' : 'invalidInput'">
+            <img class="blueIcon" src="assets/imgs/general/mail.svg"/>
+            <input formControlName="phone" placeholder="{{'login.phone' | translate}}">
+          </div>
+
+          <!-- Password -->
+          <div class="formLabel">
+            <p>{{'login.password' | translate}}</p>
+          </div>
+          <div class="formInput" [ngClass]="checkIfFieldIsValid(registerForm, 'password') ? '' : 'invalidInput'">
+            <img class="blueIcon" src="assets/imgs/login/lock.svg"/>
+            <input [type]="registerForm.value.isPasswordShown ? 'text' : 'password'" formControlName="password" placeholder="{{'login.password' | translate}}">
+            <img class="cursor blueIcon" [src]="registerForm.value.isPasswordShown ? 'assets/imgs/login/eye.svg' :'assets/imgs/login/eye-off.svg'" (click)="viewHidePassword(registerForm, 'isPasswordShown')"/>
+          </div>
+
+          <!-- confirmPassword -->
+          <div class="formLabel">
+            <p>{{'login.confirmPassword' | translate}}</p>
+          </div>
+          <div class="formInput" [ngClass]="checkIfFieldIsValid(registerForm, 'confirmPassword') ? '' : 'invalidInput'">
+            <img class="blueIcon" src="assets/imgs/login/lock.svg"/>
+            <input [type]="registerForm.value.isConfirmPasswordShown ? 'text' : 'password'" formControlName="confirmPassword" placeholder="{{'login.confirmPassword' | translate}}">
+            <img class="cursor blueIcon" [src]="registerForm.value.isConfirmPasswordShown ? 'assets/imgs/login/eye.svg' :'assets/imgs/login/eye-off.svg'" (click)="viewHidePassword(registerForm, 'isConfirmPasswordShown')"/>
+          </div>
+
+          <div class="buttonRow">
+            <p (click)="changeToLoginRegister('login')">{{'login.loginMsg' | translate}}</p>
+            <button type="submit">{{'login.register' | translate}}</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="OrRow">
+        <div class="blueLine"></div>
+        <div class="blueOr">{{'login.or' | translate}}</div>
+        <div class="blueLine"></div>
+      </div>
+
+      <div class="loginButtons">
+        <button>
+          <img src="assets/imgs/login/google.svg">
+          <p>{{'login.googleLogin' | translate}}</p>
+        </button>
+
+        <button class="facebookButton">
+          <img src="assets/imgs/login/facebook-logo.svg">
+          <p>{{'login.facebookLogin' | translate}}</p>
+        </button>
+      </div>
     </div>
   </div>
 </div>
