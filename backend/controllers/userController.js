@@ -98,7 +98,7 @@ exports.deleteUser = async (req, res) => {
 }
 
 exports.signup = async (req, res) => {
-    const {name, lastname, email, phone, password, roles, type, googleId} = req.body;
+    const {name, lastname, email, phone, password, roles, type, googleId, facebookId} = req.body;
     //Checking if we have all the required data
     if(!name || !lastname || !email || !password || !roles || !type) {
         return res.status(400).json({
@@ -125,7 +125,8 @@ exports.signup = async (req, res) => {
                 'type': Number(type),
                 'create_dt': formatDate(new Date()),
                 'update_dt': formatDate(new Date()),
-                'googleId': googleId ? googleId : null 
+                'googleId': googleId ? googleId : null,
+                'facebookId': facebookId ? facebookId : null
             });
 
             try {

@@ -112,7 +112,7 @@
 
         <asl-google-signin-button type='standard' size='medium'>
         </asl-google-signin-button>
-        <button class="facebookButton">
+        <button class="facebookButton" (click)="loginWithFacebook()">
           <img src="assets/imgs/login/facebook-logo.svg">
           <p>{{'login.facebookLogin' | translate}}</p>
         </button>

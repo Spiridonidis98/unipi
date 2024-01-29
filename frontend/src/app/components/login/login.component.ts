@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataService } from '../../services/data/data.service';
-import { SocialAuthService } from '@abacritt/angularx-social-login';
+import { FacebookLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
 
 @Component({
   selector: 'app-login',
@@ -38,29 +38,32 @@ export class LoginComponent {
   performGoogleLogin() {
     this.socialAuthService.authState.subscribe((user) => {
       console.log(user);
-      this.data.checkIfEmailExists(user.email).then( response => {
-        if(response === 'signup') {
-          const body = {
-            name: user.firstName,
-            lastname: user.lastName,
-            email: user.email,
-            phone: null,
-            password: user.id,
-            googleId: user.id,
-            roles: [1],
-            type: 2
-          };
-          this.signUpAction(body);
-        }
-        else if( response === 'login') {
-          const body = {
-            email: user.email,
-            password: user.id,
+      if(user.provider === 'GOOGLE') {
+        this.data.checkIfEmailExists(user.email).then( response => {
+          if(response === 'signup') {
+            const body = {
+              name: user.firstName,
+              lastname: user.lastName,
+              email: user.email,
+              phone: null,
+              password: user.id,
+              googleId: user.id,
+              roles: [1],
+              type: 2
+            };
+            this.signUpAction(body);
           }
+          else if( response === 'login') {
+            const body = {
+              email: user.email,
+              password: user.id,
+            }
 
-          this.loginAction(body);
-        }
-      });
+            this.loginAction(body);
+          }
+        });
+      }
+
     });
   }
   //-------------------------------------------------------
@@ -114,7 +117,8 @@ export class LoginComponent {
       console.log(response);
       this.closeModal('cancel');
     }).catch( error => {
-      console.log(error)
+      console.log(error);
+      alert('Couldnt login')
     })
   }
 
@@ -164,4 +168,33 @@ export class LoginComponent {
     })
   }
 
+  //login with facebook --------------
+  loginWithFacebook() {
+    this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(user => {
+      console.log(user);
+      this.data.checkIfEmailExists(user.email).then( response => {
+        if(response === 'signup') {
+          const body = {
+            name: user.firstName,
+            lastname: user.lastName,
+            email: user.email,
+            phone: null,
+            password: user.id,
+            facebookId: user.id,
+            roles: [1],
+            type: 3
+          };
+          this.signUpAction(body);
+        }
+        else if( response === 'login') {
+          const body = {
+            email: user.email,
+            password: user.id,
+          }
+
+          this.loginAction(body);
+        }
+      });
+    });
+  }
 }

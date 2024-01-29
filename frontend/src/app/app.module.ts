@@ -59,7 +59,7 @@ export function HttpLoaderFactory(http: HttpClient) {
           },
           {
             id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('clientId')
+            provider: new FacebookLoginProvider('3586981141524852')
           }
         ],
         onError: (err) => {
