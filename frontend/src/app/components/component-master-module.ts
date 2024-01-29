@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
+import { SocialLoginModule, GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { LoginComponent } from './login/login.component';
     MatSelectModule,
     MatOptionModule,
     BrowserAnimationsModule,
-
+    SocialLoginModule,
+    GoogleSigninButtonModule
   ],
   exports: [
     SidebarComponent,

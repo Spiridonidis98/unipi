@@ -13,6 +13,6 @@ app.use((req, res, next) =>{
 });
 
 app.use('/api/v1/user',userRoute);
-app.listen(8081 , () => {
-    console.log('Server listens to port 8081')
+app.listen(8080 , () => {
+    console.log('Server listens to port 8080')
 });

@@ -37,13 +37,73 @@ exports.login = async (req, res) => {
     }
 };
 
-exports.signIn = async (req, res) => {
-    const {name, lastname, email, phone, password, roles, type} = req.body;
+exports.getAllUsers = async (req, res) => {
+    return res.status(200).json({
+        data: await user.find()
+    })
+}
+
+exports.checkEmailExists = async (req, res) => {
+    try {
+        return res.status(200).json({
+            status: 200,
+            data: await checkIfUserExists(req.params.email.toString().toLocaleLowerCase())
+        })
+    }catch( error ) {
+        return res.status(500).json({
+            status: 500,
+            msg: 'Internal server error',
+            data: JSON.stringify(error, null, '\t')
+        });
+    }
+}
+
+exports.deleteUser = async (req, res) => {
+    try {
+        
+        if(await checkIfUserExists(req.params.email.toString().toLocaleLowerCase()) > 0) {
+            console.log(await checkIfUserExists(req.params.email.toString().toLocaleLowerCase()))
+            const filter = {'email': req.params.email.toString().toLocaleLowerCase()};
+            const deletedUser = await user.findOneAndDelete(filter);
+            console.log(deletedUser)
+            if(deletedUser) {
+                return res.status(200).json({
+                    status: 200,
+                    msg: 'User deleted successfully',
+                    data: deletedUser.email
+                });
+            }
+            else {
+                return res.status(404).json({
+                    status: 404,
+                    msg: 'Unable to find user with email ' +  req.params.email
+                });
+            }
+        }
+        else {
+            return res.status(404).json({
+                status: 404,
+                msg: 'Unable to find user with email ' + req.params.email
+            });
+        }
+
+    }catch( error ){
+        return res.status(500).json({
+            status: 500,
+            msg: 'Internal server error',
+            data: JSON.stringify(error, null, '\t')
+        })
+    }
+    
+}
+
+exports.signup = async (req, res) => {
+    const {name, lastname, email, phone, password, roles, type, googleId} = req.body;
     //Checking if we have all the required data
-    if(!name || !lastname || !email || !phone || !password || roles || type) {
+    if(!name || !lastname || !email || !password || !roles || !type) {
         return res.status(400).json({
             status: 400,
-            msg: 'Required data are missing. Check for email, password, name, lastname, phone, types, roles'
+            msg: 'Required data are missing. Check for email, password, name, lastname, phone, type, roles'
         });
     }
     else {
@@ -64,7 +124,8 @@ exports.signIn = async (req, res) => {
                 'roles': roles,
                 'type': Number(type),
                 'create_dt': formatDate(new Date()),
-                'update_dt': formatDate(new Date())
+                'update_dt': formatDate(new Date()),
+                'googleId': googleId ? googleId : null 
             });
 
             try {
@@ -89,7 +150,6 @@ exports.signIn = async (req, res) => {
 
 async function checkIfUserExists(email) {
     const users = await user.find({'email': email});
-    console.log(users.length)
     return users.length;
 }
 
@@ -99,7 +159,7 @@ function formatDate(date) {
     let year = new Date(date).getFullYear();
     let hour = new Date(date).getHours() < 10 ? '0' + new Date(date).getHours() : new Date(date).getHours();
     let minutes = new Date(date).getMinutes() < 10 ? '0' + new Date(date).getMinutes() : new Date(date).getMinutes();
-    let milliseconds = new Date(date).getMilliseconds() < 10 ? '0' + new Date(date).getMilliseconds() : new Date(date).getMilliseconds();
+    let milliseconds = new Date(date).getSeconds() < 10 ? '0' + new Date(date).getSeconds() : new Date(date).getMilliseconds();
 
     return `${year}-${month}-${day} ${hour}:${minutes}:${milliseconds}`;
 }

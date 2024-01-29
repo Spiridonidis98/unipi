@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataService } from '../../services/data/data.service';
+import { SocialAuthService } from '@abacritt/angularx-social-login';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent {
   registerForm: FormGroup;
   loginOrRegister: string = 'login';
 
-  constructor(private formBuilder: FormBuilder, private data: DataService){
+  constructor(private formBuilder: FormBuilder, private data: DataService, private socialAuthService: SocialAuthService){
     this.loginForm = this.formBuilder.group({
       email: new FormControl('',Validators.compose([Validators.required,  Validators.pattern('^[a-zA-Z0-9._%-]+@[a-zA-Z0-9-]+.[a-zA-Z]{2,4}$')])),
       password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(5)])),
@@ -31,6 +32,41 @@ export class LoginComponent {
       lastname: new FormControl('', Validators.required),
       phone: new FormControl('', Validators.required)
     });
+  }
+
+  //Perform google Login ----------------------------------
+  performGoogleLogin() {
+    this.socialAuthService.authState.subscribe((user) => {
+      console.log(user);
+      this.data.checkIfEmailExists(user.email).then( response => {
+        if(response === 'signup') {
+          const body = {
+            name: user.firstName,
+            lastname: user.lastName,
+            email: user.email,
+            phone: null,
+            password: user.id,
+            googleId: user.id,
+            roles: [1],
+            type: 2
+          };
+          this.signUpAction(body);
+        }
+        else if( response === 'login') {
+          const body = {
+            email: user.email,
+            password: user.id,
+          }
+
+          this.loginAction(body);
+        }
+      });
+    });
+  }
+  //-------------------------------------------------------
+
+  ngOnInit() {
+    this.performGoogleLogin();
   }
 
   closeModal(mode: string) {
@@ -57,8 +93,8 @@ export class LoginComponent {
     return true;
   }
 
-  //Here we will perform the login Action
-  loginAction() {
+  //manual login ------------------------
+  manualLogin() {
     if(this.loginForm.invalid) {
       alert('Form is invalid')
     }
@@ -67,13 +103,65 @@ export class LoginComponent {
         email: this.loginForm.value.email,
         password: this.loginForm.value.password
       }
-
-      this.data.login(body).then( response => {
-        console.log(response);
-      }).catch( error => {
-        console.log(error)
-      })
+      this.loginAction(body);
     }
+  }
+  //manual login ------------------------
+
+  //Here we will perform the login Action
+  loginAction(body: any) {
+    this.data.login(body).then( response => {
+      console.log(response);
+      this.closeModal('cancel');
+    }).catch( error => {
+      console.log(error)
+    })
+  }
+
+  //here we will check if password and confirm password fields have matched values
+  checkPasswordConfirmPassword() {
+    if(this.registerForm.value.password === this.registerForm.value.confirmPassword) {
+      return true;
+    }
+    return false;
+  }
+
+
+  //manual signup -------------------------------
+  manualSignUp () {
+    if(this.registerForm.invalid || !this.checkPasswordConfirmPassword()) {
+      alert('Register form not fully completed');
+    }
+    else {
+      const body = {
+        name: this.registerForm.value.name,
+        lastname: this.registerForm.value.lastname,
+        email: this.registerForm.value.email,
+        phone: this.registerForm.value.phone,
+        password: this.registerForm.value.password,
+        roles: [1],
+        type: 1
+      };
+      this.signUpAction(body);
+    }
+  }
+  //manual signup -------------------------------
+
+  //here we will perform the signup functionality
+  signUpAction(body: any) {
+    this.data.signUp(body).then( (response: any) => {
+      console.log(response);
+      alert('Sign up successful');
+      const loginBody = {
+        email: response.email,
+        password: response.password
+      }
+      this.loginAction(loginBody);
+
+    }).catch(error => {
+      console.log(error);
+      alert('Something went wrong');
+    })
   }
 
 }

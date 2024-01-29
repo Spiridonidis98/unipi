@@ -39,6 +39,10 @@ const User = new mongoose.Schema({
     type: {
         type: Number, // 1: through our login | 2: Google Login | 3: Facebook Login
         required: true
+    },
+    googleId: {
+        type: String,
+        default: null
     }
 });
 

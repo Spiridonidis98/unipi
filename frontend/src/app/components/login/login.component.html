@@ -12,7 +12,7 @@
       </div>
 
       <div class="loginForm">
-        <form *ngIf="loginOrRegister === 'login'" [formGroup]="loginForm" (submit)="loginAction()">
+        <form *ngIf="loginOrRegister === 'login'" [formGroup]="loginForm" (submit)="manualLogin()">
           <!-- Email -->
           <div class="formLabel">
             <p>{{'login.email' | translate}}</p>
@@ -38,7 +38,7 @@
           </div>
         </form>
 
-        <form *ngIf="loginOrRegister === 'register'" [formGroup]="registerForm">
+        <form *ngIf="loginOrRegister === 'register'" [formGroup]="registerForm" (ngSubmit)="manualSignUp()">
           <!-- name -->
           <div class="formLabel">
             <p>{{'login.name' | translate}}</p>
@@ -79,7 +79,7 @@
           <div class="formLabel">
             <p>{{'login.password' | translate}}</p>
           </div>
-          <div class="formInput" [ngClass]="checkIfFieldIsValid(registerForm, 'password') ? '' : 'invalidInput'">
+          <div class="formInput" [ngClass]="checkIfFieldIsValid(registerForm, 'password') && checkPasswordConfirmPassword() ? '' : 'invalidInput'">
             <img class="blueIcon" src="assets/imgs/login/lock.svg"/>
             <input [type]="registerForm.value.isPasswordShown ? 'text' : 'password'" formControlName="password" placeholder="{{'login.password' | translate}}">
             <img class="cursor blueIcon" [src]="registerForm.value.isPasswordShown ? 'assets/imgs/login/eye.svg' :'assets/imgs/login/eye-off.svg'" (click)="viewHidePassword(registerForm, 'isPasswordShown')"/>
@@ -89,7 +89,7 @@
           <div class="formLabel">
             <p>{{'login.confirmPassword' | translate}}</p>
           </div>
-          <div class="formInput" [ngClass]="checkIfFieldIsValid(registerForm, 'confirmPassword') ? '' : 'invalidInput'">
+          <div class="formInput" [ngClass]="checkIfFieldIsValid(registerForm, 'confirmPassword') && checkPasswordConfirmPassword() ? '' : 'invalidInput'">
             <img class="blueIcon" src="assets/imgs/login/lock.svg"/>
             <input [type]="registerForm.value.isConfirmPasswordShown ? 'text' : 'password'" formControlName="confirmPassword" placeholder="{{'login.confirmPassword' | translate}}">
             <img class="cursor blueIcon" [src]="registerForm.value.isConfirmPasswordShown ? 'assets/imgs/login/eye.svg' :'assets/imgs/login/eye-off.svg'" (click)="viewHidePassword(registerForm, 'isConfirmPasswordShown')"/>
@@ -109,11 +109,9 @@
       </div>
 
       <div class="loginButtons">
-        <button>
-          <img src="assets/imgs/login/google.svg">
-          <p>{{'login.googleLogin' | translate}}</p>
-        </button>
 
+        <asl-google-signin-button type='standard' size='medium'>
+        </asl-google-signin-button>
         <button class="facebookButton">
           <img src="assets/imgs/login/facebook-logo.svg">
           <p>{{'login.facebookLogin' | translate}}</p>
