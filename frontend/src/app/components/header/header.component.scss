@@ -3,9 +3,50 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background: var(--light-background-color);
-  box-shadow: 3px 1px 3px var(--shadow-grey-color);
+  background: transparent;
+  // box-shadow: 3px 1px 3px var(--shadow-grey-color);
+  backdrop-filter: invert(20%);
   padding: 1%;
+  .logo {
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    img {
+      width: 50px;
+      height: 50px;
+      margin-right: 15px;
+    }
+    p {
+      color: var(--white-app-color);
+      font-weight: bold;
+      font-size: 20px;
+    }
+  }
+
+  .optionsContent {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 40%;
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      img {
+        width: 30px;
+        height: 30px;
+        margin-right: 15px;
+      }
+      p {
+        color: var(--white-app-color);
+        font-weight: bold;
+        font-size: 20px;
+      }
+    }
+  }
+
+
   .headerDiv {
     display: flex;
     width: fit-content;
@@ -19,8 +60,9 @@
     }
 
     p {
-      color: var(--blue-app-color);
+      color: var(--white-app-color);
       font-weight: bold;
+      font-size: 15px;
     }
   }
   .languageSelect{

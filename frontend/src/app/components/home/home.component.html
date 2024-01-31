@@ -1,16 +1,19 @@
 <div class="mainComponent">
-  <div class="recommended">
-    <p class="reccomendLabel">{{'home.recommend' | translate}}</p>
+  <div class="movieContainer">
+    <div class="movie" *ngFor="let movie of movies" [style]="returnCSS(movie.img)" >
 
-    <div class="movies-container">
-      <div class="movie" *ngFor="let movie of movies">
-        <div class="movieImg">
-          <img [src]="movie.img"/>
-        </div>
-        <div class="movieInfo">
+      <div class="movieInfo cursor">
+        <div class="titleRow">
           <p class="title">{{movie.title}}</p>
+          <div class="ratings">
+            <img *ngFor="let e of [].constructor(movie.rating); let i = index" src="assets/imgs/general/star.svg">
+            <img *ngFor="let e of [].constructor((5-movie.rating)); let i = index" src="assets/imgs/general/star-outline.svg">
+
+          </div>
+        </div>
+        <div class="titleRow">
           <p class="descr">{{movie.descr}}</p>
-          <p class="duration">{{movie.duration}}</p>
+          <img class="info cursor" src="assets/imgs/general/information-circle.svg">
         </div>
       </div>
     </div>

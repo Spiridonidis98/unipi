@@ -18,7 +18,26 @@ export class HeaderComponent {
       descr: 'header.english',
       id: "en"
     }
+  ];
+  headerOptions = [
+    {
+      id: 'playingNow',
+      img: 'assets/imgs/header/play.svg',
+      descr: 'sidebar.playingNow'
+    },
+    {
+      id: 'comingSoon',
+      img: 'assets/imgs/header/play.svg',
+      descr: 'sidebar.comingSoon'
+    },
+    {
+      id: 'contact',
+      img: 'assets/imgs/general/mail.svg',
+      descr: 'sidebar.contact'
+    },
+
   ]
+  @Output() sidebarValue: EventEmitter<string> = new EventEmitter();
   isLoading = false;
   @Output() showLoginEmitter: EventEmitter<boolean> = new EventEmitter();
 
@@ -39,5 +58,9 @@ export class HeaderComponent {
 
   showLogin() {
     this.showLoginEmitter.emit(true)
+  }
+
+  changeView(idView: string) {
+    this.sidebarValue.emit(idView);
   }
 }
