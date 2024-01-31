@@ -1,4 +1,4 @@
-{"coming-soon-movies":[
+{"coming_soon_movies":[
     { "id":0,
       "name":"THE IRON CLAW",
       "description":"The true story of the inseparable Von Erich brothers, who made history in the intensely competitive world of professional wrestling in the early 1980s. Through tragedy and triumph, under the shadow of their domineering father and coach, the brothers seek larger-than-life immortality on the biggest stage in sports.",
@@ -12,7 +12,7 @@
 	 { "id":1,
       "name":"THE BEEKEEPER",
       "description":"In THE BEEKEEPER, one man's brutal campaign for vengeance takes on national stakes after he is revealed to be a former operative of a powerful and clandestine organization known as 'Beekeepers'.",
-	  "duration":"105 minutes"
+	  "duration":"105 minutes",
 	  "directors":"David Ayer",
 	  "writers":"Kurt Wimmer",
 	  "actors":"Jason Statham, Josh Hutcherson, Jeremy Irons, David Witts, Emmy Raver-Lampman",
@@ -22,7 +22,7 @@
 	 { "id":2,
       "name":"BOB MARLEY: ONE LOVE",
       "description":"BOB MARLEY: ONE LOVE celebrates the life and music of an icon who inspired generations through his message of love and unity. On the big screen for the first time, discover Bob’s powerful story of overcoming adversity and the journey behind his revolutionary music. Produced in partnership with the Marley family and starring Kingsley Ben-Adir as the legendary musician and Lashana Lynch as his wife Rita.",
-	  "duration":"107 minutes"
+	  "duration":"107 minutes",
 	  "directors":"Reinaldo Marcus Green",
 	  "writers":"Terence Winter, Frank E. Flowers & Zach Baylin",
 	  "actors":"JLashana Lynch, Kingsley Ben-Adir, James Norton, Jesse Cilio",
@@ -32,11 +32,11 @@
 	 { "id":3,
       "name":"DUNE: PART II",
       "description":"The saga continues as award-winning filmmaker Denis Villeneuve embarks on 'Dune: Part Two,' the next chapter of Frank Herbert’s celebrated novel Dune, with an expanded all-star international ensemble cast. This follow-up film will explore the mythic journey of Paul Atreides (Timothée Chalamet) as he unites with Chani (Zendaya) and the Fremen while on a warpath of revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the known universe, he endeavors to prevent a terrible future only he can foresee.",
-	  "duration":"166 minutes"
+	  "duration":"166 minutes",
 	  "directors":"Denis Villeneuve",
 	  "writers":"Denis Villeneuve, Jon Spaihts & Frank Herbert",
 	  "actors":"Dave Bautista, Florence Pugh, Lea Seydoux, Javier Bardem, Timothee Chalamet",
 	  "category":"ACTION",
 	  "image":"DUNE PART II.jpg"
-     },
+     }
   ]}
