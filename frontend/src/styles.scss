@@ -98,6 +98,9 @@ p {
   filter: invert(20%) sepia(76%) saturate(1950%) hue-rotate(211deg) brightness(94%) contrast(105%)
 }
 
+.whiteIcon {
+  filter: invert(98%) sepia(69%) saturate(280%) hue-rotate(182deg) brightness(115%) contrast(100%);
+}
 
 /* You can add global styles to this file, and also import other style files */
 :root {
