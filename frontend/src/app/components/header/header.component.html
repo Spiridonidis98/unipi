@@ -1,23 +1,11 @@
 <div class="headerRow">
 
-  <div class="logo">
-    <img src="assets/imgs/header/popcorn.png"/>
-    <p>{{'pageTitle.title' | translate}}</p>
-  </div>
-
-  <div class="optionsContent">
-    <div class="cursor" *ngFor="let option of headerOptions" (click)="changeView(option.id)">
-      <img class="whiteIcon" [src]="option.img" />
-      <p>{{option.descr | translate}}</p>
-    </div>
-  </div>
-
   <mat-select *ngIf="isLoading" class="languageSelect" [(value)]="language" (selectionChange)="changeLang()">
     <mat-option *ngFor="let lang of languages" [value]="lang.id">{{lang.descr | translate}}</mat-option>
   </mat-select>
 
   <div class="headerDiv cursor" (click)="showLogin()" >
-    <img class="whiteIcon" src="assets/imgs/header/person.svg"/>
+    <img  src="assets/imgs/header/person.svg"/>
     <p>{{'header.loginSignUp' | translate}}</p>
   </div>
 </div>
