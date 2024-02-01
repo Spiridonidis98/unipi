@@ -15,6 +15,7 @@ import { PlayingNowComponent } from './components/playing-now/playing-now.compon
 import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FacebookLoginProvider,GoogleSigninButtonModule , GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
+import { MovieInfoComponent } from './components/movie-info/movie-info.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');

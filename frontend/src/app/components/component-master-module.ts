@@ -12,6 +12,7 @@ import { MatOptionModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { SocialLoginModule, GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
+import { MovieInfoComponent } from './movie-info/movie-info.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { SocialLoginModule, GoogleSigninButtonModule } from '@abacritt/angularx-
     SidebarComponent,
     HomeComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    MovieInfoComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +39,8 @@ import { SocialLoginModule, GoogleSigninButtonModule } from '@abacritt/angularx-
     SidebarComponent,
     HomeComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    MovieInfoComponent
   ]
 })
 export class ComponentMasterModule {}

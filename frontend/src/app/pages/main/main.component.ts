@@ -6,7 +6,8 @@ import { Component } from '@angular/core';
   styleUrl: './main.component.scss'
 })
 export class MainComponent {
-
+  showHideMovieInfoValue = false; // hides or shows movie info modal
+  movieInfo: any; //holds movie info to show to modal
   selectedComponent: string = 'home';
   showLoginValue: boolean = false;
   changeView(type: string) {
@@ -30,6 +31,15 @@ export class MainComponent {
     }
 
   }
+  //Functions for Movie Info ----------------------
+  showHideMovieInfo(value: boolean) {
+    this.showHideMovieInfoValue = value;
+  }
 
+  openInfoModal(movie: any) {
+    this.movieInfo = movie;
+    this.showHideMovieInfo(true);
+  }
+  //Functions for Movie Info ----------------------
 
 }

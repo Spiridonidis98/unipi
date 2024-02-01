@@ -1,6 +1,6 @@
 <div class="mainComponent">
   <div class="movieContainer">
-    <div class="movie" *ngFor="let movie of movies" [style]="returnCSS(movie.img)" >
+    <div class="movie cursor" *ngFor="let movie of movies" [style]="returnCSS(movie.img)"  (click)="openInfoModal(movie)">
 
       <div class="movieInfo cursor">
         <div class="titleRow">
@@ -13,7 +13,7 @@
         </div>
         <div class="titleRow">
           <p class="descr">{{movie.descr}}</p>
-          <img class="info cursor" src="assets/imgs/general/information-circle.svg">
+          <img  class="info cursor" src="assets/imgs/general/information-circle.svg">
         </div>
       </div>
     </div>

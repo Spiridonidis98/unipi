@@ -70,10 +70,4 @@
       }
     }
   }
-  .movie::before {
-    content: ""; /* empty but necessary */
-  }
-  .movie::after {
-    content: ""; /* empty but necessary */
-  }
 }

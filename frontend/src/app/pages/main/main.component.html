@@ -1,4 +1,6 @@
 <app-login *ngIf="showLoginValue" (showLoginEmitter)="showLoginFunction('login',$event)"></app-login>
+<app-movie-info *ngIf="showHideMovieInfoValue" (showMovieInfo)="showHideMovieInfo(false)" [movie]="movieInfo" ></app-movie-info>
+
 <div class="mainPage">
   <div class="header">
   <!-- Header -->
@@ -10,7 +12,7 @@
 
 
     <div class="viewComponent">
-      <app-home *ngIf="selectedComponent==='home'"></app-home>
+      <app-home *ngIf="selectedComponent==='home'" (movieInfoEmitter)="openInfoModal($event)"></app-home>
       <app-contact *ngIf="selectedComponent==='contact'"></app-contact>
     </div>
 

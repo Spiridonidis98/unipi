@@ -1,0 +1,35 @@
+.modalInfo {
+  width: 100%;
+  min-height: 500px;
+  height: auto;
+  max-height: 800px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  .movieImg {
+    width: 30%;
+    min-height: 500px;
+    height: auto;
+    max-height: 800px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .movieInfo {
+    width: 70%;
+    padding: 0 5px;
+
+    .ratings {
+      width: fit-content;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      img {
+        width: 25px;
+        height: 25px;
+        filter: invert(83%) sepia(50%) saturate(2410%) hue-rotate(352deg) brightness(106%) contrast(98%);
+      }
+    }
+  }
+}
