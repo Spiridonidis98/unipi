@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MovieService } from '../../services/movie/movie.service';
 
 @Component({
   selector: 'app-home',
@@ -57,9 +58,15 @@ export class HomeComponent implements OnInit {
       "rating": 3
     }
   ]
-  constructor() { }
+  // movies: any = [];
+  constructor(private movieServ: MovieService) { }
 
   ngOnInit(): void {
+    // this.movieServ.getAllMovies().then( (response: any) => {
+    //   this.movies = response;
+    // }).catch( error => {
+    //   this.movies = [];
+    // })
   }
 
   //returns background img for every movie

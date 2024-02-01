@@ -7,7 +7,7 @@ router.route('/login')
 
 router.route('/signup')
 .post(controller.signup);
-module.exports = router;
+
 
 router.route('/')
 .get(controller.getAllUsers);
@@ -15,3 +15,5 @@ router.route('/')
 router.route('/:email')
 .get(controller.checkEmailExists)
 .delete(controller.deleteUser);
+
+module.exports = router;
