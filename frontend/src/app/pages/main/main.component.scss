@@ -13,8 +13,9 @@
   }
   .componentDiv {
     width: 95%;
+    max-width: 2000px;
+    margin: auto;
     padding: 2.5% 2.5%;
-    backdrop-filter: blur(10px);
     height: 100%;
 
     .viewComponent {

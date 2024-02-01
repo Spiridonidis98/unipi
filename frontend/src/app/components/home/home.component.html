@@ -1,10 +1,10 @@
 <div class="mainComponent">
   <div class="movieContainer">
-    <div class="movie cursor" *ngFor="let movie of movies" [style]="returnCSS(movie.img)"  (click)="openInfoModal(movie)">
+    <div class="movie cursor" *ngFor="let movie of movies" [style]="returnCSS(movie.image)"  (click)="openInfoModal(movie)">
 
       <div class="movieInfo cursor">
         <div class="titleRow">
-          <p class="title">{{movie.title}}</p>
+          <p class="title">{{movie.name}}</p>
           <div class="ratings">
             <img *ngFor="let e of [].constructor(movie.rating); let i = index" src="assets/imgs/general/star.svg">
             <img *ngFor="let e of [].constructor((5-movie.rating)); let i = index" src="assets/imgs/general/star-outline.svg">
@@ -12,7 +12,7 @@
           </div>
         </div>
         <div class="titleRow">
-          <p class="descr">{{movie.descr}}</p>
+          <p class="descr">{{movie.description}}</p>
           <img  class="info cursor" src="assets/imgs/general/information-circle.svg">
         </div>
       </div>

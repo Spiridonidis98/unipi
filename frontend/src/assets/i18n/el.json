@@ -40,5 +40,14 @@
     "email": "Email",
     "message": "Μήνυμα",
     "submit": "Αποστολή"
+  },
+  "movieInfo": {
+    "descr": "Περιγραφή",
+    "duration": "Διάρκεια",
+    "additionalInfo": "Περαιτέρω πληροφορίες",
+    "directors": "Σκηνοθέτες",
+    "scenario": "Σενάριο",
+    "actors": "Ηθοποιοί",
+    "reserve": "Κράτηση"
   }
 }

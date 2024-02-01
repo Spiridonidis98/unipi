@@ -5,21 +5,62 @@
   <div class="modal-wrapper">
     <div class="modal-content">
       <div class="modalTitle">
-        <p *ngIf="movie && movie.title">{{movie.title}}</p>
+        <p *ngIf="movie && movie.name">{{movie.name}}</p>
         <div class="modalClose" (click)="closeModal('cancel')">
           <img src="assets/imgs/general/close.svg"/>
         </div>
       </div>
 
       <div class="modalInfo">
-        <div class="movieImg" [style]="returnCSS(movie.img)"></div>
+        <div class="movieImg" [style]="returnCSS(movie.image)"></div>
         <div class="movieInfo">
-          <p>{{movie.descr}}</p>
-          <p>{{movie.duration}}</p>
-          <div class="ratings">
-            <img *ngFor="let e of [].constructor(movie.rating); let i = index" src="assets/imgs/general/star.svg">
-            <img *ngFor="let e of [].constructor((5-movie.rating)); let i = index" src="assets/imgs/general/star-outline.svg">
 
+          <p>{{movie.description}}</p>
+
+          <div class="durationCategoryRatingsDiv">
+            <div class="duration">
+              <img class="greyIcon" src="assets/imgs/general/time.svg"/>
+              <p>{{movie.duration}}</p>
+            </div>
+
+            <div class="duration">
+              <p>{{movie.category}}</p>
+            </div>
+
+            <div class="ratings">
+              <img *ngFor="let e of [].constructor(movie.rating); let i = index" src="assets/imgs/general/star.svg">
+              <img *ngFor="let e of [].constructor((5-movie.rating)); let i = index" src="assets/imgs/general/star-outline.svg">
+            </div>
+          </div>
+
+
+
+          <div class="additionalInfo">
+            <table>
+              <!--Additional info Row-->
+              <tr>
+                <th colspan="2">{{'movieInfo.additionalInfo' | translate}}</th>
+              </tr>
+
+              <!--Directors Row-->
+              <tr>
+                <td>{{'movieInfo.directors' | translate}}</td>
+                <td>{{movie.directors}}</td>
+              </tr>
+              <!--Scenario Row-->
+              <tr>
+                <td>{{'movieInfo.scenario' | translate}}</td>
+                <td>{{movie.writers}}</td>
+              </tr>
+              <!--Actors Row-->
+              <tr>
+                <td>{{'movieInfo.actors' | translate}}</td>
+                <td>{{movie.actors}}</td>
+              </tr>
+            </table>
+          </div>
+          <div class="buttonRow">
+            <button>{{'movieInfo.reserve' | translate}}</button>
           </div>
         </div>
       </div>

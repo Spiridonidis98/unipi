@@ -71,6 +71,7 @@ p {
         font-weight: bold;
         margin: auto;
         text-align: center;
+        font-size: 20px;
       }
     }
 
@@ -104,6 +105,9 @@ p {
   filter: invert(98%) sepia(69%) saturate(280%) hue-rotate(182deg) brightness(115%) contrast(100%);
 }
 
+.greyIcon {
+  filter: invert(44%) sepia(0%) saturate(0%) hue-rotate(115deg) brightness(100%) contrast(93%);
+}
 /* You can add global styles to this file, and also import other style files */
 :root {
 /** CUSTOM COLOR **/
