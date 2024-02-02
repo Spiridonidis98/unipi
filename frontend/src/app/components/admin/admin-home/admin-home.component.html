@@ -1,0 +1,14 @@
+<div class="mainComponent">
+  <div class="adminContainer">
+    <div class="optionsContent">
+      <div class="cursor" *ngFor="let option of adminOption" (click)="changeView(option.id)">
+        <img class="blueIcon" [src]="option.img" />
+        <p>{{option.descr | translate}}</p>
+      </div>
+    </div>
+
+    <div class="adminComponents">
+      <app-movies *ngIf="selectedAdminOption === 'movies'"></app-movies>
+    </div>
+  </div>
+</div>

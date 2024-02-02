@@ -1,0 +1,10 @@
+<div class='adminComponent'>
+  <div class="adminTitle">{{'movieAdmin.title' | translate}}</div>
+  <div class="addNew">
+    <button class="cursor" (click)="createEditMovie(null)">
+      <img class="whiteIcon" src="assets/imgs/general/add.svg">
+      {{'movieAdmin.addNew' | translate}}</button>
+  </div>
+</div>
+
+<app-create-edit-movie *ngIf="showCreateEditMovie" [movie]="movieInfo"></app-create-edit-movie>

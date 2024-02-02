@@ -14,6 +14,7 @@
     <div class="viewComponent">
       <app-home *ngIf="selectedComponent==='home'" (movieInfoEmitter)="openInfoModal($event)"></app-home>
       <app-contact *ngIf="selectedComponent==='contact'"></app-contact>
+      <app-admin-home *ngIf="selectedComponent==='admin'"></app-admin-home>
     </div>
 
     <!--

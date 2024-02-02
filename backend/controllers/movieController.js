@@ -1,9 +1,11 @@
 const movie = require('../models/movie');
-
+path = require('path');
 exports.getMovies = async (req, res) => {
     try {
+        let moviesFound = await movie.find({inactive: false});
         return res.status(200).json({
-            data: await movie.find({inactive: false})
+            data: moviesFound,
+            status: 200
         })
     }catch( error ) {
         return res.status(500).json({
@@ -14,11 +16,12 @@ exports.getMovies = async (req, res) => {
 }
 
 exports.addMovie = async (req, res) => {
-    const {name, description, directors, writers, actors, category, duration, rating, imageName, inactive} = req.body;
+    const {name, description, directors, writers, actors, category, duration, rating, imageName, inactive, start_dt_from} = JSON.parse(req.body.data);
+    console.log(JSON.parse(req.body.data))
     if(!name || !description || !directors || !writers || !actors || !category || !duration || !rating || !imageName) {
         return res.status(400).json({
             status: 400,
-            msg: 'Required data are missing. Check for name, description, directors, writers, actors, category, duration, rating, imageName'
+            msg: 'Required data are missing. Check for name, description, directors, writers, actors, category, duration, rating, imageName, start_dt_from'
         });
     }
     else {
@@ -36,9 +39,10 @@ exports.addMovie = async (req, res) => {
                     actors: actors,
                     category: category,
                     duration: duration,
-                    imageName: imageName,
+                    imageName: '/images/moviesImages/' + imageName,
                     inactive: inactive ? inactive : false,
-                    create_dt: movieFound.create_dt,
+                    create_dt:  formatDate(movieFound.create_dt),
+                    start_dt_from: start_dt_from ? formatDate(new Date(start_dt_from)) : formatDate(new Date()),
                     update_dt: formatDate(new Date())
                 });
                 return res.status(200).json({
@@ -67,8 +71,9 @@ exports.addMovie = async (req, res) => {
                     actors: actors,
                     category: category,
                     duration: duration,
-                    imageName: imageName,
+                    imageName: '/images/moviesImages/' + imageName,
                     inactive: inactive ? inactive : false,
+                    start_dt_from: start_dt_from ? formatDate(new Date(start_dt_from)) : formatDate(new Date()),
                     create_dt: formatDate(new Date()),
                     update_dt: formatDate(new Date())
                 });
@@ -92,7 +97,28 @@ exports.addMovie = async (req, res) => {
 
 }
 
-exports.send = async (req, res) => {}
+exports.send = async (req, res) => {
+    console.log('im here')
+}
+
+
+exports.deleteMovies = async (req, res) => {
+    try {
+        await movie.deleteMany();
+        return res.status(200).json({
+            msg: 'Movies deleted successfully',
+            status: 200
+        });
+    }catch( error ) {
+        return res.status(500).json({
+            data: JSON.stringify(error, null, '\t'),
+            msg: 'Movies delete error',
+            status: 500
+        });
+    }
+}
+
+
 
 function formatDate(date) {
     let day = new Date(date).getDate() < 10 ? '0' + new Date(date).getDate() : new Date(date).getDate();

@@ -36,6 +36,9 @@ const Movie = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    start_dt_from: {
+        type: String,
+    },
     create_dt: {
         type: String,
         default: null

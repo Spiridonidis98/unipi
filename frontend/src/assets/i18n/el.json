@@ -13,9 +13,10 @@
   },
   "sidebar": {
     "homepage": "Αρχική σελίδα",
-    "playingNow": "Παιζονταί τώρα",
+    "playingNow": "Παίζονται τώρα",
     "contact": "Επικοινωνία",
-    "comingSoon": "Προσεχώς"
+    "comingSoon": "Προσεχώς",
+    "admin": "Διαχειριστής"
   },
   "login": {
     "title": "Σύνδεθείτε / Εγγραφείτε",
@@ -49,5 +50,22 @@
     "scenario": "Σενάριο",
     "actors": "Ηθοποιοί",
     "reserve": "Κράτηση"
+  },
+  "movieAdmin": {
+    "title": "Διαχείριση ταινιών",
+    "addNew": "Προσθήκη"
+  },
+  "movieEdit": {
+    "title": "Προσθήκη ταινίας",
+    "name": "Τίτλος",
+    "description": "Περιγραφή",
+    "duration": "Διάρκεια",
+    "category": "Κατηγορία",
+    "directors": "Σκηνοθέτες",
+    "writers": "Σενάριο",
+    "actors": "Ηθοποιοί",
+    "rating": "Κριτική",
+    "inactive": "Διαθέσιμη",
+    "selectFile": "Επιλογή εικόνας"
   }
 }

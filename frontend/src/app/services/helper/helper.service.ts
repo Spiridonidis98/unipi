@@ -9,8 +9,13 @@ export class HelperService {
 
   constructor(public translate: TranslateService) { }
 
-  formatDate(date: string) {
+  formatDate(date: any) {
     return formatDate(new Date(date), 'dd/MM/yyyy', 'en')
+  }
+
+  serverFormatDate(date: any) {
+    return formatDate(new Date(date), 'yyyy-MM-dd', 'en')
+
   }
 
   changeLanguage(option: string) {

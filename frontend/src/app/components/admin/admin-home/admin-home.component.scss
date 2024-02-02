@@ -1,0 +1,45 @@
+.mainComponent {
+  box-shadow: 0 0 5px solid var(--shadow-grey-color);
+  border-radius: 10px;
+  width: 100%;
+  background: var(--white-app-color);
+  height: 100%;
+
+  .adminContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+    padding: 0 10px;
+    padding-top: 10px;
+    overflow-y: scroll;
+    justify-content: flex-start;
+  }
+
+  .optionsContent {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      background: var(--light-background-color);
+      border-radius: 10px;
+      padding: 10px;
+      img {
+        width: 30px;
+        height: 30px;
+        margin-right: 15px;
+      }
+      p {
+        color: var(--blue-app-color);
+        font-weight: bold;
+        font-size: 20px;
+      }
+    }
+  }
+}

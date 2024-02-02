@@ -1,0 +1,137 @@
+<div class="createEditMovieContainer">
+  <div class="modalTilte">{{'movieEdit.title' | translate}}</div>
+
+  <div class="movieForm">
+    <form [formGroup]="movieForm">
+
+      <div class="row">
+        <div class="col">
+          <!--NAME-->
+          <div class="formLabel">
+            <p>{{'movieEdit.name' | translate}}</p>
+          </div>
+
+          <div class="formInput">
+            <input formControlName="name" placeholder="{{'movieEdit.name' | translate}}">
+          </div>
+        </div>
+
+        <div class="col">
+          <!--Directors-->
+          <div class="formLabel">
+            <p>{{'movieEdit.directors' | translate}}</p>
+          </div>
+
+          <div class="formInput">
+            <input formControlName="directors" placeholder="{{'movieEdit.directors' | translate}}">
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col">
+          <!--writers-->
+          <div class="formLabel">
+            <p>{{'movieEdit.writers' | translate}}</p>
+          </div>
+
+          <div class="formInput">
+            <input formControlName="writers" placeholder="{{'movieEdit.writers' | translate}}">
+          </div>
+        </div>
+
+        <div class="col">
+          <!--actors-->
+          <div class="formLabel">
+            <p>{{'movieEdit.actors' | translate}}</p>
+          </div>
+
+          <div class="formInput">
+            <input formControlName="actors" placeholder="{{'movieEdit.actors' | translate}}">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <!--category-->
+          <div class="formLabel">
+            <p>{{'movieEdit.category' | translate}}</p>
+          </div>
+
+          <div class="formInput">
+            <input formControlName="category" placeholder="{{'movieEdit.category' | translate}}">
+          </div>
+        </div>
+
+        <div class="col">
+          <!--duration-->
+          <div class="formLabel">
+            <p>{{'movieEdit.duration' | translate}}</p>
+          </div>
+
+          <div class="formInput">
+            <input formControlName="duration" placeholder="{{'movieEdit.duration' | translate}}">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="colSize2">
+          <!--DESCRIPTION-->
+          <div class="formLabel">
+            <p>{{'movieEdit.description' | translate}}</p>
+          </div>
+
+          <div class="formInput">
+            <textarea formControlName="description" placeholder="{{'movieEdit.description' | translate}}"></textarea>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <!--Rating-->
+          <div class="formLabel">
+            <p>{{'movieEdit.rating' | translate}}</p>
+            <div class="ratings">
+              <img class="cursor" (click)="changeRating('remove',i)" *ngFor="let e of [].constructor(movieForm.value.rating); let i = index" src="assets/imgs/general/star.svg">
+              <img class="cursor" (click)="changeRating('add',i)" *ngFor="let e of [].constructor((5-movieForm.value.rating)); let i = index" src="assets/imgs/general/star-outline.svg">
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <!--inactive-->
+          <div class="formLabel cursor" (click)="checkUncheck()">
+            <img class="cursor blueIcon checkbox" [src]="movieForm.value.inactive ? 'assets/imgs/general/uncheck.svg' : 'assets/imgs/general/checkbox.svg'">
+            <p>{{'movieEdit.inactive' | translate}}</p>
+          </div>
+        </div>
+      </div>
+
+      <!--image upload-->
+      <div class="row">
+        <div class="colSize2 fileUploadDiv" >
+          <input style="display: none;" #fileUpload id="fileUpload" type="file" accept="image/jpeg, image/png, image/gif, image/jpg" (change)="getFile($event.target)" [multiple]="false">
+          <button class="uploadButton" (click)="fileUploadClick()">{{'movieEdit.selectFile' | translate}}</button>
+          <div class="filename">
+            <img [src]="movieForm.get('fileBase64')?.value">
+            {{returnFilename()}}
+            <button (click)="uploadMovie()" class="uploadButton createButton">{{'movieEdit.addNew' | translate}}</button>
+
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+
+
+    </form>
+  </div>
+</div>

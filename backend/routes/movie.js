@@ -1,33 +1,29 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/movieController');
+path = require('path');
 
 const app = express ();
 app.use(express.json());
-app.use(express.static(__dirname + '/images'));
+app.use(express.static(__dirname + '/images/moviesImages'));
 var multer  = require('multer');
 /*files*/
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        console.log(req.body)
         if(req.url.includes('/api/v1/movie')) {
-            cb(null,__dirname + '/images/movieImages');
+            pathfile = path.join(__dirname, '..', '/images/moviesImages/')
+            console.log(pathfile)
+
+            cb(null, pathfile);
         }
         else {
-            cb(null,__dirname +'/images/movieImages');
+            pathfile = path.join(__dirname, '..', '/images/moviesImages/')
+            console.log(pathfile)
+            cb(null, pathfile);
         }
     },
     filename: (req, file, cb) => {
         console.log(req.body)
-
-        console.log(file);
-        var filetype = '';
-        if(file.mimetype === 'image/png') {
-        filetype = 'png';
-        }
-        if(file.mimetype === 'image/jpeg') {
-        filetype = 'jpg';
-        }
         cb(null, file.originalname);
     }
 });
@@ -35,10 +31,10 @@ var upload = multer({storage: storage});
 
 router.route('/')
 .get(controller.getMovies)
-.post(upload.single('file'), controller.addMovie);
+.delete(controller.deleteMovies);
 
-// router.post('/upload', );
 
-// app.post('/upload', upload.single('upload')).post(controller.uploadImage)
+router.route('/').post(upload.single('file'),controller.addMovie);
+
 
 module.exports = router;

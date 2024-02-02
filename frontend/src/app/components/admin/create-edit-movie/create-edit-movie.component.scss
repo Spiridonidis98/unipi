@@ -1,0 +1,130 @@
+.createEditMovieContainer{
+  background: var(--light-background-color);
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 15px;
+  padding: 10px 0;
+
+  .modalTilte {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 20px;
+    color: var(--blue-app-color);
+    font-weight: bold;
+  }
+
+  .movieForm {
+    margin-top: 15px;
+  }
+  .movieForm,
+  form {
+    width: 100%;
+
+  }
+  .row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    .col {
+      width: 50%;
+      padding: 0 10px;
+    }
+    .colSize2 {
+      width: 100%;
+      padding: 0 10px;
+    }
+  }
+
+  .formLabel {
+    width: 100%;
+    font-size: 20px;
+    color: var(--blue-app-color);
+    font-weight: bold;
+    display: flex;
+  }
+
+  .formInput {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    width: 100%;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 2px solid var(--blue-app-color);
+    color: var(--blue-app-color);
+    font-weight: bold;
+    padding: 10px 0;
+    font-size: 20px;
+    background: var(--white-app-color);
+    input, textarea {
+      width: 98%;
+      padding: 0 1%;
+      background: var(--white-app-color);
+      outline: none;
+      border: none;
+      font-size: 20px;
+      resize: none;
+    }
+  }
+
+  .ratings {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: 15px;
+    img {
+      width: 25px;
+      height: 25px;
+      filter: invert(83%) sepia(50%) saturate(2410%) hue-rotate(352deg) brightness(106%) contrast(98%);
+    }
+  }
+
+  .checkbox {
+    width: 25px;
+    height: 25px;
+    margin-left: auto;
+    margin-right: 15px;
+  }
+}
+.fileUploadDiv {
+  margin-top: 15px;
+}
+.uploadButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 100px;
+  background: var(--blue-app-color);
+  border-radius: 10px;
+  border: none;
+  color: var(--white-app-color);
+  font-weight: bold;
+  padding: 10px;
+  font-size: 15px;
+  img {
+    width: 30px;
+    margin-right: 15px;
+  }
+}
+.filename {
+  margin-top: 30px;
+  color: #333;
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 1%;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  img {
+    width: 100px;
+    margin-right: 15px;
+  }
+}
+
+.createButton {
+  margin-left: auto;
+}

@@ -13,6 +13,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { SocialLoginModule, GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 import { MovieInfoComponent } from './movie-info/movie-info.component';
+import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { CreateEditMovieComponent } from './admin/create-edit-movie/create-edit-movie.component';
+import { MoviesComponent } from './admin/movies/movies.component';
 
 
 @NgModule({
@@ -21,7 +24,10 @@ import { MovieInfoComponent } from './movie-info/movie-info.component';
     HomeComponent,
     HeaderComponent,
     LoginComponent,
-    MovieInfoComponent
+    MovieInfoComponent,
+    AdminHomeComponent,
+    MoviesComponent,
+    CreateEditMovieComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +46,10 @@ import { MovieInfoComponent } from './movie-info/movie-info.component';
     HomeComponent,
     HeaderComponent,
     LoginComponent,
-    MovieInfoComponent
+    MovieInfoComponent,
+    AdminHomeComponent,
+    MoviesComponent,
+    CreateEditMovieComponent
   ]
 })
 export class ComponentMasterModule {}

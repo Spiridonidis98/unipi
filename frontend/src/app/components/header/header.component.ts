@@ -35,6 +35,11 @@ export class HeaderComponent {
       img: 'assets/imgs/general/mail.svg',
       descr: 'sidebar.contact'
     },
+    {
+      id: 'admin',
+      img: 'assets/imgs/header/settings.svg',
+      descr: 'sidebar.admin'
+    },
 
   ]
   @Output() sidebarValue: EventEmitter<string> = new EventEmitter();

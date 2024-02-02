@@ -7,7 +7,7 @@ const movieRoute = require('./routes/movie.js')
 database.database();
 const app = express ();
 app.use(express.json());
-app.use(express.static(__dirname + '/images'));
+app.use('/images/moviesImages',express.static("images/moviesImages"));
 
 app.use((req, res, next) =>{
     res.header("Access-Control-Allow-Origin", "*");
