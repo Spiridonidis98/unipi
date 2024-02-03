@@ -16,8 +16,15 @@
     <mat-option *ngFor="let lang of languages" [value]="lang.id">{{lang.descr | translate}}</mat-option>
   </mat-select>
 
-  <div class="headerDiv cursor" (click)="showLogin()" >
+  <div *ngIf="!data.user" class="headerDiv cursor" (click)="showLogin()" >
     <img class="whiteIcon" src="assets/imgs/header/person.svg"/>
     <p>{{'header.loginSignUp' | translate}}</p>
+  </div>
+  <div class="userIcon" *ngIf="data.user">
+    <div *ngIf="data.user.photo"></div>
+    <div class="letters" *ngIf="!data.user.photo">
+      {{data.user.name[0]}}
+      {{data.user.lastname[0]}}
+    </div>
   </div>
 </div>

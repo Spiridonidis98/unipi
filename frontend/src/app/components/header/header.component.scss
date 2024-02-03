@@ -83,4 +83,20 @@
     }
   }
 
+  .userIcon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--light-background-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .letters {
+
+      color: var(--grey-text-color);
+      font-size: 25px;
+      font-weight: bold;
+    }
+  }
+
 }

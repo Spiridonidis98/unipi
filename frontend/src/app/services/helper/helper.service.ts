@@ -21,4 +21,18 @@ export class HelperService {
   changeLanguage(option: string) {
     this.translate.use(option);
   }
+
+  async setItemToLocalStorage(type: string, data: any) {
+    await localStorage.setItem(type, JSON.stringify(data))
+  }
+
+  async getItemFromLocalStorage(type: string) {
+    const data = await localStorage.getItem(type);
+    return data ? JSON.parse(data) : null;
+  }
+
+  async removeItemFromLocalStorage(type: string) {
+    await localStorage.removeItem(type);
+  }
+
 }

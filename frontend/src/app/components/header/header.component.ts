@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { HelperService } from '../../services/helper/helper.service';
+import { DataService } from '../../services/data/data.service';
 
 @Component({
   selector: 'app-header',
@@ -46,7 +47,7 @@ export class HeaderComponent {
   isLoading = false;
   @Output() showLoginEmitter: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(private helper: HelperService) {
+  constructor(private helper: HelperService, public data: DataService) {
     setTimeout(() => {
       this.isLoading = true;
     }, 1000)

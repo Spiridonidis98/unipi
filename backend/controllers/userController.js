@@ -1,4 +1,6 @@
 const user = require('../models/user');
+fs = require('fs')
+path = require('path');
 
 exports.login = async (req, res) => {
     const {email, password} = req.body;
@@ -13,7 +15,10 @@ exports.login = async (req, res) => {
     else {
         try {
             const filter = {email, password};
-            const userFound = await user.findOne(filter);
+            let userFound = await user.findOne(filter);
+            if(!userFound.facebookId && !userFound.googleId) {
+                fixUserPhoto([userFound]);
+            }
             if(userFound) {
                 return res.status(200).json({
                     status: 200,
@@ -38,8 +43,11 @@ exports.login = async (req, res) => {
 };
 
 exports.getAllUsers = async (req, res) => {
+    let users = await user.find();
+    fixUserPhoto(users);
+
     return res.status(200).json({
-        data: await user.find()
+        data: users
     })
 }
 
@@ -58,9 +66,15 @@ exports.checkEmailExists = async (req, res) => {
     }
 }
 
+exports.deleteAllUsers = async(req, res) => {
+    await user.deleteMany();
+    return res.status(200).json({
+        msg: 'All deleted'
+    })
+}
+
 exports.deleteUser = async (req, res) => {
     try {
-        
         if(await checkIfUserExists(req.params.email.toString().toLocaleLowerCase()) > 0) {
             //console.log(await checkIfUserExists(req.params.email.toString().toLocaleLowerCase()))
             const filter = {'email': req.params.email.toString().toLocaleLowerCase()};
@@ -98,7 +112,7 @@ exports.deleteUser = async (req, res) => {
 }
 
 exports.signup = async (req, res) => {
-    const {name, lastname, email, phone, password, roles, type, googleId, facebookId} = req.body;
+    const {name, lastname, email, phone, password, roles, type, googleId, facebookId, photo} = JSON.parse(req.body.data);
     //Checking if we have all the required data
     if(!name || !lastname || !email || !password || !roles || !type) {
         return res.status(400).json({
@@ -126,7 +140,8 @@ exports.signup = async (req, res) => {
                 'create_dt': formatDate(new Date()),
                 'update_dt': formatDate(new Date()),
                 'googleId': googleId ? googleId : null,
-                'facebookId': facebookId ? facebookId : null
+                'facebookId': facebookId ? facebookId : null,
+                'photo': photo
             });
 
             try {
@@ -163,4 +178,20 @@ function formatDate(date) {
     let milliseconds = new Date(date).getSeconds() < 10 ? '0' + new Date(date).getSeconds() : new Date(date).getMilliseconds();
 
     return `${year}-${month}-${day} ${hour}:${minutes}:${milliseconds}`;
+}
+
+function fixUserPhoto(users) {
+    let pathFile = path.join(__dirname, '..', '/images/userImages/')
+    var list = fs.readdirSync(pathFile)
+    for(let user of users) {
+        if(!user.facebookId && !user.googleId) {
+            for(let item of list) {
+                console.log(item)
+                if(item.includes(user.email)) {
+                    user.photo = 'http://127.0.0.1:8080/images/userImages/' + item
+                }
+            }
+            
+        }
+    }
 }

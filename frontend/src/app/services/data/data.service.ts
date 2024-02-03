@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HelperService } from '../helper/helper.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class DataService {
   user:any = null;
   //GLOBAL DATA --------------------------------
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private helper: HelperService) { }
 
 
   //here we will perform the login with the given data
@@ -34,6 +35,8 @@ export class DataService {
         next: (response: any) => {
           console.log(response);
           if(Number(response.status) === 200) {
+            this.user = response.data;
+            this.helper.setItemToLocalStorage('user', body);
             resolve(response.data);
           }
           else {
@@ -48,8 +51,8 @@ export class DataService {
   }
 
   //here we will perform the signup with the given data
-  signUp(body: any) {
-    const url = this.loginIp + this.userSignUpURL;
+  signUp(body: any, email: string) {
+    const url = this.loginIp + this.userSignUpURL + '/' + email;
     console.log('URL ---->');
     console.log(url);
 

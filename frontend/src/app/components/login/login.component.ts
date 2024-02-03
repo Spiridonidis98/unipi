@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataService } from '../../services/data/data.service';
 import { FacebookLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
@@ -11,6 +11,7 @@ import { FacebookLoginProvider, SocialAuthService } from '@abacritt/angularx-soc
 
 export class LoginComponent {
   @Output() showLoginEmitter: EventEmitter<string> = new EventEmitter();
+  @ViewChild('userImage') fileInput: ElementRef | undefined;
   loginForm: FormGroup;
   registerForm: FormGroup;
   loginOrRegister: string = 'login';
@@ -30,7 +31,9 @@ export class LoginComponent {
       isConfirmPasswordShown: new FormControl(false),
       name: new FormControl('', Validators.required),
       lastname: new FormControl('', Validators.required),
-      phone: new FormControl('', Validators.required)
+      phone: new FormControl('', Validators.required),
+      photo: new FormControl(''),
+      fileBase64: new FormControl('')
     });
   }
 
@@ -41,6 +44,9 @@ export class LoginComponent {
       if(user.provider === 'GOOGLE') {
         this.data.checkIfEmailExists(user.email).then( response => {
           if(response === 'signup') {
+            let formData = new FormData();
+            formData.append('photo', '');
+
             const body = {
               name: user.firstName ? user.lastName : "Google User" ,
               lastname: user.lastName ? user.lastName : "Google User" ,
@@ -49,9 +55,12 @@ export class LoginComponent {
               password: user.id,
               googleId: user.id,
               roles: [1],
-              type: 2
+              type: 2,
+              photo: user.photoUrl
             };
-            this.signUpAction(body);
+
+            formData.append('data', JSON.stringify(body))
+            this.signUpAction(formData, body.email);
           }
           else if( response === 'login') {
             const body = {
@@ -137,6 +146,8 @@ export class LoginComponent {
       alert('Register form not fully completed');
     }
     else {
+      let formData = new FormData()
+      formData.append('photo', this.registerForm.value.photo)
       const body = {
         name: this.registerForm.value.name,
         lastname: this.registerForm.value.lastname,
@@ -146,14 +157,15 @@ export class LoginComponent {
         roles: [1],
         type: 1
       };
-      this.signUpAction(body);
+      formData.append('data', JSON.stringify(body))
+      this.signUpAction(formData, body.email);
     }
   }
   //manual signup -------------------------------
 
   //here we will perform the signup functionality
-  signUpAction(body: any) {
-    this.data.signUp(body).then( (response: any) => {
+  signUpAction(body: any, email: string) {
+    this.data.signUp(body, email).then( (response: any) => {
       console.log(response);
       alert('Sign up successful');
       const loginBody = {
@@ -174,6 +186,8 @@ export class LoginComponent {
       console.log(user);
       this.data.checkIfEmailExists(user.email).then( response => {
         if(response === 'signup') {
+          let formData = new FormData();
+          formData.append('photo', '');
           const body = {
             name: user.firstName ? user.firstName : "Facebook User",
             lastname: user.lastName ? user.lastName : "Facebook User" ,
@@ -184,7 +198,8 @@ export class LoginComponent {
             roles: [1],
             type: 3
           };
-          this.signUpAction(body);
+          formData.append('data', JSON.stringify(body))
+          this.signUpAction(formData, body.email);
         }
         else if( response === 'login') {
           const body = {
@@ -197,4 +212,52 @@ export class LoginComponent {
       });
     });
   }
+
+  //returns background img for every movie
+  returnCSS(img: string) {
+    return {
+      'background-image': 'url("' + img + '")'
+    }
+  }
+
+  //file upload --------------------------------
+  getFile(event: any){
+    if( event.files.length > 1){
+      // alert("error");
+    }
+    else if ( event.files.length == 0){
+      this.registerForm.controls['photo'].setValue([])
+    }
+    else if (event.files.length == 1){
+      this.registerForm.controls['photo'].setValue(event.files[0])
+      let data = event.files[0];
+      console.log("data --->",data)
+      this.getBase64(data);
+    }
+    else{
+      // Clear the input file
+      if(this.fileInput !== undefined) {
+        this.fileInput.nativeElement.value = '';
+      }
+    }
+  }
+
+  //file Upload
+  fileUploadClick() {
+    document.getElementById('userImage')?.click();
+  }
+
+    // return image to base64
+    getBase64(file: any) {
+      let self = this;
+      var reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = function () {
+        console.log(reader.result);
+        self.registerForm.get('fileBase64')?.setValue(reader.result)
+      };
+      reader.onerror = function (error) {
+        console.log('Error: ', error);
+      };
+    }
 }

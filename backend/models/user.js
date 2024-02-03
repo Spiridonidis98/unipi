@@ -47,6 +47,10 @@ const User = new mongoose.Schema({
     facebookId: {
         type: String,
         default: null
+    },
+    photo: {
+        type: String,
+        default: null
     }
 });
 

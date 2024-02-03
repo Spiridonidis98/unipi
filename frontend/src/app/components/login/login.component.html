@@ -39,23 +39,37 @@
         </form>
 
         <form *ngIf="loginOrRegister === 'register'" [formGroup]="registerForm" (ngSubmit)="manualSignUp()">
-          <!-- name -->
-          <div class="formLabel">
-            <p>{{'login.name' | translate}}</p>
-          </div>
-          <div class="formInput" [ngClass]="checkIfFieldIsValid(registerForm, 'name') ? '' : 'invalidInput'">
-            <img class="blueIcon" src="assets/imgs/general/mail.svg"/>
-            <input formControlName="name" placeholder="{{'login.name' | translate}}">
+
+          <div class="row">
+
+            <div class="imgCol" (click)="fileUploadClick()">
+              <div [ngClass]="registerForm.value.fileBase64.length > 0 ? '' : 'blueIcon'" class="imgBackground" [style]="registerForm.value.photo ? returnCSS(registerForm.value.fileBase64) : returnCSS('assets/imgs/header/person.svg')">
+              </div>
+              <input style="display: none" #userImage id="userImage" type="file" accept="image/jpeg, image/png, image/jpg" (change)="getFile($event.target)" [multiple]="false"/>
+            </div>
+
+            <div class="nameLastnameCol">
+                <!-- name -->
+                <div class="formLabel">
+                  <p>{{'login.name' | translate}}</p>
+                </div>
+                <div class="formInput" [ngClass]="checkIfFieldIsValid(registerForm, 'name') ? '' : 'invalidInput'">
+                  <img class="blueIcon" src="assets/imgs/header/person.svg"/>
+                  <input formControlName="name" placeholder="{{'login.name' | translate}}">
+                </div>
+
+                <!-- Lastname -->
+                <div class="formLabel">
+                  <p>{{'login.lastname' | translate}}</p>
+                </div>
+                <div class="formInput" [ngClass]="checkIfFieldIsValid(registerForm, 'lastname') ? '' : 'invalidInput'">
+                  <img class="blueIcon" src="assets/imgs/header/person.svg"/>
+                  <input formControlName="lastname" placeholder="{{'login.lastname' | translate}}">
+                </div>
+            </div>
+
           </div>
 
-          <!-- Lastname -->
-          <div class="formLabel">
-            <p>{{'login.lastname' | translate}}</p>
-          </div>
-          <div class="formInput" [ngClass]="checkIfFieldIsValid(registerForm, 'lastname') ? '' : 'invalidInput'">
-            <img class="blueIcon" src="assets/imgs/login/lock.svg"/>
-            <input formControlName="lastname" placeholder="{{'login.lastname' | translate}}">
-          </div>
 
           <!-- Email -->
           <div class="formLabel">
@@ -71,7 +85,7 @@
             <p>{{'login.phone' | translate}}</p>
           </div>
           <div class="formInput" [ngClass]="checkIfFieldIsValid(registerForm, 'phone') ? '' : 'invalidInput'">
-            <img class="blueIcon" src="assets/imgs/general/mail.svg"/>
+            <img class="blueIcon" src="assets/imgs/header/call.svg"/>
             <input formControlName="phone" placeholder="{{'login.phone' | translate}}">
           </div>
 

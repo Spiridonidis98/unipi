@@ -115,7 +115,7 @@
       <!--image upload-->
       <div class="row">
         <div class="colSize2 fileUploadDiv" >
-          <input style="display: none;" #fileUpload id="fileUpload" type="file" accept="image/jpeg, image/png, image/gif, image/jpg" (change)="getFile($event.target)" [multiple]="false">
+          <input style="display: none;" #fileUpload id="fileUpload" type="file" accept="image/jpeg, image/png, image/jpg" (change)="getFile($event.target)" [multiple]="false">
           <button class="uploadButton" (click)="fileUploadClick()">{{'movieEdit.selectFile' | translate}}</button>
           <div class="filename">
             <img [src]="movieForm.get('fileBase64')?.value">
