@@ -42,8 +42,8 @@ export class LoginComponent {
         this.data.checkIfEmailExists(user.email).then( response => {
           if(response === 'signup') {
             const body = {
-              name: user.firstName,
-              lastname: user.lastName,
+              name: user.firstName ? user.lastName : "Google User" ,
+              lastname: user.lastName ? user.lastName : "Google User" ,
               email: user.email,
               phone: null,
               password: user.id,
