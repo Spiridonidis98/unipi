@@ -8,11 +8,11 @@ module.exports = {
         }
         try {
             mongoose.connect(uri, connectionParams).then(() => {
-                console.log('Database connection successful');
+                //console.log('Database connection successful');
             });
         }catch( error ) {
-            console.log('Database connection successful');
-            console.log(error)
+            //console.log('Database connection successful');
+            //console.log(error)
         }
     }
 }

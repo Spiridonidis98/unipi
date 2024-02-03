@@ -12,18 +12,18 @@ var storage = multer.diskStorage({
     destination: (req, file, cb) => {
         if(req.url.includes('/api/v1/auditorium')) {
             pathfile = path.join(__dirname, '..', '/images/auditoriumsImages/')
-            console.log(pathfile)
+            //console.log(pathfile)
 
             cb(null, pathfile);
         }
         else {
             pathfile = path.join(__dirname, '..', '/images/auditoriumsImages/')
-            console.log(pathfile)
+            //console.log(pathfile)
             cb(null, pathfile);
         }
     },
     filename: (req, file, cb) => {
-        console.log(req.body)
+        //console.log(req.body)
         cb(null, file.originalname);
     }
 });

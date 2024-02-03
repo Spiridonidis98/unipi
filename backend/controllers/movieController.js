@@ -2,7 +2,12 @@ const movie = require('../models/movie');
 path = require('path');
 exports.getMovies = async (req, res) => {
     try {
-        let moviesFound = await movie.find({inactive: false});
+        let filter={}
+        const {inactive} = req.query;
+        if(inactive) {
+            filter.inactive = inactive;
+        }
+        let moviesFound = await movie.find(filter);
         return res.status(200).json({
             data: moviesFound,
             status: 200
@@ -15,9 +20,51 @@ exports.getMovies = async (req, res) => {
     }    
 }
 
+exports.patchMovie = async (req, res) => {
+    const {_id, name, description, directors, writers, actors, category, duration, rating, inactive, start_dt_from} = req.body;
+    if(!_id || !name || !description || !directors || !writers || !actors || !category || !duration || !rating) {
+        return res.status(400).json({
+            status: 400,
+            msg: 'Required data are missing. Check for name, description, directors, writers, actors, category, duration, rating, imageName, start_dt_from'
+        });
+    }
+    else {
+        //if we find movie with the same title we update _id
+        if(_id) {
+            try {
+                await movie.findOneAndUpdate({_id: _id},{
+                    name: name,
+                    name_lower: name.toLocaleLowerCase(),
+                    rating: rating,
+                    description: description,
+                    directors: directors,
+                    writers: writers,
+                    actors: actors,
+                    category: category,
+                    duration: duration,
+                    inactive: inactive ? inactive : false,
+                    start_dt_from: start_dt_from ? formatDate(new Date(start_dt_from)) : formatDate(new Date()),
+                    update_dt: formatDate(new Date())
+                });
+                return res.status(200).json({
+                    status: 200,
+                    msg: 'Update completed'
+                })
+            }catch( error ) {
+                return res.status(500).json({
+                    status: 500,
+                    dmsg: 'Update failed',
+                    msg: 'Interval Server error',
+                    data: JSON.stringify(error, null, '\t')
+                });
+            }
+        }
+    }
+}
+
 exports.addMovie = async (req, res) => {
-    const {name, description, directors, writers, actors, category, duration, rating, imageName, inactive, start_dt_from} = JSON.parse(req.body.data);
-    console.log(JSON.parse(req.body.data))
+    const {_id, name, description, directors, writers, actors, category, duration, rating, imageName, inactive, start_dt_from} = JSON.parse(req.body.data);
+    //console.log(JSON.parse(req.body.data))
     if(!name || !description || !directors || !writers || !actors || !category || !duration || !rating || !imageName) {
         return res.status(400).json({
             status: 400,
@@ -25,11 +72,13 @@ exports.addMovie = async (req, res) => {
         });
     }
     else {
-        //if we find movie with the same title we update it
-        const movieFound = await movie.findOne({name_lower: name.toLocaleLowerCase()})
-        if(movieFound) {
+        //if we find movie with the same _id we update it
+        if(_id) {
+            const movieFound = await movie.findById(_id)
+            //console.log(movieFound)
             try {
-                await movie.findOneAndUpdate({
+                await movie.findOneAndUpdate({_id: _id}, {
+
                     name: name,
                     name_lower: movieFound.name_lower,
                     rating: rating,
@@ -98,7 +147,7 @@ exports.addMovie = async (req, res) => {
 }
 
 exports.send = async (req, res) => {
-    console.log('im here')
+    //console.log('im here')
 }
 
 

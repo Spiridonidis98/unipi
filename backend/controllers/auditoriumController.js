@@ -18,7 +18,7 @@ exports.getAuditoriums = async (req, res) => {
 
 exports.addAuditorium = async (req, res) => {
     const {code, rows, seats, moviesPlaying, imageName, inactive} = JSON.parse(req.body.data);
-    console.log(JSON.parse(req.body.data))
+    //console.log(JSON.parse(req.body.data))
     if(!code || !rows || !seats || !imageName) {
         return res.status(400).json({
             status: 400,
@@ -67,7 +67,7 @@ exports.addAuditorium = async (req, res) => {
                     create_dt: formatDate(new Date()),
                     update_dt: formatDate(new Date())
                 });
-                console.log(moviesPlaying)
+                //console.log(moviesPlaying)
                 await newAuditorium.save();
                 return res.status(200).json({
                     data: await auditorium.findOne({code: code}),
@@ -89,7 +89,7 @@ exports.addAuditorium = async (req, res) => {
 }
 
 exports.send = async (req, res) => {
-    console.log('im here')
+    //console.log('im here')
 }
 
 

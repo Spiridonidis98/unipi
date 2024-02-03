@@ -2,7 +2,7 @@ const user = require('../models/user');
 
 exports.login = async (req, res) => {
     const {email, password} = req.body;
-    console.log(email)
+    //console.log(email)
     //checking if required data is missing
     if(!email || !password) {
         return res.status(400).json({
@@ -62,10 +62,10 @@ exports.deleteUser = async (req, res) => {
     try {
         
         if(await checkIfUserExists(req.params.email.toString().toLocaleLowerCase()) > 0) {
-            console.log(await checkIfUserExists(req.params.email.toString().toLocaleLowerCase()))
+            //console.log(await checkIfUserExists(req.params.email.toString().toLocaleLowerCase()))
             const filter = {'email': req.params.email.toString().toLocaleLowerCase()};
             const deletedUser = await user.findOneAndDelete(filter);
-            console.log(deletedUser)
+            //console.log(deletedUser)
             if(deletedUser) {
                 return res.status(200).json({
                     status: 200,

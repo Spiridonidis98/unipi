@@ -120,7 +120,13 @@
           <div class="filename">
             <img [src]="movieForm.get('fileBase64')?.value">
             {{returnFilename()}}
-            <button (click)="uploadMovie()" class="uploadButton createButton">{{'movieEdit.addNew' | translate}}</button>
+            <button (click)="cancel()" class="cancelButton">{{'movieAdmin.cancel' | translate}}</button>
+            <button *ngIf="!movie" (click)="uploadMovie()" class="uploadButton createButton">
+              {{'movieAdmin.addNew' | translate}}
+            </button>
+            <button *ngIf="movie" (click)="uploadMovie()" class="uploadButton createButton">
+              {{'movieAdmin.edit' | translate}}
+            </button>
 
           </div>
 

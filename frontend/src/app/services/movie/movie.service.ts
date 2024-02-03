@@ -14,8 +14,12 @@ export class MovieService {
   //URL ---------------------------
   constructor(private http: HttpClient) { }
 
-  getAllMovies() {
-    const url = this.loginIp + this.getMoviesURL;
+  getAllMovies(inactive: String) {
+
+    let url = this.loginIp + this.getMoviesURL;
+    if(inactive === 'active') {
+      url += '?inactive=false'
+    }
     console.log('URL ----->');
     console.log(url);
 
@@ -41,13 +45,38 @@ export class MovieService {
     const url = this.loginIp + this.getMoviesURL;
     console.log('URL ----->');
     console.log(url);
-
+    console.log(body)
     return new Promise( (resolve, reject) => {
       this.http.post(url, body).subscribe({
         next: (response: any) => {
           console.log(response);
           if(response.status === 200) {
-            resolve(response.data);
+            resolve('success');
+          }
+          else {
+            reject('error');
+          }
+        }, error: (error) => {
+          console.log(error);
+          reject('error');
+        }
+      })
+    });
+  }
+
+  uploadMovieInfo(body: any) {
+    const url = this.loginIp + this.uploadMovieURL;
+    console.log('URL ----->');
+    console.log(url);
+
+    console.log(body)
+
+    return new Promise( (resolve, reject) => {
+      this.http.patch(url, body).subscribe({
+        next: (response: any) => {
+          console.log(response);
+          if(response.status === 200) {
+            resolve('success');
           }
           else {
             reject('error');

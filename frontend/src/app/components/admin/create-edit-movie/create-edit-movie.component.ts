@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HelperService } from '../../../services/helper/helper.service';
 import { MovieService } from '../../../services/movie/movie.service';
@@ -11,7 +11,7 @@ import { MovieService } from '../../../services/movie/movie.service';
 export class CreateEditMovieComponent {
   @Input() movie: any;
   @ViewChild('fileUpload') fileInput: ElementRef | undefined;
-
+  @Output() update: EventEmitter<Boolean> = new EventEmitter();
   movieForm: FormGroup;
   constructor(public formBuilder: FormBuilder, private helper: HelperService, private movieServ: MovieService) {
     this.movieForm = this.formBuilder.group({
@@ -28,6 +28,23 @@ export class CreateEditMovieComponent {
       file: new FormControl('', Validators.required),
       fileBase64: new FormControl('')
     });
+
+
+  }
+
+  ngOnChanges() {
+    console.log(this.movie)
+    if(this.movie) {
+      this.movieForm.get('name')?.setValue(this.movie.name);
+      this.movieForm.get('description')?.setValue(this.movie.description);
+      this.movieForm.get('actors')?.setValue(this.movie.actors);
+      this.movieForm.get('directors')?.setValue(this.movie.actors);
+      this.movieForm.get('writers')?.setValue(this.movie.writers);
+      this.movieForm.get('rating')?.setValue(this.movie.rating);
+      this.movieForm.get('duration')?.setValue(this.movie.duration);
+      this.movieForm.get('category')?.setValue(this.movie.category);
+      this.movieForm.get('inactive')?.setValue(this.movie.inactive);
+    }
   }
 
   changeRating(type: string, i: number) {
@@ -95,32 +112,67 @@ export class CreateEditMovieComponent {
   //upload Movie Function ----------------------------
   uploadMovie() {
     console.log(this.movieForm)
-    if(this.movieForm.invalid) {
+    if(this.movieForm.invalid && !this.movie && !this.movieForm.controls['file'].value) { // form invalid and is not edit
       alert('Form not completed correctly');
     }
     else {
-      let formData = new FormData();
-      formData.append('file', this.movieForm.controls['file'].value);
-      const body = {
-        name: this.movieForm.value.name,
-        description: this.movieForm.value.description,
-        rating: Number(this.movieForm.value.rating),
-        category: this.movieForm.value.category,
-        directors: this.movieForm.value.directors,
-        writers: this.movieForm.value.writers,
-        actors: this.movieForm.value.actors,
-        imageName: this.movieForm.value.file.name,
-        duration: Number(this.movieForm.value.duration),
-        inactive: this.movieForm.value.inactive,
-        start_dt_from: this.helper.serverFormatDate(new Date()),
-        file: formData
+      if(this.movie && !this.movieForm.controls['file'].value) {
+        const body = {
+          _id: this.movie._id,
+          name: this.movieForm.value.name,
+          description: this.movieForm.value.description,
+          rating: Number(this.movieForm.value.rating),
+          category: this.movieForm.value.category,
+          directors: this.movieForm.value.directors,
+          writers: this.movieForm.value.writers,
+          actors: this.movieForm.value.actors,
+          duration: Number(this.movieForm.value.duration),
+          inactive: this.movieForm.value.inactive,
+          start_dt_from: this.helper.serverFormatDate(new Date()),
+        }
+
+        this.movieServ.uploadMovieInfo(body).then( response => {
+          console.log(response);
+          setTimeout(() => {
+            console.log('emit value')
+            this.update.emit(true);
+
+          }, 500)
+        }).catch( error => {
+          console.log(error);
+        });
       }
+      else {
+        let formData = new FormData();
+        formData.append('file', this.movieForm.controls['file'].value);
+        const body = {
+          _id: this.movie ?  this.movie._id : undefined,
+          name: this.movieForm.value.name,
+          description: this.movieForm.value.description,
+          rating: Number(this.movieForm.value.rating),
+          category: this.movieForm.value.category,
+          directors: this.movieForm.value.directors,
+          writers: this.movieForm.value.writers,
+          actors: this.movieForm.value.actors,
+          imageName: this.movieForm.value.file.name,
+          duration: Number(this.movieForm.value.duration),
+          inactive: this.movieForm.value.inactive,
+          start_dt_from: this.helper.serverFormatDate(new Date()),
+          file: formData
+        }
 
-      formData.append('data', JSON.stringify(body))
-
-      this.movieServ.uploadMovie(formData)
+        formData.append('data', JSON.stringify(body));
+        this.movieServ.uploadMovie(formData).then( response => {
+          console.log(response);
+          this.update.emit(true);
+        }).catch( error => {
+          console.log(error);
+        });
+      }
     }
   }
   //--------------------------------------------------
+  cancel() {
+    this.update.emit(false);
+  }
 }
-"Required data are missing. Check for name, description, directors, writers, actors, category, duration, rating, imageName, start_dt_from"

@@ -65,7 +65,7 @@ module.exports = mongoose.model('Movie', Movie);
 //       cb(null, './public/images');
 //     },
 //     filename: (req, file, cb) => {
-//       console.log(file);
+//       //console.log(file);
 //       var filetype = '';
 //       if(file.mimetype === 'image/gif') {
 //         filetype = 'gif';
@@ -82,7 +82,7 @@ module.exports = mongoose.model('Movie', Movie);
 // var upload = multer({storage: storage});
 
 // app.post('/upload',upload.single('file'),function(req, res, next) {
-//   console.log(req.file);
+//   //console.log(req.file);
 //   if(!req.file) {
 //     res.status(500);
 //     return next(err);

@@ -24,5 +24,5 @@ app.use('/api/v1/movie',movieRoute);
 app.use('/api/v1/auditorium',auditoriumRoute);
 
 app.listen(8080 , () => {
-    console.log('Server listens to port 8080')
+    //console.log('Server listens to port 8080')
 });
