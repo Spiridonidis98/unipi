@@ -21,7 +21,7 @@ export class HeaderComponent {
   ];
   headerOptions = [
     {
-      id: 'playingNow',
+      id: 'home',
       img: 'assets/imgs/header/play.svg',
       descr: 'sidebar.playingNow'
     },
