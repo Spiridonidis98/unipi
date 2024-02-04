@@ -7,8 +7,8 @@ app.use(express.json());
 
 router.route('/')
 .get(controller.getAllReservations)
-.post(controller.addReservation); //works as both post and patch
-//.delete(controller.deletereservations);
+.post(controller.addReservation) //works as both post and patch
+.delete(controller.deleteReservations);
 
 router.route('/active')
 .get(controller.getActiveReservations);

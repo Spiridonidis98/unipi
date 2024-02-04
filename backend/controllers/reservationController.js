@@ -161,7 +161,6 @@ exports.addReservation = async (req, res) => {
 }
 
 //delete all reservations
-/*
 exports.deleteReservations = async (req, res) => {
     try {
         const reservationsFound = await reservation.deleteMany();
@@ -185,12 +184,10 @@ exports.deleteReservations = async (req, res) => {
         });
     }
 }
-*/
 
 exports.deleteReservation = async (req, res) => {
     try {
         const reservationFound = await reservation.findByIdAndDelete(req.params._id);
-              //  const AuditoriumFound = await auditorium.deleteOne({code: req.params.code});
 
         if (reservationFound) {
             return res.status(200).json({
