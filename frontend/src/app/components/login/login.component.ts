@@ -48,7 +48,7 @@ export class LoginComponent {
             formData.append('photo', '');
 
             const body = {
-              name: user.firstName ? user.lastName : "Google User" ,
+              name: user.firstName ? user.firstName : "Google User" ,
               lastname: user.lastName ? user.lastName : "Google User" ,
               email: user.email,
               phone: null,

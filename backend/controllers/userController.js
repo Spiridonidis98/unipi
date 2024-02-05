@@ -1,7 +1,78 @@
 const user = require('../models/user');
 fs = require('fs')
 path = require('path');
+const permissions = [
+    {
+        id: 0,
+        description: 'Διαχειριστής',
+    },
+    {
+        id: 1,
+        description: 'Επισκέπτης',
+    },
+    {
+        id: 2,
+        description: 'Υπάλληλος Εισόδου',
+    },
+    {
+        id: 3,
+        description: 'Υπάλληλος Γραφείου',
+    },
+];
 
+exports.getPermissions = async (req, res) => {
+    try {
+        return res.status(200).json({
+            data: permissions,
+            status: 200
+        });
+    }catch( error ) {
+        return res.status(500).json({
+            data: JSON.stringify(error, null, '\t'),
+            status: 500
+        })
+    }
+};
+
+exports.updateUser = async (req, res) => {
+    try {
+        const {_id, name, lastname, email, phone, password, roles, type, googleId, facebookId, photo} = req.body;
+
+        if(!name || !lastname || !email || !password || !roles || !type) {
+            return res.status(400).json({
+                status: 400,
+                msg: 'Required data are missing. Check for email, password, name, lastname, phone, type, roles'
+            });
+        }
+        else {
+            const update = {
+                '_id' : _id,
+                'name': name,
+                'lastname': lastname,
+                'email': email.toString().toLocaleLowerCase(),
+                'phone': phone,
+                'password': password,
+                'roles': roles,
+                'type': Number(type),
+                'update_dt': formatDate(new Date()),
+            }
+
+            await user.findOneAndUpdate({_id: _id},update);
+
+            return res.status(200).json({
+                msg: 'Update completed successfully',
+                status: 200
+            });
+        }
+    }catch( error ) {
+        return res.status(500).json({
+            status: 500,
+            msg: 'Internal Server Error',
+            data: JSON.stringify(error, null, '\t')
+        })
+    }
+
+}
 exports.login = async (req, res) => {
     const {email, password} = req.body;
     //console.log(email)
@@ -43,12 +114,22 @@ exports.login = async (req, res) => {
 };
 
 exports.getAllUsers = async (req, res) => {
-    let users = await user.find();
-    fixUserPhoto(users);
+    try {
+        let users = await user.find();
+        fixUserPhoto(users);
+    
+        return res.status(200).json({
+            data: users,
+            status: 200
+        })
+    }catch( error){
+        return res.status(500).json({
+            msg: 'Internal server error',
+            data: JSON.stringify(error,null, '\t'),
+            status: 500
+        })
+    }
 
-    return res.status(200).json({
-        data: users
-    })
 }
 
 exports.checkEmailExists = async (req, res) => {

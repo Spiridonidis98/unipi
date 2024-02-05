@@ -14,6 +14,7 @@ export class MainComponent {
   showLoginValue: boolean = false;
   constructor(private helper: HelperService, private data: DataService) {
     // this.checkIfUserLoggedIn();
+
   }
 
   async checkIfUserLoggedIn() {

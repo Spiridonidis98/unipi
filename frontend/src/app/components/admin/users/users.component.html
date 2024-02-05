@@ -1,0 +1,33 @@
+<div class='adminComponent'>
+  <div class="adminTitle">{{'usersAdmin.title' | translate}}</div>
+
+  <div class="movieList">
+    <div [ngClass]="user.inactive ? 'redBorder' : ''" class="movie cursor" *ngFor="let user of users">
+
+      <div class="imgDiv">
+        <img *ngIf="user.photo" [src]="user.photo">
+      </div>
+
+      <div class="movieInfo cursor">
+        <div class="titleRow">
+          <p class="title">{{user.name}} {{user.lastname}}</p>
+          <div class="delete cursor" (click)="deleteUser(user)" >
+            <img class="redIcon" src="assets/imgs/general/trash.svg">
+          </div>
+        </div>
+        <div class="titleRow">
+          <p class="descr">{{user.email}}</p>
+        </div>
+
+        <div class="addNew">
+          <mat-select class="languageSelect" multiple="true" [(value)]="user.roles">
+            <mat-option *ngFor="let perm of data.permissions" [value]="perm.id">{{perm.description}}</mat-option>
+          </mat-select>
+          <button class="cursor" (click)="update(user)">
+            {{'usersAdmin.edit' | translate}}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

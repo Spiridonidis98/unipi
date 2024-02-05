@@ -21,7 +21,7 @@
     <p>{{'header.loginSignUp' | translate}}</p>
   </div>
   <div class="userIcon" *ngIf="data.user">
-    <div *ngIf="data.user.photo"></div>
+    <img class="user" *ngIf="data.user.photo" [src]="data.user.photo"/>
     <div class="letters" *ngIf="!data.user.photo">
       {{data.user.name[0]}}
       {{data.user.lastname[0]}}

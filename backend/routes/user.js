@@ -30,13 +30,17 @@ router.route('/login')
 router.route('/signup/:email')
 .post(upload.single('photo'), controller.signup);
 
+router.route('/permissions').get(controller.getPermissions);
 
 router.route('/')
 .get(controller.getAllUsers)
-.delete(controller.deleteAllUsers);
+.delete(controller.deleteAllUsers)
+.patch(controller.updateUser);
 
 router.route('/:email')
 .get(controller.checkEmailExists)
 .delete(controller.deleteUser);
+
+
 
 module.exports = router;

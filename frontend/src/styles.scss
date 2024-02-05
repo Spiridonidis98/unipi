@@ -112,6 +112,10 @@ p {
 .greyIcon {
   filter: invert(44%) sepia(0%) saturate(0%) hue-rotate(115deg) brightness(100%) contrast(93%);
 }
+
+.redIcon {
+  filter: invert(27%) sepia(93%) saturate(7473%) hue-rotate(356deg) brightness(107%) contrast(121%)
+}
 /* You can add global styles to this file, and also import other style files */
 :root {
 /** CUSTOM COLOR **/

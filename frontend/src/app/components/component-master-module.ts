@@ -16,6 +16,7 @@ import { MovieInfoComponent } from './movie-info/movie-info.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { CreateEditMovieComponent } from './admin/create-edit-movie/create-edit-movie.component';
 import { MoviesComponent } from './admin/movies/movies.component';
+import { UsersComponent } from './admin/users/users.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { MoviesComponent } from './admin/movies/movies.component';
     MovieInfoComponent,
     AdminHomeComponent,
     MoviesComponent,
-    CreateEditMovieComponent
+    CreateEditMovieComponent,
+    UsersComponent
   ],
   imports: [
     CommonModule,
@@ -49,7 +51,9 @@ import { MoviesComponent } from './admin/movies/movies.component';
     MovieInfoComponent,
     AdminHomeComponent,
     MoviesComponent,
-    CreateEditMovieComponent
+    CreateEditMovieComponent,
+    UsersComponent
+
   ]
 })
 export class ComponentMasterModule {}

@@ -14,9 +14,9 @@ export class AdminHomeComponent {
       descr: 'admin.movies'
     },
     {
-      id: 'comingSoon',
-      img: 'assets/imgs/header/play.svg',
-      descr: 'sidebar.comingSoon'
+      id: 'users',
+      img: 'assets/imgs/header/person.svg',
+      descr: 'admin.users'
     },
     {
       id: 'contact',

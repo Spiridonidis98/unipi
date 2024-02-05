@@ -9,6 +9,8 @@ const app = express ();
 app.use(express.json());
 app.use('/images/moviesImages',express.static("images/moviesImages"));
 app.use('/images/auditoriumsImages',express.static("images/auditoriumsImages"));
+app.use('/images/userImages',express.static("images/userImages"));
+
 
 
 app.use((req, res, next) =>{

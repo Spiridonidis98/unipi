@@ -69,4 +69,11 @@ export class HeaderComponent {
   changeView(idView: string) {
     this.sidebarValue.emit(idView);
   }
+
+  //returns background img for every movie
+  returnCSS(img: string) {
+    return {
+      'background-image': 'url("' + img + '")'
+    }
+  }
 }
