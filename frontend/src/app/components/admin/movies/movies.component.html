@@ -1,0 +1,33 @@
+<div class='adminComponent'>
+  <div class="adminTitle">{{'movieAdmin.title' | translate}}</div>
+  <div class="addNew">
+    <button class="cursor" (click)="createEditMovie(null)">
+      <img class="whiteIcon" src="assets/imgs/general/add.svg">
+      {{'movieAdmin.addNew' | translate}}</button>
+  </div>
+  <app-create-edit-movie *ngIf="showCreateEditMovie" (update)="updateAction($event)" [movie]="movieInfo"></app-create-edit-movie>
+
+  <div class="movieList" *ngIf="!showCreateEditMovie">
+    <div [ngClass]="movie.inactive ? 'redBorder' : ''" class="movie cursor" *ngFor="let movie of movies" (click)="createEditMovie(movie)">
+
+      <div class="imgDiv" [style]="returnCSS('http://127.0.0.1:8080' + movie.imageName)"></div>
+
+      <div class="movieInfo cursor">
+        <div class="titleRow">
+          <p class="title">{{movie.name}}</p>
+        </div>
+        <div class="titleRow">
+          <p class="descr">{{movie.description}}</p>
+        </div>
+
+        <div class="addNew">
+          <button class="cursor" (click)="createEditMovie(movie)">
+            <img class="whiteIcon" src="assets/imgs/general/create.svg">
+            {{'movieAdmin.edit' | translate}}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

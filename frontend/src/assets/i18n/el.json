@@ -1,6 +1,6 @@
 {
   "header": {
-    "login": "Σύνδεση",
+    "loginSignUp": "Σύνδεση / Εγγραφή",
     "greek": "Ελληνικά",
     "english": "English"
   },
@@ -13,14 +13,26 @@
   },
   "sidebar": {
     "homepage": "Αρχική σελίδα",
-    "playingNow": "Παιζονταί τώρα",
+    "playingNow": "Παίζονται τώρα",
     "contact": "Επικοινωνία",
-    "comingSoon": "Προσεχώς"
+    "comingSoon": "Προσεχώς",
+    "admin": "Διαχειριστής"
   },
   "login": {
-    "title": "Σύνδεθείτε",
-    "username": "Όνομα χρήστη",
-    "password": "Κωδικός χρήστη"
+    "title": "Σύνδεθείτε / Εγγραφείτε",
+    "email": "Email",
+    "password": "Κωδικός χρήστη",
+    "login": "Σύνδεση",
+    "registerMsg": "Δεν έχετε λογαριασμό; Εγγραφή",
+    "or": "ή",
+    "name": "Όνομα",
+    "lastname": "Επώνυμο",
+    "phone": "Τηλέφωνο",
+    "confirmPassword": "Επιβεβαίωση Κωδικού",
+    "register": "Εγγραφή",
+    "loginMsg": "Έχετε ήδη λογαριασμό; Συνδεθείτε",
+    "googleLogin": "Σύνδεση με Google",
+    "facebookLogin": "Σύνδεση με Facebook"
   },
   "contact": {
     "title":"Επικοινωνήστε μαζί μας",
@@ -29,5 +41,42 @@
     "email": "Email",
     "message": "Μήνυμα",
     "submit": "Αποστολή"
+  },
+  "movieInfo": {
+    "descr": "Περιγραφή",
+    "duration": "Διάρκεια",
+    "additionalInfo": "Περαιτέρω πληροφορίες",
+    "directors": "Σκηνοθέτες",
+    "scenario": "Σενάριο",
+    "actors": "Ηθοποιοί",
+    "reserve": "Κράτηση"
+  },
+  "admin": {
+    "movies": "Διαχείριση ταινιών",
+    "users": "Διαχείριση χρηστών"
+  },
+  "usersAdmin": {
+    "title": "Διαχείριση χρηστών",
+    "edit": "Αποθήκευση"
+  },
+  "movieAdmin": {
+    "title": "Διαχείριση ταινιών",
+    "addNew": "Προσθήκη",
+    "edit": "Επεξεργασία",
+    "cancel": "Ακύρωση"
+  },
+  "movieEdit": {
+    "title": "Προσθήκη ταινίας",
+    "name": "Τίτλος",
+    "description": "Περιγραφή",
+    "duration": "Διάρκεια",
+    "category": "Κατηγορία",
+    "directors": "Σκηνοθέτες",
+    "writers": "Σενάριο",
+    "actors": "Ηθοποιοί",
+    "rating": "Κριτική",
+    "inactive": "Διαθέσιμη",
+    "selectFile": "Επιλογή εικόνας"
+
   }
 }

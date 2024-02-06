@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HelperService } from '../helper/helper.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +13,81 @@ export class DataService {
   userSignUpURL = '/api/v1/user/signup';
   userEmailURL = '/api/v1/user/';
   contactPostUrl = '/api/v1/contact/';
+  userPermissionsURL = '/api/v1/user/permissions'
   //--------------------------------------------
 
   //GLOBAL DATA --------------------------------
   user:any = null;
+  permissions: any = [];
   //GLOBAL DATA --------------------------------
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private helper: HelperService) {
+  }
 
+  //Delete user ---------------------------------------
+  deleteUser(user: any) {
+    const url = this.loginIp + this.userEmailURL + user.email;
+
+    return new Promise( (resolve, reject) => {
+      this.http.delete(url).subscribe({
+        next: (response: any) => {
+          console.log(response);
+          if(response.status === 200) {
+            resolve('success');
+          }
+          else {
+            reject('error');
+          }
+        }, error: (error => {
+          console.log(error);
+          reject('error');
+        })
+      })
+    })
+  }
+  //Delete user ---------------------------------------
+  //Update User ---------------------------------------
+  updateUser(user: any) {
+    const url = this.loginIp + this.userEmailURL;
+    console.log(url);
+
+    console.log(user);
+    return new Promise( (resolve, reject ) => {
+      this.http.patch(url, user).subscribe({
+        next: (response: any) => {
+          console.log(response);
+          if(response.status === 200) {
+            resolve('success');
+          }
+          else {
+            reject('error');
+          }
+        }, error: (error) => {
+          console.log(error);
+          reject('error')
+        }
+      })
+    });
+  }
+  //Update User ---------------------------------------
+
+  //Get all permissions -------------------------------
+  getAllPermissions() {
+    const url = this.loginIp + this.userPermissionsURL;
+    console.log(url)
+    this.http.get(url).subscribe({
+      next: (response: any) => {
+        console.log(response)
+        if(response.status === 200) {
+          this.permissions = response.data
+        }
+      }, error: (error) => {
+        console.log(error);
+        this.permissions = [];
+      }
+    })
+  }
+  //Get all permissions -------------------------------
 
   //here we will perform the login with the given data
   login(body: any) {
@@ -34,6 +103,8 @@ export class DataService {
         next: (response: any) => {
           console.log(response);
           if(Number(response.status) === 200) {
+            this.user = response.data;
+            this.helper.setItemToLocalStorage('user', body);
             resolve(response.data);
           }
           else {
@@ -75,8 +146,8 @@ export class DataService {
   }
 
   //here we will perform the signup with the given data
-  signUp(body: any) {
-    const url = this.loginIp + this.userSignUpURL;
+  signUp(body: any, email: string) {
+    const url = this.loginIp + this.userSignUpURL + '/' + email;
     console.log('URL ---->');
     console.log(url);
 
@@ -123,4 +194,29 @@ export class DataService {
       });
     });
   }
+
+  //here we will fetch all users -----------------------
+  getAllUsers() {
+    const url = this.loginIp + this.userEmailURL;
+    console.log('URL ---->');
+    console.log(url);
+
+    return new Promise( (resolve, reject) => {
+      this.http.get(url).subscribe({
+        next: (response: any) => {
+          console.log(response);
+          if(response.status === 200) {
+            resolve(response.data);
+          }
+          else {
+            reject('error');
+          }
+        }, error: (error => {
+          console.log(error);
+          reject(error);
+        })
+      });
+    });
+  }
+  //here we will fetch all users -----------------------
 }

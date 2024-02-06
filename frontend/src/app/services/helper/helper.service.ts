@@ -9,11 +9,30 @@ export class HelperService {
 
   constructor(public translate: TranslateService) { }
 
-  formatDate(date: string) {
+  formatDate(date: any) {
     return formatDate(new Date(date), 'dd/MM/yyyy', 'en')
+  }
+
+  serverFormatDate(date: any) {
+    return formatDate(new Date(date), 'yyyy-MM-dd', 'en')
+
   }
 
   changeLanguage(option: string) {
     this.translate.use(option);
   }
+
+  async setItemToLocalStorage(type: string, data: any) {
+    await localStorage.setItem(type, JSON.stringify(data))
+  }
+
+  async getItemFromLocalStorage(type: string) {
+    const data = await localStorage.getItem(type);
+    return data ? JSON.parse(data) : null;
+  }
+
+  async removeItemFromLocalStorage(type: string) {
+    await localStorage.removeItem(type);
+  }
+
 }

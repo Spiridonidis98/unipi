@@ -1,0 +1,98 @@
+.modalInfo {
+  width: 100%;
+  min-height: 500px;
+  height: auto;
+  max-height: 800px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  .movieImg {
+    width: 30%;
+    min-height: 500px;
+    height: auto;
+    max-height: 800px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .movieInfo {
+    width: 70%;
+    padding: 0 15px;
+
+    .durationCategoryRatingsDiv {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin: 10px 0;
+      .duration {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: var(--light-background-color);
+        border-radius: 10px;
+        margin-right: 10px;
+        img {
+          width: 25px;
+          height: 25px;
+          margin-right: 15px;
+        }
+        p {
+          color: var(--grey-text-color);
+          font-size: 18px;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .ratings {
+      margin-left: auto;
+      width: fit-content;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      img {
+        width: 25px;
+        height: 25px;
+        filter: invert(83%) sepia(50%) saturate(2410%) hue-rotate(352deg) brightness(106%) contrast(98%);
+      }
+    }
+  }
+
+  .additionalInfo {
+    background: var(--light-background-color);
+    border-radius: 10px;
+    padding: 10px;
+    width: 70%;
+    table {
+      width: 100%;
+      th {
+        font-weight: bold;
+      }
+      th, td {
+        text-align: left;
+        padding: 15px;
+        color: var(--black-text-color);
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+.buttonRow {
+  width: 100%;
+  justify-content: flex-end;
+  display: flex;
+  margin-top: 5%;
+  button {
+    min-width: 100px;
+    background: var(--blue-app-color);
+    border-radius: 10px;
+    border: none;
+    color: var(--white-app-color);
+    font-weight: bold;
+    padding: 10px;
+  }
+}

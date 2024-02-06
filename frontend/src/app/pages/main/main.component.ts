@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { HelperService } from '../../services/helper/helper.service';
+import { DataService } from '../../services/data/data.service';
 
 @Component({
   selector: 'app-main',
@@ -6,9 +8,21 @@ import { Component } from '@angular/core';
   styleUrl: './main.component.scss'
 })
 export class MainComponent {
-
+  showHideMovieInfoValue = false; // hides or shows movie info modal
+  movieInfo: any; //holds movie info to show to modal
   selectedComponent: string = 'home';
   showLoginValue: boolean = false;
+  constructor(private helper: HelperService, private data: DataService) {
+    // this.checkIfUserLoggedIn();
+
+  }
+
+  async checkIfUserLoggedIn() {
+    const user = await this.helper.getItemFromLocalStorage('user');
+    if(user) {
+      this.data.login(user);
+    }
+  }
   changeView(type: string) {
     this.selectedComponent = type;
   }
@@ -30,6 +44,15 @@ export class MainComponent {
     }
 
   }
+  //Functions for Movie Info ----------------------
+  showHideMovieInfo(value: boolean) {
+    this.showHideMovieInfoValue = value;
+  }
 
+  openInfoModal(movie: any) {
+    this.movieInfo = movie;
+    this.showHideMovieInfo(true);
+  }
+  //Functions for Movie Info ----------------------
 
 }

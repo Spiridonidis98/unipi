@@ -30,11 +30,13 @@ p {
   height: 100vh;
   position: absolute;
   top: 0;
+  left: 0;
   z-index: 999;
   opacity: 0.5;
   display: flex;
   align-items: center;
   justify-content: center;
+  pointer-events: none;
 }
 
 // Class for modal
@@ -69,6 +71,7 @@ p {
         font-weight: bold;
         margin: auto;
         text-align: center;
+        font-size: 20px;
       }
     }
 
@@ -94,7 +97,25 @@ p {
   }
 }
 
+.blueIcon {
+  filter: invert(20%) sepia(76%) saturate(1950%) hue-rotate(211deg) brightness(94%) contrast(105%)
+}
 
+.blueIconBackground {
+  backdrop-filter: invert(20%) sepia(76%) saturate(1950%) hue-rotate(211deg) brightness(94%) contrast(105%);
+}
+
+.whiteIcon {
+  filter: invert(98%) sepia(69%) saturate(280%) hue-rotate(182deg) brightness(115%) contrast(100%);
+}
+
+.greyIcon {
+  filter: invert(44%) sepia(0%) saturate(0%) hue-rotate(115deg) brightness(100%) contrast(93%);
+}
+
+.redIcon {
+  filter: invert(27%) sepia(93%) saturate(7473%) hue-rotate(356deg) brightness(107%) contrast(121%)
+}
 /* You can add global styles to this file, and also import other style files */
 :root {
 /** CUSTOM COLOR **/

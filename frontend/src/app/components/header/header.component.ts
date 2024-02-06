@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { HelperService } from '../../services/helper/helper.service';
+import { DataService } from '../../services/data/data.service';
 
 @Component({
   selector: 'app-header',
@@ -18,11 +19,35 @@ export class HeaderComponent {
       descr: 'header.english',
       id: "en"
     }
+  ];
+  headerOptions = [
+    {
+      id: 'home',
+      img: 'assets/imgs/header/play.svg',
+      descr: 'sidebar.playingNow'
+    },
+    {
+      id: 'comingSoon',
+      img: 'assets/imgs/header/play.svg',
+      descr: 'sidebar.comingSoon'
+    },
+    {
+      id: 'contact',
+      img: 'assets/imgs/general/mail.svg',
+      descr: 'sidebar.contact'
+    },
+    {
+      id: 'admin',
+      img: 'assets/imgs/header/settings.svg',
+      descr: 'sidebar.admin'
+    },
+
   ]
+  @Output() sidebarValue: EventEmitter<string> = new EventEmitter();
   isLoading = false;
   @Output() showLoginEmitter: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(private helper: HelperService) {
+  constructor(private helper: HelperService, public data: DataService) {
     setTimeout(() => {
       this.isLoading = true;
     }, 1000)
@@ -39,5 +64,16 @@ export class HeaderComponent {
 
   showLogin() {
     this.showLoginEmitter.emit(true)
+  }
+
+  changeView(idView: string) {
+    this.sidebarValue.emit(idView);
+  }
+
+  //returns background img for every movie
+  returnCSS(img: string) {
+    return {
+      'background-image': 'url("' + img + '")'
+    }
   }
 }

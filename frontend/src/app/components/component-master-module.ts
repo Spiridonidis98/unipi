@@ -11,6 +11,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
+import { SocialLoginModule, GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
+import { MovieInfoComponent } from './movie-info/movie-info.component';
+import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
+import { CreateEditMovieComponent } from './admin/create-edit-movie/create-edit-movie.component';
+import { MoviesComponent } from './admin/movies/movies.component';
+import { UsersComponent } from './admin/users/users.component';
 
 
 @NgModule({
@@ -18,7 +24,12 @@ import { LoginComponent } from './login/login.component';
     SidebarComponent,
     HomeComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    MovieInfoComponent,
+    AdminHomeComponent,
+    MoviesComponent,
+    CreateEditMovieComponent,
+    UsersComponent
   ],
   imports: [
     CommonModule,
@@ -29,13 +40,20 @@ import { LoginComponent } from './login/login.component';
     MatSelectModule,
     MatOptionModule,
     BrowserAnimationsModule,
-
+    SocialLoginModule,
+    GoogleSigninButtonModule
   ],
   exports: [
     SidebarComponent,
     HomeComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    MovieInfoComponent,
+    AdminHomeComponent,
+    MoviesComponent,
+    CreateEditMovieComponent,
+    UsersComponent
+
   ]
 })
 export class ComponentMasterModule {}
