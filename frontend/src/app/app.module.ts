@@ -14,6 +14,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlayingNowComponent } from './components/playing-now/playing-now.component';
 import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { FacebookLoginProvider,GoogleSigninButtonModule , GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
+import { MovieInfoComponent } from './components/movie-info/movie-info.component';
+import { AdminHomeComponent } from './components/admin/admin-home/admin-home.component';
+import { MoviesComponent } from './components/admin/movies/movies.component';
+import { CreateEditMovieComponent } from './components/admin/create-edit-movie/create-edit-movie.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -28,6 +34,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     ComponentMasterModule,
