@@ -25,6 +25,8 @@ export class ContactComponent {
   }
 
   closeModal(mode: string) {
+    console.log('sajfdhsjfsjfhjsdf');
+
     this.showContactEmitter.emit(mode);
   }
 
@@ -54,7 +56,7 @@ export class ContactComponent {
 
   //Add contact to database
   contactAction(body: any) {
-    
+
     this.data.contactAction(body).then( response => {
       console.log(response);
       this.closeModal('cancel');

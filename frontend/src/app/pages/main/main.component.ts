@@ -12,6 +12,7 @@ export class MainComponent {
   movieInfo: any; //holds movie info to show to modal
   selectedComponent: string = 'home';
   showLoginValue: boolean = false;
+  showContact: Boolean = false;
   constructor(private helper: HelperService, private data: DataService) {
     // this.checkIfUserLoggedIn();
 
@@ -24,7 +25,17 @@ export class MainComponent {
     }
   }
   changeView(type: string) {
-    this.selectedComponent = type;
+    if(type === 'contact') {
+      this.showContact = true;
+    }
+    else {
+      this.selectedComponent = type;
+    }
+  }
+
+  showContactFunction() {
+    console.log('sajfdhsjfsjfhjsdf');
+    this.showContact = false;
   }
 
   showLoginFunction(type: string,$event: any) {
