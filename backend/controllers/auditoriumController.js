@@ -1,4 +1,3 @@
-const { isNullOrUndefined } = require('util');
 const auditorium = require('../models/auditorium');
 path = require('path');
 exports.getAuditoriums = async (req, res) => {
