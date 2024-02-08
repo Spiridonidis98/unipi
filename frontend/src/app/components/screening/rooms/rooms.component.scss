@@ -1,0 +1,38 @@
+.rooms {
+  padding-left: 30px;
+
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+
+  .chosenScreening {
+    box-shadow: 0 0 5px var(--blue-app-color);
+  }
+
+  .screeningDiv {
+    background: var(--light-background-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+    .hour {
+      font-size: 20px;
+      color: var(--blue-app-color);
+      font-weight: bold;
+    }
+
+    .roomCode {
+      font-size: 17px;
+      color: var(--blue-app-color);
+      font-weight: normal;
+
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+}

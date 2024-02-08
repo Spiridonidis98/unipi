@@ -1,0 +1,84 @@
+.roomInfo {
+  padding-left: 30px;
+
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .screenLabel {
+    width: 100%;
+    font-size: 40px;
+    letter-spacing: 50px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .roomTitle {
+    width: 100%;
+    font-weight: bold;
+  }
+}
+
+.rooms {
+  padding-left: 30px;
+  margin-top: 15px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column-reverse;
+  .rows {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    .seats {
+      width: 100%;
+      display: flex;
+    }
+    .seat {
+      width: 30px;
+      height: 30px;
+      background: var(--blue-app-color);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white-app-color);
+      font-weight: bold;
+      font-size: 15px;
+      margin: 10px;
+    }
+
+    .selected {
+      border: 5px solid var(--green-button-color) !important;
+    }
+  }
+}
+
+.selectedSeats {
+  padding-left: 30px;
+  margin-left: 15px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+
+  .selectedLabel {
+    font-size: 20px;
+    color: var(--blue-app-color);
+    font-weight: bold;
+  }
+
+  .selectedSeat {
+    background: var(--light-background-color);
+    font-weight: bold;
+    font-size: 15px;
+    margin: 0 10px;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    color: var(--blue-app-color);
+  }
+}

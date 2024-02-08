@@ -1,0 +1,69 @@
+<div class="backdrop">
+</div>
+
+<div class="modal">
+  <div class="modal-wrapper modal-wrapper-big">
+    <div class="modal-content">
+      <div class="modalTitle">
+        <p>Έκδοση Εισιτηρίου</p>
+        <div class="modalClose" (click)="changeDate()">
+          <img src="assets/imgs/general/close.svg"/>
+        </div>
+      </div>
+
+      <div class="reservationContent">
+        <div class="stepperDiv">
+          <div class="circleRow">
+            <div [ngClass]="stepperIndex == 1 ? 'selected' :''" class="circle">1</div>
+            <div class="row"></div>
+            <div [ngClass]="stepperIndex == 2 ? 'selected' :''" class="circle">2</div>
+            <div class="row"></div>
+            <div [ngClass]="stepperIndex == 3 ? 'selected' :''" class="circle">3</div>
+          </div>
+
+          <div class="labelRow">
+            <div>Ημερομηνία / Αίθουσα</div>
+            <div>Θέσεις</div>
+            <div>Επιβεβαίωση</div>
+          </div>
+        </div>
+
+        <div class="dateRoom">
+
+          <div class="movieImg" [style]="helper.returnCSS(reservation.photoURL)"></div>
+
+          <div class="availableDatesRow">
+
+
+            <div  class="availableDates">
+              <div class="date" [ngClass]="stepperIndex !== 1 ? 'disabled' : ''">
+                <div class="datepicker" id="reservationDatePicker" (changeDate)="changeDate()">
+                </div>
+              </div>
+
+              <div class="rooms">
+                <app-rooms style="width: 100%;" *ngIf="stepperIndex === 1" [screenings]="screenings" (roomEmmiter)="choseScreening($event)"></app-rooms>
+                <app-seats style="width: 100%;" *ngIf="stepperIndex === 2" [chosenScreening]="chosenScreening" (seatEmmiter)="choseSeats($event)"></app-seats>
+                <app-confirm style="width: 100%;" *ngIf="stepperIndex === 3" [reservation]="reservation" [screening]="chosenScreening" [seats]="chosenSeats"></app-confirm>
+
+              </div>
+            </div>
+
+
+            <div class="buttonRow">
+
+              <button *ngIf="stepperIndex > 1" (click)="changeStepper('prev')" class="previousButton">Προηγούμενο</button>
+
+              <button *ngIf="stepperIndex !== 3" (click)="changeStepper('next')" class="continueButton">Επόμενο</button>
+              <button *ngIf="stepperIndex === 3" (click)="changeStepper('next')" class="continueButton">Κράτηση</button>
+
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

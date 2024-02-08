@@ -5,6 +5,10 @@ const movieRoute = require('./routes/movie.js')
 const auditoriumRoute = require('./routes/auditorium.js')
 const reservationRoute = require('./routes/reservation.js')
 const contactRoute = require('./routes/contact.js')
+const userRoute = require('./routes/user.js');
+const movieRoute = require('./routes/movie.js');
+const auditoriumRoute = require('./routes/auditorium.js');
+const screeningRoute = require('./routes/screening.js');
 
 database.database();
 const app = express ();
@@ -27,7 +31,8 @@ app.use('/api/v1/movie',movieRoute);
 app.use('/api/v1/auditorium',auditoriumRoute);
 app.use('/api/v1/reservation',reservationRoute);
 app.use('/api/v1/contact',contactRoute);
+app.use('/api/v1/screening',screeningRoute);
 
 app.listen(8080 , () => {
-    //console.log('Server listens to port 8080')
+    console.log('Server listens to port 8080')
 });

@@ -13,10 +13,10 @@
   }
   .componentDiv {
     width: 95%;
-    max-width: 2000px;
     margin: auto;
     padding: 2.5% 2.5%;
     height: 100%;
+    overflow-y: scroll;
 
     .viewComponent {
       height: 100%;

@@ -1,0 +1,16 @@
+<div class="rooms">
+  <div *ngIf="screenings.length === 0">
+    Δεν υπάρχουν διαθέσιμες προβολές για την επιλεγμένη ημερομηνία.
+  </div>
+
+  <div *ngIf="screenings.length > 0">
+      <div *ngFor="let screen of screenings" class="screeningDiv cursor" [ngClass]="chosen === screen ? 'chosenScreening' : ''" (click)="chooseRoom(screen)">
+        <div class="hour">
+          {{helper.formatTime(screen.screening.screening_dt)}}
+        </div>
+        <div class="roomCode">
+          StarlightCinemas&#64;<span>{{screen.auditoriumInfo.code}}</span>
+        </div>
+      </div>
+  </div>
+</div>

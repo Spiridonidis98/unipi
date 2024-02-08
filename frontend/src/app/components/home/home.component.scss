@@ -1,8 +1,5 @@
 .mainComponent {
-  box-shadow: 0 0 5px solid var(--shadow-grey-color);
-  border-radius: 10px;
   width: 100%;
-  background: var(--white-app-color);
   height: 100%;
   .movieContainer {
     width: 100%;
@@ -10,12 +7,13 @@
     flex-wrap: wrap;
     height: 100%;
     padding: 0 10px;
-    overflow-y: scroll;
     justify-content: flex-start;
   }
   .movie {
     // background-size: cover;
     width: 30%;
+    min-width: 300px;
+    max-width: 500px;
     height: 60%;
     background-position: 50% 20%;
     background-repeat: no-repeat;
