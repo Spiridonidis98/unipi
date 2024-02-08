@@ -15,6 +15,10 @@ import { PlayingNowComponent } from './components/playing-now/playing-now.compon
 import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FacebookLoginProvider,GoogleSigninButtonModule , GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
+import { ScreeningComponent } from './components/screening/screening.component';
+import { RoomsComponent } from './components/screening/rooms/rooms.component';
+import { SeatsComponent } from './components/screening/seats/seats.component';
+import { ConfirmComponent } from './components/screening/confirm/confirm.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -25,7 +29,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     MainComponent,
     PlayingNowComponent,
     ComingSoonComponent,
-    ContactComponent
+    ContactComponent,
+    ScreeningComponent,
+    RoomsComponent,
+    SeatsComponent,
+    ConfirmComponent
   ],
   imports: [
     BrowserModule,

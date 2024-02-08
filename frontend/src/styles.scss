@@ -50,6 +50,9 @@ p {
   align-items: center;
   justify-content: center;
 }
+.modal-wrapper-big {
+  width: 80% !important;
+}
 .modal-wrapper {
   // top: 0;
   width: 50%;
@@ -152,4 +155,43 @@ p {
   --light-grey-background1 : #EAECF0;
   --light-grey-background2 : #F8F8FA;
   --smooth-red-color: #932222;
+}
+
+
+//date picker CSS
+// CUSTOM CALENDAR ===================================================
+.datepicker {
+  display: block;
+}
+.datepicker-cell.today.focused:not(.selected){
+  background-color: var(--light-background-color) !important;
+}
+
+.datepicker-cell.today:not(.selected){
+  background-color: var(--light-background-color) !important;
+}
+
+.datepicker-cell {
+  color: #7a7a7a;
+}
+
+.datepicker-controls .view-switch{
+  color: var(--blue-app-color);
+}
+
+.datepicker-cell.selected{
+  background-color: var(--blue-app-color) !important;
+}
+
+.datepicker-input.in-edit:active, .datepicker-input.in-edit:focus {
+  box-shadow: none;
+  border: none;
+}
+
+// ===================================================
+
+
+.disabled {
+  opacity: 0.6;
+  pointer-events: none;
 }

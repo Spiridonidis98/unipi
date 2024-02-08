@@ -12,7 +12,7 @@
       </div>
 
       <div class="modalInfo">
-        <div class="movieImg" [style]="returnCSS(movie.image)"></div>
+        <div class="movieImg" [style]="returnCSS(movie.photoURL)"></div>
         <div class="movieInfo">
 
           <p>{{movie.description}}</p>
@@ -60,7 +60,7 @@
             </table>
           </div>
           <div class="buttonRow">
-            <button>{{'movieInfo.reserve' | translate}}</button>
+            <button (click)="closeModal('reserve')">{{'movieInfo.reserve' | translate}}</button>
           </div>
         </div>
       </div>

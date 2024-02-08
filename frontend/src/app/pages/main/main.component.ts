@@ -12,6 +12,9 @@ export class MainComponent {
   movieInfo: any; //holds movie info to show to modal
   selectedComponent: string = 'home';
   showLoginValue: boolean = false;
+
+  showHideReservationValue: boolean = false;
+  reservationInfo: any = null;
   constructor(private helper: HelperService, private data: DataService) {
     // this.checkIfUserLoggedIn();
 
@@ -45,14 +48,28 @@ export class MainComponent {
 
   }
   //Functions for Movie Info ----------------------
-  showHideMovieInfo(value: boolean) {
-    this.showHideMovieInfoValue = value;
+  showHideMovieInfo(event: any) {
+    if(event.type === 'close' ) {
+      this.showHideMovieInfoValue = event.value;
+    }
+    else {
+      this.reservationInfo = event.value;
+      this.showHideReservation(true);
+    }
   }
 
   openInfoModal(movie: any) {
+    console.log(movie)
     this.movieInfo = movie;
-    this.showHideMovieInfo(true);
+    this.showHideMovieInfoValue = true;
   }
   //Functions for Movie Info ----------------------
+
+  //functions for reservation ---------------------
+  showHideReservation(event: any) {
+    this.showHideReservationValue = event;
+  }
+  //functions for reservation ---------------------
+
 
 }

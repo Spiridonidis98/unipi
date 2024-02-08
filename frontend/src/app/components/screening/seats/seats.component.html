@@ -1,0 +1,22 @@
+<div class="roomInfo">
+  <div class="roomTitle">{{chosenScreening.auditoriumInfo.code}}</div>
+
+  <div class="screenLabel">ΟΘΟΝΗ</div>
+</div>
+
+<div class="rooms" *ngIf="chosenScreening && chosenScreening.auditoriumInfo">
+  <div class="rows" *ngFor="let row of chosenScreening.auditoriumInfo.rows, let i = index">
+    <div class="rowLabel">{{row}}</div>
+    <div class="seats" *ngFor="let seat of [].constructor(helper.returnNumber(chosenScreening.auditoriumInfo.seats[i])), let j = index">
+      <div (click)="selectSeat(row,j)" [ngClass]="checkIfSelected(row, j) ? 'selected' : ''" class="seat cursor">{{j+1}}</div>
+    </div>
+    <br>
+  </div>
+</div>
+
+<div class="selectedSeats" *ngIf="selectedSeats.length > 0">
+  <div class="selectedLabel">Επιλεγμένες Θέσεις</div>
+  <div class="selectedSeat" *ngFor="let selected of selectedSeats">
+    {{selected.row}} {{selected.seat + 1}}
+  </div>
+</div>

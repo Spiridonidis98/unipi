@@ -1,0 +1,24 @@
+.rooms {
+  padding-left: 30px;
+  margin-top: 15px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  background: var(--light-background-color);
+  border-radius: 10px;
+  padding: 0 15px;
+
+  .confirmTitle {
+    margin-top: 15px;
+    width: 100%;
+    color: var(--black-text-color);
+    font-size: 15px;
+
+    span {
+      font-weight: bold;
+      font-size: 20px;
+    }
+  }
+}

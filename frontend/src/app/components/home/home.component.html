@@ -1,6 +1,6 @@
 <div class="mainComponent">
   <div class="movieContainer">
-    <div class="movie cursor" *ngFor="let movie of movies" [style]="returnCSS('http://127.0.0.1:8080' + movie.imageName)"  (click)="openInfoModal(movie)">
+    <div class="movie cursor" *ngFor="let movie of movies" [style]="returnCSS(movie.photoURL)"  (click)="openInfoModal(movie)">
 
       <div class="movieInfo cursor">
         <div class="titleRow">
