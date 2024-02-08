@@ -13,8 +13,8 @@ export class HelperService {
     return formatDate(new Date(date), 'dd/MM/yyyy', 'en');
   }
 
-  serverFormatDate(date: any) {
-    return formatDate(new Date(date), 'yyyy-MM-dd', 'en');
+  serverFormatDate(date: any, andTime?: Boolean) {
+    return andTime ? formatDate(new Date(date), 'yyyy-MM-dd HH:mm', 'en') : formatDate(new Date(date), 'yyyy-MM-dd', 'en');
   }
 
   formatTime(date: any) {

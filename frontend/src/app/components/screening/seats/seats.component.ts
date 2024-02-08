@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { HelperService } from '../../../services/helper/helper.service';
+import { MovieService } from '../../../services/movie/movie.service';
 
 @Component({
   selector: 'app-seats',
@@ -11,11 +12,24 @@ export class SeatsComponent {
   @Output() seatEmmiter: EventEmitter<any> = new EventEmitter();
 
   selectedSeats: any = [];
-  constructor(public helper: HelperService) {}
+
+  reservedSeats: any = [];
+  constructor(public helper: HelperService, private movieServ: MovieService) {}
 
   ngOnInit() {
     console.log(this.chosenScreening);
+    this.getReservedSeats();
   }
+
+  //here we get the data for the specific reservevation to see which seats are available
+  getReservedSeats() {
+    this.movieServ.getReservation(this.chosenScreening.screening.screening_dt, this.chosenScreening.movie._id, this.chosenScreening.auditoriumInfo._id).then((response: any) => {
+      this.reservedSeats = response;
+    }).catch( error => {
+      this.reservedSeats = [];
+    });
+  }
+
 
   //here we select or we remove a seat
   selectSeat(row: any, seat: any) {
@@ -47,5 +61,21 @@ export class SeatsComponent {
     });
     return filtered.length > 0 ? true : false;
   }
+
+  //check if reserved
+  checkIfReserved(row: any, seat: any) {
+    for(let reserved of this.reservedSeats) {
+      for(let s of reserved.seat) {
+        if(s.split('')[0] === row && Number(s.split('')[1]) === Number(seat)) {
+          return true;
+        }
+        else if (reserved  === this.reservedSeats[this.reservedSeats.length - 1] && s === reserved.seat[reserved.seat.length - 1]) {
+          return false;
+        }
+      }
+    }
+    return false;
+  }
+
 
 }

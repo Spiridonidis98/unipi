@@ -5,14 +5,14 @@ const screening = require('../models/screening');
 exports.getScreening = async (req, res) => {
     try {
         const {screening_dt, movie_id} = req.query;
-        console.log(req.params)
+        //console.log(req.params)
         let filter = {};
         if(movie_id) {
             filter.movie_id = movie_id ? movie_id : undefined;
         }
         // filter.screening_dt = screening_dt ? `{ "$regex": "/${formatDate(screening_dt, false)}/"}` : `{ "$regex": ${formatDate(new Date(), false)}}`
         filter.screening_dt = screening_dt ? new RegExp(formatDate(screening_dt, false), 'i') : new RegExp(formatDate(new Date(), false),  'i') 
-        console.log(filter)
+        //console.log(filter)
         let screeningMovies = await screening.find(filter);
 
         let totalInfo = [];

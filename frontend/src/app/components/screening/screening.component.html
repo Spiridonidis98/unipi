@@ -55,7 +55,7 @@
               <button *ngIf="stepperIndex > 1" (click)="changeStepper('prev')" class="previousButton">Προηγούμενο</button>
 
               <button *ngIf="stepperIndex !== 3" (click)="changeStepper('next')" class="continueButton">Επόμενο</button>
-              <button *ngIf="stepperIndex === 3" (click)="changeStepper('next')" class="continueButton">Κράτηση</button>
+              <button *ngIf="stepperIndex === 3" (click)="reservationAction()" class="continueButton">Κράτηση`11`</button>
 
             </div>
           </div>

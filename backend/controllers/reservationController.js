@@ -18,8 +18,24 @@ exports.getAllReservations = async (req, res) => {
 }
 
 exports.getActiveReservations = async (req, res) => {
+    const {auditorium_id, reservation_dt, movie_id} = req.query;
+    let filter = {};
+
+    filter.inactive = false;
+
+    if(auditorium_id) {
+        filter.auditorium_id = auditorium_id
+    }
+    if(reservation_dt) {
+        filter.reservation_dt = new RegExp(formatDate(reservation_dt), 'i')
+
+    }
+    if(movie_id) {
+        filter.movie_id = movie_id
+    }
     try {
-        let reservationsFound = await reservation.find({inactive: false});
+        console.log(filter)
+        let reservationsFound = await reservation.find(filter);
         return res.status(200).json({
             data: reservationsFound,
             status: 200
@@ -63,20 +79,19 @@ exports.getReservationById = async (req, res) => {
 }
 
 exports.addReservation = async (req, res) => {
-    //const {reservation_email, auditorium_code, row, seat, movie_id, reservation_dt, inactive} = JSON.parse(req.body.data);
+    //const {reservation_email, auditorium_id, row, seat, movie_id, reservation_dt, inactive} = JSON.parse(req.body.data);
     const _id = req.body._id; // id of the reservation entry itself
     const reservation_email = req.body.reservation_email;
-    const auditorium_code = req.body.auditorium_code;
-    const row = req.body.row;
+    const auditorium_id = req.body.auditorium_id;
     const seat = req.body.seat;
     const movie_id = req.body.movie_id;
     const reservation_dt = req.body.reservation_dt;
     const inactive = req.body.inactive;
-
-    if(!reservation_email || !auditorium_code || !row || !seat || !movie_id || !reservation_dt) {
+    console.log('--->',req.body.reservation_dt)
+    if(!reservation_email || !auditorium_id || !seat || !movie_id || !reservation_dt) {
         return res.status(400).json({
             status: 400,
-            msg: 'Required data are missing. Check for reservation_email, auditorium_code, row, seat, movie_id'
+            msg: 'Required data are missing. Check for reservation_email, auditorium_id, seat, movie_id'
         });
     }
     else {
@@ -106,7 +121,7 @@ exports.addReservation = async (req, res) => {
             try {
                 await reservation.findOneAndUpdate({_id: _id}, {
                     reservation_email: reservation_email,
-                    auditorium_code : auditorium_code,
+                    auditorium_id : auditorium_id,
                     row: row,
                     seat: seat,
                     movie_id: movie_id,
@@ -131,10 +146,10 @@ exports.addReservation = async (req, res) => {
         else {
             //create new reservation
             try{
+                console.log('--->',reservation_dt)
                 const newReservation = new reservation({
                     reservation_email: reservation_email,
-                    auditorium_code : auditorium_code,
-                    row: row,
+                    auditorium_id : auditorium_id,
                     seat: seat,
                     movie_id: movie_id,
                     reservation_dt : formatDate(reservation_dt), 
@@ -218,7 +233,6 @@ function formatDate(date) {
     let year = new Date(date).getFullYear();
     let hour = new Date(date).getHours() < 10 ? '0' + new Date(date).getHours() : new Date(date).getHours();
     let minutes = new Date(date).getMinutes() < 10 ? '0' + new Date(date).getMinutes() : new Date(date).getMinutes();
-    let milliseconds = new Date(date).getSeconds() < 10 ? '0' + new Date(date).getSeconds() : new Date(date).getMilliseconds();
 
-    return `${year}-${month}-${day} ${hour}:${minutes}:${milliseconds}`;
+    return `${year}-${month}-${day} ${hour}:${minutes}`;
 }

@@ -6,16 +6,16 @@ const Reservation = new mongoose.Schema({
         type: String,
         required: true
     },
-    auditorium_code: {
+    auditorium_id   : {
         type: String,
         required: true
     },
     row: { //the row of the single ticket
-        type: String,
+        type: Array,
         required: true
     },
     seat: { //the seat of the single ticket
-        type: String,
+        type: Array,
         required: true
     },
     movie_id : { 

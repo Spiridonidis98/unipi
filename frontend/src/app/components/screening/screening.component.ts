@@ -116,4 +116,26 @@ export class ScreeningComponent {
   }
   //Choose seats ---------------------
 
+
+  //reservation Action ----------------
+  reservationAction() {
+    let body = {
+      movie_id: this.chosenScreening.movie._id,
+      auditorium_id: this.chosenScreening.auditoriumInfo._id,
+      reservation_dt: this.helper.serverFormatDate(this.chosenScreening.screening.screening_dt) + ' ' + this.helper.formatTime(this.chosenScreening.screening.screening_dt),
+      row: [],
+      seat: []
+    }
+    let row: any = []
+    let seat: any = [];
+    for(let s of this.chosenSeats) {
+      seat.push(s.row + s.seat)
+    }
+    body.seat = seat;
+
+    console.log(body)
+    this.movieServ.addReservation(body)
+  }
+  //-----------------------------------
+
 }

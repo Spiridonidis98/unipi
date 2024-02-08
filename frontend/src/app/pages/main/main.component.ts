@@ -16,7 +16,7 @@ export class MainComponent {
   showHideReservationValue: boolean = false;
   reservationInfo: any = null;
   constructor(private helper: HelperService, private data: DataService) {
-    // this.checkIfUserLoggedIn();
+    this.checkIfUserLoggedIn();
 
   }
 
