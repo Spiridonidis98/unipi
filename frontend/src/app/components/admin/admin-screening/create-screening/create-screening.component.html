@@ -1,0 +1,44 @@
+<form [formGroup]="screeningForm">
+  <table>
+    <tr>
+      <th>Επιλογή Ημερομηνίας</th>
+      <th>Επιλογή Ώρα προβολής</th>
+      <th>Επιλογή αίθουσας</th>
+      <th>Επιλογή Ταινίας</th>
+    </tr>
+
+    <tr>
+      <td>
+        <div class="datePickerDiv">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <input [min]="minDate" matInput [matDatepicker]="picker" formControlName="screening_dt">
+        </div>
+      </td>
+      <td>
+        <mat-select class="languageSelect" formControlName="screening_time">
+          <mat-option *ngFor="let t of timeList" [value]="t">{{t}}</mat-option>
+        </mat-select>
+      </td>
+      <td>
+        <mat-select class="languageSelect" formControlName="auditorium">
+          <mat-option *ngFor="let aud of auditoriumList" [value]="aud">{{aud.code}}</mat-option>
+        </mat-select>
+      </td>
+      <td>
+        <mat-select class="languageSelect" formControlName="movie">
+          <mat-option *ngFor="let mov of movieList" [value]="mov">{{mov.name}}</mat-option>
+        </mat-select>
+      </td>
+    </tr>
+
+  </table>
+  <div class="buttonRow">
+
+    <button (click)="cancel()" class="previousButton">Ακύρωση</button>
+
+    <button (click)="addScreening()" class="continueButton">Αποθήκευση</button>
+
+  </div>
+
+</form>

@@ -19,9 +19,9 @@ export class AdminHomeComponent {
       descr: 'admin.users'
     },
     {
-      id: 'contact',
-      img: 'assets/imgs/general/mail.svg',
-      descr: 'sidebar.contact'
+      id: 'screening',
+      img: 'assets/imgs/header/play.svg',
+      descr: 'sidebar.screening'
     },
     {
       id: 'admin',

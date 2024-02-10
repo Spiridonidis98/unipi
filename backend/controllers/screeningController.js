@@ -10,8 +10,10 @@ exports.getScreening = async (req, res) => {
         if(movie_id) {
             filter.movie_id = movie_id ? movie_id : undefined;
         }
-        // filter.screening_dt = screening_dt ? `{ "$regex": "/${formatDate(screening_dt, false)}/"}` : `{ "$regex": ${formatDate(new Date(), false)}}`
-        filter.screening_dt = screening_dt ? new RegExp(formatDate(screening_dt, false), 'i') : new RegExp(formatDate(new Date(), false),  'i') 
+        if(screening_dt) {
+            filter.screening_dt = screening_dt ? new RegExp(formatDate(screening_dt, false), 'i') : new RegExp(formatDate(new Date(), false),  'i')
+        } 
+        
         //console.log(filter)
         let screeningMovies = await screening.find(filter);
 

@@ -17,7 +17,9 @@ import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { CreateEditMovieComponent } from './admin/create-edit-movie/create-edit-movie.component';
 import { MoviesComponent } from './admin/movies/movies.component';
 import { UsersComponent } from './admin/users/users.component';
-
+import { AdminScreeningComponent } from './admin/admin-screening/admin-screening.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { CreateScreeningComponent } from './admin/admin-screening/create-screening/create-screening.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { UsersComponent } from './admin/users/users.component';
     AdminHomeComponent,
     MoviesComponent,
     CreateEditMovieComponent,
-    UsersComponent
+    UsersComponent,
+    AdminScreeningComponent,
+    CreateScreeningComponent
   ],
   imports: [
     CommonModule,
@@ -39,6 +43,7 @@ import { UsersComponent } from './admin/users/users.component';
     ReactiveFormsModule,
     MatSelectModule,
     MatOptionModule,
+    MatDatepickerModule,
     BrowserAnimationsModule,
     SocialLoginModule,
     GoogleSigninButtonModule
@@ -52,8 +57,9 @@ import { UsersComponent } from './admin/users/users.component';
     AdminHomeComponent,
     MoviesComponent,
     CreateEditMovieComponent,
-    UsersComponent
-
+    UsersComponent,
+    AdminScreeningComponent,
+    CreateScreeningComponent
   ]
 })
 export class ComponentMasterModule {}

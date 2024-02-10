@@ -111,8 +111,16 @@ export class MovieService {
   }
 
   //here we get the screening for a specific date and specific movie
-  getScreening(screening_dt: Date, movie_id: string) {
-    const url = this.loginIp + this.getScreeningURL + '?screening_dt=' + this.helper.serverFormatDate(new Date(screening_dt)) + '&movie_id=' + movie_id;
+  getScreening(screening_dt?: Date, movie_id?: string) {
+
+    let url = this.loginIp + this.getScreeningURL;
+
+    if(screening_dt) {
+      url += '?screening_dt=' + this.helper.serverFormatDate(new Date(screening_dt))
+    }
+    if(movie_id) {
+      url += '&movie_id=' + movie_id
+    }
 
     console.log(url);
 
@@ -135,6 +143,33 @@ export class MovieService {
       })
     });
   }
+
+  //here we will add new screenings -----------------
+  addNewScreening(body: any) {
+    const url = this.loginIp + this.getScreeningURL;
+    console.log(url);
+
+    console.log(body);
+
+    return new Promise( (resolve, reject) => {
+      this.http.post(url, body).subscribe({
+        next: (response: any) => {
+          if(response.status === 200) {
+            this.helper.presentToaster('success', 'alert.success', 'alert.newScreeningSuccess', false);
+            resolve('success');
+          }
+          else {
+            this.helper.presentToaster('error', 'alert.warning', 'alert.newScreeningError', false);
+            reject('error');
+          }
+        },error: error => {
+            this.helper.presentToaster('error', 'alert.warning', 'alert.newScreeningError', false);
+            reject('error');
+        }
+      })
+    })
+  }
+  //here we will add new screenings -----------------
 
   //here we do the api call to get all auditoria info
   getAuditorium() {

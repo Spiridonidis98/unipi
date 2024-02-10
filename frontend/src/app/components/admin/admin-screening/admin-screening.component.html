@@ -1,0 +1,65 @@
+<div class='adminComponent'>
+  <div class="adminTitle">{{'movieAdmin.title' | translate}}</div>
+  <div class="addNew">
+    <button *ngIf="!showNewScreening" class="cursor" (click)="createNewScreening()">
+      <img class="whiteIcon" src="assets/imgs/general/add.svg">
+      {{'movieAdmin.addNew' | translate}}
+    </button>
+  </div>
+
+  <div *ngIf="showNewScreening" style="width: 100%;">
+    <app-create-screening (update)="catchCreateEvent($event)"></app-create-screening>
+  </div>
+
+  <!-- SCREENING LIST -->
+  <div *ngIf="!showNewScreening" class="movieList">
+
+    <div class="filterRow">
+      <div class="col">
+        <p>Εύρος ημερομηνιών</p>
+        <div class="filterDiv">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker disabled="false"></mat-date-range-picker>
+          <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+            <input (dateChange)="filterScreening()" matStartDate formControlName="screening_dt_from" placeholder="Από">
+            <input (dateChange)="filterScreening()" matEndDate formControlName="screening_dt_to" placeholder="Έως">
+          </mat-date-range-input>
+        </div>
+      </div>
+    </div>
+
+    <div class="filterRow">
+      <div class="col">
+        <p>Ταινία</p>
+        <div class="filterDiv">
+          <img class="blueIcon" src="assets/imgs/general/search.svg">
+          <input autocomplete="off" [(ngModel)]="movieFilter" (change)="filterScreening()" placeholder="Όνομα ταινίας">
+        </div>
+      </div>
+
+    </div>
+
+    <table>
+      <tr>
+        <th></th>
+        <th>Ημ/νία Προβολής</th>
+        <th>Αίθουσα</th>
+        <th>Ταινία</th>
+        <th>Κρατήσεις</th>
+      </tr>
+      <tr *ngIf="filterScreening().length === 0">
+        <td colspan="5">Δεν υπάρχει προβολή που να πληροί τα κριτήρια της αναζήτησης σας.</td>
+      </tr>
+      <tr *ngFor="let screening of filterScreening()">
+        <td>
+          <img class="cursor blueIcon checkbox" [src]="screening.screening.inactive ? 'assets/imgs/general/uncheck.svg' : 'assets/imgs/general/checkbox.svg'">
+        </td>
+        <td>{{helper.formatDate(screening.screening.screening_dt)}} {{helper.formatTime(screening.screening.screening_dt)}}</td>
+        <td>{{screening.auditoriumInfo.code}}</td>
+        <td>{{screening.movie.name}}</td>
+        <td *ngIf="screening.reservationSeatsAndTotal">{{screening.reservationSeatsAndTotal}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+

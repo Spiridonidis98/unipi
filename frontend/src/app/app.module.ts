@@ -9,7 +9,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ComponentMasterModule } from './components/component-master-module';
 import { MainComponent } from './pages/main/main.component';
 import {MatSelectModule} from '@angular/material/select'
-import { MatOptionModule } from '@angular/material/core';
+import { MAT_DATE_LOCALE, MatOptionModule, provideNativeDateAdapter } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlayingNowComponent } from './components/playing-now/playing-now.component';
 import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
@@ -19,6 +19,9 @@ import { ScreeningComponent } from './components/screening/screening.component';
 import { RoomsComponent } from './components/screening/rooms/rooms.component';
 import { SeatsComponent } from './components/screening/seats/seats.component';
 import { ConfirmComponent } from './components/screening/confirm/confirm.component';
+import { AdminScreeningComponent } from './components/admin/admin-screening/admin-screening.component';
+import { MatDatepickerIntl, MatDatepickerModule } from '@angular/material/datepicker';
+import { CreateScreeningComponent } from './components/admin/admin-screening/create-screening/create-screening.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -33,7 +36,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     ScreeningComponent,
     RoomsComponent,
     SeatsComponent,
-    ConfirmComponent
+    ConfirmComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -44,6 +49,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatOptionModule,
     BrowserAnimationsModule,
     SocialLoginModule,
+    MatDatepickerModule,
     GoogleSigninButtonModule,
     TranslateModule.forRoot({
       loader: {
@@ -74,8 +80,15 @@ export function HttpLoaderFactory(http: HttpClient) {
           console.error(err);
         }
       } as SocialAuthServiceConfig,
-    }
+    },
+    {provide: MatDatepickerIntl},
+    {provide: MAT_DATE_LOCALE, useValue: 'el-EL'},
+    provideNativeDateAdapter(),
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+function provideMomentDateAdapter(arg0: { parse: { dateInput: string[]; }; display: { dateInput: string; monthYearLabel: string; dateA11yLabel: string; monthYearA11yLabel: string; }; }): import("@angular/core").Provider | import("@angular/core").EnvironmentProviders {
+  throw new Error('Function not implemented.');
+}
+

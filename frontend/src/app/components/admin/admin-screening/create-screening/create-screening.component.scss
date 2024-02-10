@@ -1,0 +1,71 @@
+form {
+  width: 100%;
+}
+table {
+  margin: 10px auto;
+  width: 100%;
+  border: 1px solid var(--blue-app-color);
+  border-radius: 10px;
+  border-collapse: collapse;
+}
+input {
+  outline: none;
+  border: none;
+  background: transparent;
+}
+table th {
+  color: var(--white-app-color);
+  background: var(--blue-app-color);
+}
+table tr:nth-child(even){
+  background: var(--light-background-color);
+}
+
+table th,td {
+
+  border: 1px solid var(--blue-app-color);
+  padding: 10px;
+  text-align: center;
+}
+
+table
+.checkbox {
+  width: 30px;
+  height: 30px;
+}
+
+
+.datePickerDiv {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.buttonRow {
+  padding: 10px 0;
+  width: 98%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  outline: none;
+  margin: auto auto 0 auto;
+  button {
+    width: 30%;
+    padding: 10px;
+    outline: none;
+    cursor: pointer;
+    border-radius: 15px;
+    font-weight: bold;
+  }
+
+  .previousButton {
+    background: var(--light-background-color);
+    color: var(--blue-app-color);
+    border: 2px solid var(--blue-app-color);
+  }
+
+  .continueButton {
+    margin-left: auto;
+    background: var(--blue-app-color);
+    color: var(--white-app-color);
+  }
+}
