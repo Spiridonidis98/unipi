@@ -2,6 +2,7 @@ import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataService } from '../../services/data/data.service';
 import { FacebookLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
+import { HelperService } from '../../services/helper/helper.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent {
   registerForm: FormGroup;
   loginOrRegister: string = 'login';
 
-  constructor(private formBuilder: FormBuilder, private data: DataService, private socialAuthService: SocialAuthService){
+  constructor(private helper: HelperService,private formBuilder: FormBuilder, private data: DataService, private socialAuthService: SocialAuthService){
     this.loginForm = this.formBuilder.group({
       email: new FormControl('',Validators.compose([Validators.required,  Validators.pattern('^[a-zA-Z0-9._%-]+@[a-zA-Z0-9-]+.[a-zA-Z]{2,4}$')])),
       password: new FormControl('', Validators.compose([Validators.required, Validators.minLength(5)])),
@@ -108,7 +109,7 @@ export class LoginComponent {
   //manual login ------------------------
   manualLogin() {
     if(this.loginForm.invalid) {
-      alert('Form is invalid')
+      this.helper.presentAlert('warning', 'alert.warning', 'alert.invalidForm', false)
     }
     else {
       const body = {
@@ -127,7 +128,6 @@ export class LoginComponent {
       this.closeModal('cancel');
     }).catch( error => {
       console.log(error);
-      alert('Couldnt login')
     })
   }
 
@@ -143,7 +143,8 @@ export class LoginComponent {
   //manual signup -------------------------------
   manualSignUp () {
     if(this.registerForm.invalid || !this.checkPasswordConfirmPassword()) {
-      alert('Register form not fully completed');
+      this.helper.presentAlert('warning', 'alert.warning', 'alert.invalidForm', false)
+
     }
     else {
       let formData = new FormData()
@@ -167,7 +168,6 @@ export class LoginComponent {
   signUpAction(body: any, email: string) {
     this.data.signUp(body, email).then( (response: any) => {
       console.log(response);
-      alert('Sign up successful');
       const loginBody = {
         email: response.email,
         password: response.password
@@ -176,7 +176,6 @@ export class LoginComponent {
 
     }).catch(error => {
       console.log(error);
-      alert('Something went wrong');
     })
   }
 

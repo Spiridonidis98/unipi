@@ -32,12 +32,15 @@ export class DataService {
         next: (response: any) => {
           console.log(response);
           if(response.status === 200) {
+            this.helper.presentToaster('success', 'alert.success', 'alert.userDeleted', false)
             resolve('success');
           }
           else {
+            this.helper.presentAlert('error', 'alert.warning', 'alert.userDeletedError', false)
             reject('error');
           }
         }, error: (error => {
+          this.helper.presentAlert('error', 'alert.warning', 'alert.userDeletedError', false)
           console.log(error);
           reject('error');
         })
@@ -56,13 +59,16 @@ export class DataService {
         next: (response: any) => {
           console.log(response);
           if(response.status === 200) {
+            this.helper.presentToaster('success', 'alert.success', 'alert.userUpdated', false)
             resolve('success');
           }
           else {
+            this.helper.presentAlert('error', 'alert.warning', 'alert.userUpdatedError', false)
             reject('error');
           }
         }, error: (error) => {
           console.log(error);
+          this.helper.presentAlert('error', 'alert.warning', 'alert.userUpdatedError', false)
           reject('error')
         }
       })
@@ -78,7 +84,7 @@ export class DataService {
       next: (response: any) => {
         console.log(response)
         if(response.status === 200) {
-          this.permissions = response.data
+          this.permissions = response.data;
         }
       }, error: (error) => {
         console.log(error);
@@ -104,13 +110,19 @@ export class DataService {
           if(Number(response.status) === 200) {
             this.user = response.data;
             this.helper.setItemToLocalStorage('user', body);
+            this.helper.presentToaster('success', 'alert.success', 'alert.loginSuccess', false)
+
             resolve(response.data);
           }
           else {
+            this.helper.presentAlert('error', 'alert.warning', 'alert.loginError', false)
+            this.helper.removeItemFromLocalStorage('user');
             reject('error');
           }
         }, error: (error: any) => {
           console.log(error)
+          this.helper.presentAlert('error', 'alert.warning', 'alert.loginError', false)
+          this.helper.removeItemFromLocalStorage('user');
           reject('error');
         }
       })
@@ -131,13 +143,18 @@ export class DataService {
         next: (response: any) => {
           console.log(response);
           if(Number(response.status) === 200) {
+            this.helper.presentToaster('success', 'alert.success', 'alert.signSuccess', false)
+
             resolve(response.data);
           }
           else {
+            this.helper.presentAlert('error', 'alert.warning', 'alert.signError', false)
             reject('error');
           }
         }, error: (error: any) => {
           console.log(error);
+          this.helper.presentAlert('error', 'alert.warning', 'alert.signError', false)
+
           reject('error');
         }
       })
@@ -181,11 +198,14 @@ export class DataService {
             resolve(response.data);
           }
           else {
+            this.helper.presentAlert('error', 'alert.warning', 'alert.getUsersError', false)
+
             reject('error');
           }
         }, error: (error => {
           console.log(error);
-          reject(error);
+          this.helper.presentAlert('error', 'alert.warning', 'alert.getUsersError', false)
+          reject('error');
         })
       });
     });

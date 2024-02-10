@@ -9,15 +9,7 @@ const permissions = [
     {
         id: 1,
         description: 'Επισκέπτης',
-    },
-    {
-        id: 2,
-        description: 'Υπάλληλος Εισόδου',
-    },
-    {
-        id: 3,
-        description: 'Υπάλληλος Γραφείου',
-    },
+    }
 ];
 
 exports.getPermissions = async (req, res) => {

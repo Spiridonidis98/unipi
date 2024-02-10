@@ -38,15 +38,15 @@ export class MovieService {
           console.log(response);
           if(response.status === 200) {
             response.data.map( (m:any) => m.photoURL = this.loginIp + m.imageName )
-            for(let movie of response.data) {
-
-            }
             resolve(response.data);
           }
           else {
+            this.helper.presentAlert('error', 'alert.warning', 'alert.getMoviesError', false)
+
             reject('error');
           }
         }, error: (error) => {
+          this.helper.presentAlert('error', 'alert.warning', 'alert.getMoviesError', false)
           console.log(error);
           reject('error');
         }
@@ -65,12 +65,15 @@ export class MovieService {
         next: (response: any) => {
           console.log(response);
           if(response.status === 200) {
+            this.helper.presentToaster('success', 'alert.success', 'alert.uploadMovieSuccess', false);
             resolve('success');
           }
           else {
+            this.helper.presentAlert('error', 'alert.warning', 'alert.uploadMovieError', false);
             reject('error');
           }
         }, error: (error) => {
+          this.helper.presentAlert('error', 'alert.warning', 'alert.uploadMovieError', false);
           console.log(error);
           reject('error');
         }
@@ -91,12 +94,15 @@ export class MovieService {
         next: (response: any) => {
           console.log(response);
           if(response.status === 200) {
+            this.helper.presentToaster('success', 'alert.success', 'alert.uploadMovieSuccess', false);
             resolve('success');
           }
           else {
+            this.helper.presentAlert('error', 'alert.warning', 'alert.uploadMovieError', false);
             reject('error');
           }
         }, error: (error) => {
+          this.helper.presentAlert('error', 'alert.warning', 'alert.uploadMovieError', false);
           console.log(error);
           reject('error');
         }
@@ -118,9 +124,11 @@ export class MovieService {
             resolve(response.data);
           }
           else {
+            this.helper.presentAlert('error', 'alert.warning', 'alert.screeningError', false);
             reject('error');
           }
         }, error: ( error => {
+          this.helper.presentAlert('error', 'alert.warning', 'alert.screeningError', false);
           console.log(error);
           reject('error');
         })
@@ -140,10 +148,12 @@ export class MovieService {
             resolve(response.data);
           }
           else {
+            this.helper.presentAlert('error', 'alert.warning', 'alert.auditoriumError', false);
             reject('error');
           }
         },error: (error: any) => {
           console.log(error);
+          this.helper.presentAlert('error', 'alert.warning', 'alert.auditoriumError', false);
           reject('error');
         }
       });
@@ -162,9 +172,11 @@ export class MovieService {
             resolve(response.data);
           }
           else {
+            this.helper.presentAlert('error', 'alert.warning', 'alert.reseservationError', false);
             reject('error');
           }
         }, error: (error: any) => {
+          this.helper.presentAlert('error', 'alert.warning', 'alert.reseservationError', false);
           console.log(error);
           reject('error');
         }
@@ -191,8 +203,18 @@ export class MovieService {
       this.http.post(url, body).subscribe({
         next: (response: any) => {
           console.log(response);
+          if(response.status === 200) {
+            this.helper.presentAlert('success', 'alert.success', 'alert.newReservationSuccess', false);
+            resolve('success');
+          }
+          else {
+            this.helper.presentAlert('success', 'alert.success', 'alert.newReservationError', false);
+            reject('error');
+          }
         }, error: (error => {
           console.log(error);
+          this.helper.presentAlert('success', 'alert.success', 'alert.newReservationError', false);
+          reject('error')
         })
       })
     })

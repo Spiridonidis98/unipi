@@ -64,7 +64,6 @@ export class CreateEditMovieComponent {
   //file upload --------------------------------
   getFile(event: any){
     if( event.files.length > 1){
-      // alert("error");
     }
     else if ( event.files.length == 0){
       this.movieForm.controls['file'].setValue([])
@@ -113,7 +112,7 @@ export class CreateEditMovieComponent {
   uploadMovie() {
     console.log(this.movieForm)
     if(this.movieForm.invalid && !this.movie && !this.movieForm.controls['file'].value) { // form invalid and is not edit
-      alert('Form not completed correctly');
+      this.helper.presentAlert('warning', 'alert.warning', 'alert.invalidForm', false)
     }
     else {
       if(this.movie && !this.movieForm.controls['file'].value) {
