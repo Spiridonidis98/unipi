@@ -16,6 +16,7 @@ import { MovieInfoComponent } from './movie-info/movie-info.component';
 import { AdminHomeComponent } from './admin/admin-home/admin-home.component';
 import { CreateEditMovieComponent } from './admin/create-edit-movie/create-edit-movie.component';
 import { MoviesComponent } from './admin/movies/movies.component';
+import { ContactsComponent } from './admin/contacts/contacts.component';
 import { UsersComponent } from './admin/users/users.component';
 
 
@@ -28,6 +29,7 @@ import { UsersComponent } from './admin/users/users.component';
     MovieInfoComponent,
     AdminHomeComponent,
     MoviesComponent,
+    ContactsComponent,
     CreateEditMovieComponent,
     UsersComponent
   ],

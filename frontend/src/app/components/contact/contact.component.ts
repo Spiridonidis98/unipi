@@ -50,14 +50,14 @@ export class ContactComponent {
         email: this.contactForm.value.email,
         message: this.contactForm.value.message
       }
-      this.contactAction(body);
+      this.addContact(body);
     }
   }
 
   //Add contact to database
-  contactAction(body: any) {
+  addContact(body: any) {
 
-    this.data.contactAction(body).then( response => {
+    this.data.addContact(body).then( response => {
       console.log(response);
       this.closeModal('cancel');
     }).catch( error => {

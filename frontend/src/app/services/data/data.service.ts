@@ -12,7 +12,8 @@ export class DataService {
   userLoginURL = '/api/v1/user/login';
   userSignUpURL = '/api/v1/user/signup';
   userEmailURL = '/api/v1/user/';
-  contactPostUrl = '/api/v1/contact/';
+  contactUrl = '/api/v1/contact/';
+  contactIdUrl = '/api/v1/contact/id/';
   userPermissionsURL = '/api/v1/user/permissions'
   //--------------------------------------------
 
@@ -119,8 +120,8 @@ export class DataService {
   }
 
   //Add contact to database
-  contactAction(body: any) {
-    const url = this.loginIp + this.contactPostUrl;
+  addContact(body: any) {
+    const url = this.loginIp + this.contactUrl;
     console.log('URL ----->');
     console.log(url);
 
@@ -219,4 +220,52 @@ export class DataService {
     });
   }
   //here we will fetch all users -----------------------
+
+  //here we will fetch all contacts -----------------------
+  getContacts() {
+    const url = this.loginIp + this.contactUrl;
+    console.log('URL ----->');
+    console.log(url);
+
+    return new Promise( (resolve, reject) => {
+      this.http.get(url).subscribe({
+        next: (response: any) => {
+          console.log(response);
+          if(Number(response.status) === 200) {
+            resolve(response.data);
+          }
+          else {
+            reject('error');
+          }
+        }, error: (error: any) => {
+          console.log(error)
+          reject('error');
+        }
+      })
+    });
+  }
+
+  //Delete contact ---------------------------------------
+  deleteContact(contact: any) {
+    const url = this.loginIp + this.contactIdUrl + contact._id;
+
+    return new Promise( (resolve, reject) => {
+      this.http.delete(url).subscribe({
+        next: (response: any) => {
+          console.log(response);
+          if(response.status === 200) {
+            resolve('success');
+          }
+          else {
+            reject('error');
+          }
+        }, error: (error => {
+          console.log(error);
+          reject('error');
+        })
+      })
+    })
+  }
+  //Delete contact ---------------------------------------
 }
+
