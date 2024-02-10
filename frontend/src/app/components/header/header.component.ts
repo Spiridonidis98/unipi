@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 import { HelperService } from '../../services/helper/helper.service';
 import { DataService } from '../../services/data/data.service';
 
@@ -9,6 +9,14 @@ import { DataService } from '../../services/data/data.service';
 })
 export class HeaderComponent {
 
+
+  @HostListener('window:resize', ['$event'])
+  getScreenSize() {
+    this.screenHeight = window.innerHeight;
+    this.screenWidth = window.innerWidth;
+  }
+  screenHeight: number = 0;
+  screenWidth:number = 0;
   language = 'el';
   languages = [
     {
@@ -48,6 +56,7 @@ export class HeaderComponent {
   @Output() showLoginEmitter: EventEmitter<boolean> = new EventEmitter();
 
   constructor(private helper: HelperService, public data: DataService) {
+    this.getScreenSize();
     setTimeout(() => {
       this.isLoading = true;
     }, 1000)
@@ -63,6 +72,7 @@ export class HeaderComponent {
   }
 
   showLogin() {
+    console.log(this.screenWidth)
     this.showLoginEmitter.emit(true)
   }
 

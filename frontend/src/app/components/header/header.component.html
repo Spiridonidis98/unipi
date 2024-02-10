@@ -8,7 +8,7 @@
   <div class="optionsContent">
     <div class="cursor" *ngFor="let option of headerOptions" (click)="changeView(option.id)">
       <img class="whiteIcon" [src]="option.img" />
-      <p>{{option.descr | translate}}</p>
+      <p *ngIf="screenWidth > 1100">{{option.descr | translate}}</p>
     </div>
   </div>
 
