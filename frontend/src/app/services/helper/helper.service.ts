@@ -7,7 +7,7 @@ import 'sweetalert2/src/sweetalert2.scss'
   providedIn: 'root'
 })
 export class HelperService {
-
+  showLoginValue: boolean = false;
   constructor(public translate: TranslateService) { }
 
   formatDate(date: any) {

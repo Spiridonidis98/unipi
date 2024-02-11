@@ -11,11 +11,10 @@ export class MainComponent {
   showHideMovieInfoValue = false; // hides or shows movie info modal
   movieInfo: any; //holds movie info to show to modal
   selectedComponent: string = 'home';
-  showLoginValue: boolean = false;
 
   showHideReservationValue: boolean = false;
   reservationInfo: any = null;
-  constructor(private helper: HelperService, private data: DataService) {
+  constructor(public helper: HelperService, private data: DataService) {
 
     setTimeout(() => {
       this.checkIfUserLoggedIn();
@@ -36,13 +35,13 @@ export class MainComponent {
   showLoginFunction(type: string,$event: any) {
     switch(type) {
       case 'header': {
-        this.showLoginValue = $event;
+        this.helper.showLoginValue = $event;
         break;
       }
       case 'login': {
         switch($event) {
           case 'cancel': {
-            this.showLoginValue = false;
+            this.helper.showLoginValue = false;
             break;
           }
         }

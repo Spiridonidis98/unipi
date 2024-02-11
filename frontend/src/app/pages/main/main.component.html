@@ -1,4 +1,4 @@
-<app-login *ngIf="showLoginValue" (showLoginEmitter)="showLoginFunction('login',$event)"></app-login>
+<app-login *ngIf="helper.showLoginValue" (showLoginEmitter)="showLoginFunction('login',$event)"></app-login>
 <app-movie-info *ngIf="showHideMovieInfoValue" (showMovieInfo)="showHideMovieInfo($event)" [movie]="movieInfo" ></app-movie-info>
 <app-screening *ngIf="showHideReservationValue" (reservationEmitter)="showHideReservation(false)" [reservation]="reservationInfo" ></app-screening>
 
