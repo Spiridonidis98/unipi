@@ -15,7 +15,10 @@
         <div class="movieImg" [style]="returnCSS(movie.photoURL)"></div>
         <div class="movieInfo">
 
-          <p>{{movie.description}}</p>
+          <div>
+            <p>{{movie.description}}</p>
+          </div>
+
 
           <div class="durationCategoryRatingsDiv">
             <div class="duration">
@@ -27,9 +30,13 @@
               <p>{{movie.category}}</p>
             </div>
 
-            <div class="ratings">
+            <div *ngIf="screenWidth > 700" class="ratings">
               <img *ngFor="let e of [].constructor(movie.rating); let i = index" src="assets/imgs/general/star.svg">
               <img *ngFor="let e of [].constructor((5-movie.rating)); let i = index" src="assets/imgs/general/star-outline.svg">
+            </div>
+            <div *ngIf="screenWidth <= 700" class="ratings">
+              <div>{{movie.rating}}</div>
+              <img src="assets/imgs/general/star.svg">
             </div>
           </div>
 
@@ -57,10 +64,13 @@
                 <td>{{'movieInfo.actors' | translate}}</td>
                 <td>{{movie.actors}}</td>
               </tr>
+
+              <tr>
+                <td colspan="2">
+                  <button class="reservationButton" (click)="closeModal('reserve')">{{'movieInfo.reserve' | translate}}</button>
+                </td>
+              </tr>
             </table>
-          </div>
-          <div class="buttonRow">
-            <button (click)="closeModal('reserve')">{{'movieInfo.reserve' | translate}}</button>
           </div>
         </div>
       </div>

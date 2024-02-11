@@ -52,17 +52,23 @@ p {
 }
 .modal-wrapper-big {
   width: 80% !important;
+  min-width: 400px;
+
 }
 .modal-wrapper {
   // top: 0;
   width: 50%;
+  min-width: 350px;
+  margin: auto;
 
   .modal-content {
     width: 100%;
     background: var(--white-app-color);
     border-radius: 10px;
     padding: 10px;
-
+    min-height: 300px;
+    overflow-y: scroll;
+    overflow-x: clip;
     .modalTitle {
       width: 100%;
       display: flex;

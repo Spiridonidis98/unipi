@@ -24,12 +24,15 @@
   padding-left: 30px;
   margin-top: 15px;
   width: 100%;
+  min-width: 300px;
+  overflow-x: scroll;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column-reverse;
   .rows {
     width: 100%;
+
     display: flex;
     align-items: center;
     .seats {

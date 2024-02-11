@@ -1,6 +1,8 @@
 .mainComponent {
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
   .movieContainer {
     width: 100%;
     display: flex;
@@ -8,6 +10,16 @@
     height: 100%;
     padding: 0 10px;
     justify-content: flex-start;
+  }
+  @media screen and (max-width: 1024px) {
+    .movieContainer {
+      justify-content: center;
+
+    }
+  }
+  .movieContainerCenter {
+    justify-content: flex-start;
+
   }
   .movie {
     // background-size: cover;

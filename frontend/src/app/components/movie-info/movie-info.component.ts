@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-movie-info',
@@ -6,9 +6,18 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './movie-info.component.scss'
 })
 export class MovieInfoComponent {
+  screenHeight: number = 0;
+  screenWidth:number = 0;
+  @HostListener('window:resize', ['$event'])
+  getScreenSize() {
+    this.screenHeight = window.innerHeight;
+    this.screenWidth = window.innerWidth;
+  }
   @Output() showMovieInfo: EventEmitter<any> = new EventEmitter();
   @Input() movie: any;
-  constructor() {}
+  constructor() {
+    this.getScreenSize();
+  }
 
   closeModal(type: string) {
     let event: any = null;

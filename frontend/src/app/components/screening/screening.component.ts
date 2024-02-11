@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { MovieService } from '../../services/movie/movie.service';
 import { HelperService } from '../../services/helper/helper.service';
 
@@ -23,30 +23,85 @@ export class ScreeningComponent {
   chosenScreening: any = null; // selected screening
   chosenSeats: any = []; // selected seats
 
-  constructor(private movieServ: MovieService, public helper: HelperService) {
-
+  @HostListener('window:resize', ['$event'])
+  getScreenSize() {
+    this.screenHeight = window.innerHeight;
+    this.screenWidth = window.innerWidth;
+    this.settingDatePickers();
   }
+  screenHeight: number = 0;
+  screenWidth:number = 0;
+
+  constructor(private movieServ: MovieService, public helper: HelperService) {
+    this.getScreenSize();
+  }
+
+  //here we setting datePickers ------------------------
+  settingDatePickers () {
+    setTimeout(() => {
+      if(this.calendarDate) {
+        this.calendarDate.destroy();
+      }
+      const elemStart = document.getElementById('reservationDatePicker');
+      if(elemStart) {
+        let event = new Event('changeDate');
+        elemStart?.dispatchEvent(event);
+        console.log(elemStart)
+        this.calendarDate = new Datepicker(elemStart, {
+          // options here
+          format: 'dd/mm/yyyy',
+          todayHighlight: true,
+          language: 'el',
+          todayBtn: true,
+          minDate: new Date()
+        });
+        this.calendarDate.show();
+
+        if(this.calendarDate) {
+          if(this.chosenScreening) {
+            this.calendarDate.setDate(new Date(this.chosenScreening.screening.screening_dt))
+          }
+          else {
+            this.calendarDate.setDate(new Date());
+          }
+        }
+      }
+
+      const elemStart2 = document.getElementById('reservationDatePicker2');
+      if(elemStart2) {
+        let event = new Event('changeDate');
+        elemStart2?.dispatchEvent(event);
+        console.log(elemStart)
+        this.calendarDate = new Datepicker(elemStart2, {
+          // options here
+          format: 'dd/mm/yyyy',
+          todayHighlight: true,
+          language: 'el',
+          todayBtn: true,
+          minDate: new Date()
+        });
+        this.calendarDate.show();
+
+
+        if(this.calendarDate) {
+          if(this.chosenScreening) {
+            this.calendarDate.setDate(new Date(this.chosenScreening.screening.screening_dt))
+          }
+          else {
+            this.calendarDate.setDate(new Date());
+          }
+        }
+      }
+    }, 300);
+  }
+  //here we setting datePickers ------------------------
 
   ngOnInit(): void {
     this.getAuditorium();
     this.getScreening(new Date());
-    const elemStart = document.getElementById('reservationDatePicker');
-    let event = new Event('changeDate');
-    elemStart?.dispatchEvent(event);
-    console.log(elemStart)
-    this.calendarDate = new Datepicker(elemStart, {
-      // options here
-      format: 'dd/mm/yyyy',
-      todayHighlight: true,
-      language: 'el',
-      todayBtn: true,
-      minDate: new Date()
-    });
-    this.calendarDate.show();
+    this.settingDatePickers();
 
-    if(this.calendarDate) {
-      this.calendarDate.setDate(new Date());
-    }
+
   }
 
 
@@ -78,6 +133,7 @@ export class ScreeningComponent {
 
   //stepper functionality --------------------------------
   changeStepper(direction: string) {
+    this.settingDatePickers();
     switch(direction) {
       case 'prev':
         this.stepperIndex--;
