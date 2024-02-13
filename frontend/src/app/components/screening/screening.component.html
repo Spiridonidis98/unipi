@@ -28,41 +28,7 @@
           </div>
         </div>
 
-        <div class="dateRoom" *ngIf="screenWidth >= 1000">
-
-          <div class="movieImg" [style]="helper.returnCSS(reservation.photoURL)"></div>
-
-          <div class="availableDatesRow">
-
-
-            <div  class="availableDates">
-              <div class="date" [ngClass]="stepperIndex !== 1 ? 'disabled' : ''">
-                <div class="datepicker" id="reservationDatePicker" (changeDate)="changeDate()">
-                </div>
-              </div>
-
-              <div class="rooms">
-                <app-rooms style="width: 100%;" *ngIf="stepperIndex === 1" [screenings]="screenings" (roomEmmiter)="choseScreening($event)"></app-rooms>
-                <app-seats style="width: 100%;" *ngIf="stepperIndex === 2" [chosenScreening]="chosenScreening" (seatEmmiter)="choseSeats($event)"></app-seats>
-                <app-confirm style="width: 100%;" *ngIf="stepperIndex === 3" [reservation]="reservation" [screening]="chosenScreening" [seats]="chosenSeats"></app-confirm>
-
-              </div>
-            </div>
-
-
-            <div class="buttonRow">
-
-              <button *ngIf="stepperIndex > 1" (click)="changeStepper('prev')" class="previousButton">Προηγούμενο</button>
-
-              <button *ngIf="stepperIndex !== 3" (click)="changeStepper('next')" class="continueButton">Επόμενο</button>
-              <button *ngIf="stepperIndex === 3" (click)="reservationAction()" class="continueButton">Κράτηση</button>
-
-            </div>
-          </div>
-
-        </div>
-
-        <div class="dateRoomVertical" *ngIf="screenWidth < 1000">
+        <div class="dateRoomVertical">
           <div class="movieImgLine" [style]="helper.returnCSS(reservation.photoURL)"></div>
           <div class="reservationDiv">
             <div class="date" [ngClass]="stepperIndex !== 1 ? 'disabled' : ''">

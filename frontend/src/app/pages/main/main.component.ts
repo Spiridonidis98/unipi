@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HelperService } from '../../services/helper/helper.service';
 import { DataService } from '../../services/data/data.service';
+import { PrintService } from '../../services/print/print.service';
 
 @Component({
   selector: 'app-main',
@@ -14,10 +15,11 @@ export class MainComponent {
 
   showHideReservationValue: boolean = false;
   reservationInfo: any = null;
-  constructor(public helper: HelperService, private data: DataService) {
+  constructor(public helper: HelperService, private data: DataService, private print: PrintService) {
 
     setTimeout(() => {
       this.checkIfUserLoggedIn();
+      this.print.generatePDF();
     }, 200)
 
   }

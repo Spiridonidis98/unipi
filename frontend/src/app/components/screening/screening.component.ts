@@ -2,6 +2,7 @@ import { Component, EventEmitter, HostListener, Input, Output } from '@angular/c
 import { MovieService } from '../../services/movie/movie.service';
 import { HelperService } from '../../services/helper/helper.service';
 import { DataService } from '../../services/data/data.service';
+import { Router } from '@angular/router';
 
 declare var Datepicker: any;
 @Component({
@@ -33,7 +34,7 @@ export class ScreeningComponent {
   screenHeight: number = 0;
   screenWidth:number = 0;
 
-  constructor(private movieServ: MovieService, public helper: HelperService, private data: DataService) {
+  constructor(private movieServ: MovieService, public helper: HelperService, private data: DataService, private router: Router) {
     this.getScreenSize();
   }
 
@@ -204,6 +205,7 @@ export class ScreeningComponent {
       console.log(body)
       this.movieServ.addReservation(body).then( response => {
         if(response === 'success') {
+          window.open('http://localhost:4200/reservationInfo', '_blank')
           this.closeModal('cancel');
         }
       })

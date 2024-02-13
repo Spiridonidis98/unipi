@@ -19,9 +19,7 @@ import { ScreeningComponent } from './components/screening/screening.component';
 import { RoomsComponent } from './components/screening/rooms/rooms.component';
 import { SeatsComponent } from './components/screening/seats/seats.component';
 import { ConfirmComponent } from './components/screening/confirm/confirm.component';
-import { AdminScreeningComponent } from './components/admin/admin-screening/admin-screening.component';
 import { MatDatepickerIntl, MatDatepickerModule } from '@angular/material/datepicker';
-import { CreateScreeningComponent } from './components/admin/admin-screening/create-screening/create-screening.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -36,9 +34,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ScreeningComponent,
     RoomsComponent,
     SeatsComponent,
-    ConfirmComponent,
-
-
+    ConfirmComponent
   ],
   imports: [
     BrowserModule,
