@@ -12,7 +12,8 @@ export class MainComponent {
   showHideMovieInfoValue = false; // hides or shows movie info modal
   movieInfo: any; //holds movie info to show to modal
   selectedComponent: string = 'home';
-
+  showLoginValue: boolean = false;
+  showContact: Boolean = false;
   showHideReservationValue: boolean = false;
   reservationInfo: any = null;
   constructor(public helper: HelperService, private data: DataService, private print: PrintService) {
@@ -21,7 +22,6 @@ export class MainComponent {
       this.checkIfUserLoggedIn();
       this.print.generatePDF();
     }, 200)
-
   }
 
   async checkIfUserLoggedIn() {
@@ -31,7 +31,17 @@ export class MainComponent {
     }
   }
   changeView(type: string) {
-    this.selectedComponent = type;
+    if(type === 'contact') {
+      this.showContact = true;
+    }
+    else {
+      this.selectedComponent = type;
+    }
+  }
+
+  showContactFunction() {
+    console.log('sajfdhsjfsjfhjsdf');
+    this.showContact = false;
   }
 
   showLoginFunction(type: string,$event: any) {

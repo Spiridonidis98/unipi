@@ -1,0 +1,26 @@
+<div class='adminComponent'>
+    <div class="adminTitle">{{'contactsAdmin.title' | translate}}</div>
+  
+    <div class="List">
+      <div class="contact cursor" *ngFor="let contact of contacts">
+
+        <div class="Info cursor">
+          <div class="titleRow">
+            <p class="title">{{contact.name}} {{contact.surname}}</p>
+            <div class="delete cursor" (click)="deleteContact(contact)" >
+              <img class="redIcon" src="assets/imgs/general/trash.svg">
+            </div>
+          </div>
+          <div class="titleRow">
+            <p class="descr">Email: {{contact.email}}</p>
+          </div>
+          <div class="titleRow">
+            <p class="descr">Date: {{contact.create_dt}}</p>
+          </div>
+          <div class="titleRow">
+            <p class="descr">Message: {{contact.message}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

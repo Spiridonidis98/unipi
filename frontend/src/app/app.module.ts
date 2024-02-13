@@ -20,6 +20,7 @@ import { RoomsComponent } from './components/screening/rooms/rooms.component';
 import { SeatsComponent } from './components/screening/seats/seats.component';
 import { ConfirmComponent } from './components/screening/confirm/confirm.component';
 import { MatDatepickerIntl, MatDatepickerModule } from '@angular/material/datepicker';
+import { ReactiveFormsModule } from '@angular/forms';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -38,6 +39,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     ComponentMasterModule,

@@ -1,20 +1,63 @@
-<div class="mainComponent">
-    <div class="border">
-        <p class="pageTitle">{{'contact.title' | translate}}</p>
-        <form action="#" method="post">
-        <label for="name">{{'contact.name' | translate}} :</label>
-        <input type="text" id="name" name="name" placeholder="{{'contact.name' | translate}}" required>
-
-        <label for="surname">{{'contact.surname' | translate}} :</label>
-        <input type="text" id="surname" name="surname" placeholder="{{'contact.surname' | translate}}" required>
-
-        <label for="email">{{'contact.email' | translate}} :</label>
-        <input type="email" id="email" name="email" placeholder="{{'contact.email' | translate}}" required>
-
-        <label for="message">{{'contact.message' | translate}} :</label>
-        <textarea id="message" name="message" rows="10" maxLength="300" style="resize: none;" required></textarea>
-
-        <button type="submit">{{'contact.submit' | translate}}</button>
-        </form>
-    </div>
+<div class="backdrop">
 </div>
+
+<div class="modal">
+  <div class="modal-wrapper">
+    <div class="modal-content">
+      <div class="modalTitle">
+        <p>{{'contact.title' | translate}}</p>
+        <div class="modalClose" (click)="closeModal('cancel')">
+          <img src="assets/imgs/general/close.svg"/>
+        </div>
+      </div>
+
+      <div class="contactForm"> <!-- CHANGE THE NAME OF THE CLASS !!!!!!!!!!!!!!!-->
+        <form [formGroup]="contactForm" (submit)="submitData()">
+            <!-- name -->
+            <div class="formLabel">
+                <p>{{'contact.name' | translate}}</p>
+              </div>
+              <div class="formInput" [ngClass]="checkIfFieldIsValid(contactForm, 'name') ? '' : 'invalidInput'">
+                <img class="blueIcon" src="assets/imgs/general/mail.svg"/>
+                <input formControlName="name" placeholder="{{'contact.name' | translate}}">
+            </div>
+
+            <!-- surname -->
+            <div class="formLabel">
+                <p>{{'contact.surname' | translate}}</p>
+              </div>
+              <div class="formInput" [ngClass]="checkIfFieldIsValid(contactForm, 'surname') ? '' : 'invalidInput'">
+                <img class="blueIcon" src="assets/imgs/general/mail.svg"/>
+                <input formControlName="surname" placeholder="{{'contact.surname' | translate}}">
+            </div>
+
+          <!-- Email -->
+            <div class="formLabel">
+                <p>{{'contact.email' | translate}}</p>
+            </div>
+            <div class="formInput" [ngClass]="checkIfFieldIsValid(contactForm, 'email') ? '' : 'invalidInput'">
+                <img class="blueIcon" src="assets/imgs/general/mail.svg"/>
+                <input formControlName="email" placeholder="{{'contact.email' | translate}}">
+            </div>
+
+            <div class="formLabel">
+                <p>{{'contact.message' | translate}}</p>
+              </div>
+              <div class="formInput" [ngClass]="checkIfFieldIsValid(contactForm, 'message') ? '' : 'invalidInput'">
+                <img class="blueIcon" src="assets/imgs/general/mail.svg"/>
+                <input formControlName="message" placeholder="{{'contact.message' | translate}}">
+                <!-- <textarea formControlName="message" placeholder="{{'contact.message' | translate}}" ></textarea> -->
+            </div>
+
+          <div class="buttonRow">
+            <!-- <p (click)="changeToLoginRegister('register')">{{'login.registerMsg' | translate}}</p> -->
+            <button type="submit">{{'contact.submit' | translate}}</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
