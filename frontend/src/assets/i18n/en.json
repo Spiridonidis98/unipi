@@ -1,6 +1,6 @@
 {
   "header": {
-    "login": "Sign in",
+    "loginSignUp": "Login / Sign in",
     "greek": "Ελληνικά",
     "english": "English"
   },
@@ -8,14 +8,33 @@
     "title": "Starlight Cinemas"
   },
   "home": {
-    "title": "Home Page"
+    "title": "Home Page",
+    "recommend": "Recommended"
   },
   "sidebar": {
     "homepage": "Home Page",
-    "comingSoon": "Coming Soon",
     "playingNow": "Playing Now",
-    "contact": "Contact"
+    "contact": "Contact",
+    "comingSoon": "Coming Soon",
+    "admin": "Admin",
+    "screening": "Screenings"
   },  
+  "login": {
+    "title": "Login / Sign up",
+    "email": "Email",
+    "password": "Password",
+    "login": "Login",
+    "registerMsg": "Do you not have an account? Sign up!",
+    "or": "or",
+    "name": "Name",
+    "lastname": "Surname",
+    "phone": "Phone number",
+    "confirmPassword": "Confirm Password",
+    "register": "Sign up",
+    "loginMsg": "Already have an account? Login!",
+    "googleLogin": "Login with Google",
+    "facebookLogin": "Login with Facebook"
+  },
   "contact": {
     "title":"Contact Us",
     "name": "Name",
@@ -23,5 +42,76 @@
     "email": "Email",
     "message": "Message",
     "submit" : "Submit"
+  },
+  "movieInfo": {
+    "descr": "Description",
+    "duration": "Duration",
+    "additionalInfo": "Additional Info",
+    "directors": "Directors",
+    "scenario": "Writers",
+    "actors": "Actors",
+    "reserve": "Buy Ticket"
+  },
+  "admin": {
+    "movies": "Manage movies",
+    "users": "Manage users"
+  },
+  "usersAdmin": {
+    "title": "Manage users",
+    "edit": "Save Changes"
+  },
+  "contactsAdmin": {
+    "title": "Manage Messages",
+    "edit": "Save Changes"
+  },
+  "movieAdmin": {
+    "title": "Manage movies",
+    "addNew": "Add",
+    "edit": "Edit",
+    "cancel": "Cancel"
+  },
+  "movieEdit": {
+    "title": "Add Movie",
+    "name": "Title",
+    "description": "Description",
+    "duration": "Duration",
+    "category": "Category",
+    "directors": "Directors",
+    "writers": "Writers",
+    "actors": "Actors",
+    "rating": "Rating",
+    "inactive": "Available",
+    "selectFile": "Select Image"
+  },
+  "alert": {
+    "invalidForm": "Please complete the form with all the necessary information",
+    "deleteQuestion": "Delete?",
+    "warning": "Warning",
+    "success": "Success",
+    "ok": "OK",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "userDeleted": "User was deleted successfully.",
+    "userDeletedError": "Could not delete user.",
+    "userUpdated": "User info was updated successfully.",
+    "userUpdatedError": "Could not update user info.",
+    "loginSuccess": "Login successful.",
+    "loginError": "Could not verify user.",
+    "signSuccess": "Sign up successful.",
+    "signError": "Sign up was unsuccessful, Please check if the information you provided is correct.",
+    "getUsersError": "Could not receive users.",
+    "getMoviesError": "Could not recieve movies.",
+    "uploadMovieSuccess": "Movie info was uploaded successfully.",
+    "uploadMovieError": "Could not upload movie info.",
+    "newReservationSuccess": "Reservation was completed successfully.",
+    "newReservationError": "Could not complete reservation.",
+    "reseservationError": "Could not receive reservation info.",
+    "auditoriumError": "Could not receive auditoriums.",
+    "screeningError": "Could not receive screenings.",
+    "deleteUserQuestion": "Are you certain you want to delete this user?"
+  },
+  "screeningAdmin": {
+    "title": "Manage Screenings"
+
   }
 }
