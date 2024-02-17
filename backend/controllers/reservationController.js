@@ -1,5 +1,6 @@
 const reservation = require('../models/reservation');
 const movie = require('../models/movie');
+const auditorium = require('../models/auditorium');
 
 path = require('path');
 exports.getAllReservations = async (req, res) => {
@@ -34,7 +35,6 @@ exports.getActiveReservations = async (req, res) => {
         filter.movie_id = movie_id
     }
     try {
-        console.log(filter)
         let reservationsFound = await reservation.find(filter);
         return res.status(200).json({
             data: reservationsFound,
@@ -65,9 +65,15 @@ exports.getReservationsByEmail = async (req, res) => {
 
 exports.getReservationById = async (req, res) => {
     try {
-        const reservationFound = await reservation.findById(req.params._id);
+        let reservationFound = await reservation.findById(req.params._id);
+        let temp = {
+            reservation: reservationFound,
+            auditoriumInfo: await auditorium.findById(reservationFound.auditorium_id),
+            movieInfo: await movie.findById(reservationFound.movie_id)
+        }
+        console.log(reservationFound)
         return res.status(200).json({
-            data: reservationFound,
+            data: temp,
             status: 200
         })
     }catch( error ) {
@@ -87,7 +93,6 @@ exports.addReservation = async (req, res) => {
     const movie_id = req.body.movie_id;
     const reservation_dt = req.body.reservation_dt;
     const inactive = req.body.inactive;
-    console.log('--->',req.body.reservation_dt)
     if(!reservation_email || !auditorium_id || !seat || !movie_id || !reservation_dt) {
         return res.status(400).json({
             status: 400,
@@ -146,7 +151,6 @@ exports.addReservation = async (req, res) => {
         else {
             //create new reservation
             try{
-                console.log('--->',reservation_dt)
                 const newReservation = new reservation({
                     reservation_email: reservation_email,
                     auditorium_id : auditorium_id,
@@ -157,9 +161,9 @@ exports.addReservation = async (req, res) => {
                     create_dt: formatDate(new Date()),
                     update_dt: formatDate(new Date())
                 });
-                await newReservation.save();
+                const savedReservation = await newReservation.save();
                 return res.status(200).json({
-                    data: await reservation.findOne({_id: _id}),
+                    data: savedReservation,
                     status: 200,
                     msg: 'Reservation created'
                 });

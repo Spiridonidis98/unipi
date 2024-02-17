@@ -20,7 +20,6 @@ export class MainComponent {
 
     setTimeout(() => {
       this.checkIfUserLoggedIn();
-      this.print.generatePDF();
     }, 200)
   }
 

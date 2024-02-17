@@ -3,6 +3,7 @@ import { MovieService } from '../../services/movie/movie.service';
 import { HelperService } from '../../services/helper/helper.service';
 import { DataService } from '../../services/data/data.service';
 import { Router } from '@angular/router';
+import { PrintService } from '../../services/print/print.service';
 
 declare var Datepicker: any;
 @Component({
@@ -34,7 +35,8 @@ export class ScreeningComponent {
   screenHeight: number = 0;
   screenWidth:number = 0;
 
-  constructor(private movieServ: MovieService, public helper: HelperService, private data: DataService, private router: Router) {
+  constructor(private movieServ: MovieService, private printService: PrintService,
+    public helper: HelperService, private data: DataService) {
     this.getScreenSize();
   }
 
@@ -204,8 +206,8 @@ export class ScreeningComponent {
 
       console.log(body)
       this.movieServ.addReservation(body).then( response => {
-        if(response === 'success') {
-          window.open('http://localhost:4200/reservationInfo', '_blank')
+        if(response !== 'error') {
+          this.printService.generatePDF(this.data.user, response )
           this.closeModal('cancel');
         }
       })

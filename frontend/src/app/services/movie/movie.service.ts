@@ -220,6 +220,28 @@ export class MovieService {
     });
   }
 
+  //get Reservation By Id -----------------------------------------------
+  getReservationById(_id: string) {
+    const url = this.loginIp + this.reservationURL + '/id/' + _id;
+
+    return new Promise( (resolve, reject) => {
+      this.http.get(url).subscribe({
+        next: (response: any) => {
+          if(response.status === 200) {
+            resolve(response.data);
+          }
+          else {
+            reject('error');
+          }
+        }, error: (error: any) => {
+          reject('error')
+        }
+      })
+    });
+  }
+  //get Reservation By Id -----------------------------------------------
+
+
   //here we add new reservation -----------------------------------------
   addReservation(reservation: any) {
     const url = this.loginIp + this.reservationURL;
@@ -240,7 +262,7 @@ export class MovieService {
           console.log(response);
           if(response.status === 200) {
             this.helper.presentAlert('success', 'alert.success', 'alert.newReservationSuccess', false);
-            resolve('success');
+            resolve(response.data);
           }
           else {
             this.helper.presentAlert('success', 'alert.success', 'alert.newReservationError', false);
