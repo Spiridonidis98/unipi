@@ -24,9 +24,9 @@ export class AdminHomeComponent {
       descr: 'sidebar.screening'
     },
     {
-      id: 'admin',
-      img: 'assets/imgs/header/settings.svg',
-      descr: 'sidebar.admin'
+      id: 'contact',
+      img: 'assets/imgs/general/mail.svg',
+      descr: 'sidebar.contact'
     }
   ]
 
