@@ -1,0 +1,23 @@
+<div class="userInfo">
+  <table>
+    <tr>
+      <th>Ημ/νία Προβολής</th>
+      <th>Αίθουσα</th>
+      <th>Ταινία</th>
+      <th>Θέσεις</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let reservation of reservations">
+      <td>{{helper.formatDate(reservation.reservation.reservation_dt)}} {{helper.formatTime(reservation.reservation.reservation_dt)}}</td>
+      <td>{{reservation.auditoriumInfo.code}}</td>
+      <td>{{reservation.movieInfo.name}}</td>
+      <td><span *ngFor="let seat of reservation.reservation.seat">{{seat}} </span></td>
+      <td>
+        <div class="delete cursor" >
+          <img (click)="printReservation(reservation)" class="blueIcon" src="assets/imgs/general/print.svg">
+          <img (click)="deleteReservation(reservation.reservation._id)" *ngIf="checkIfDeleteMustShown(reservation.reservation.reservation_dt)" class="redIcon" src="assets/imgs/general/trash.svg">
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

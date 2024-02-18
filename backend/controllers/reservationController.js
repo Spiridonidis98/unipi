@@ -51,8 +51,18 @@ exports.getActiveReservations = async (req, res) => {
 exports.getReservationsByEmail = async (req, res) => {
     try {
         const reservationsFound = await reservation.find({reservation_email : req.params.reservation_email});
+        
+        const found = [];
+        for(let reservation of reservationsFound) {
+            let temp = {
+                reservation: reservation,
+                auditoriumInfo: await auditorium.findById(reservation.auditorium_id),
+                movieInfo: await movie.findById(reservation.movie_id)
+            }
+            found.push(temp);
+        }
         return res.status(200).json({
-            data: reservationsFound,
+            data: found,
             status: 200
         })
     }catch( error ) {

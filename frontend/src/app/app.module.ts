@@ -35,7 +35,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ScreeningComponent,
     RoomsComponent,
     SeatsComponent,
-    ConfirmComponent,
+    ConfirmComponent
   ],
   imports: [
     BrowserModule,

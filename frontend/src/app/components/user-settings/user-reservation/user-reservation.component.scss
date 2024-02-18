@@ -1,0 +1,36 @@
+.userInfo {
+  width: 100%;
+  background: var(--light-background-color);
+  border-radius: 10px;
+}
+table {
+  margin: 10px auto;
+  width: 100%;
+  border: 1px solid var(--blue-app-color);
+  border-radius: 10px;
+  border-collapse: collapse;
+}
+
+table th {
+  color: var(--white-app-color);
+  background: var(--blue-app-color);
+}
+table tr:nth-child(even){
+  background: var(--light-background-color);
+}
+
+table th,td {
+  border: 1px solid var(--blue-app-color);
+  padding: 10px;
+  text-align: center;
+}
+.delete {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  img {
+    width: 30px;
+    height: 30px;
+  }
+
+}

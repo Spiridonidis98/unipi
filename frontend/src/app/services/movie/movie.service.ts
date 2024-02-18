@@ -241,6 +241,26 @@ export class MovieService {
   }
   //get Reservation By Id -----------------------------------------------
 
+  //get Reservation By Email --------------------------------------------
+  getReservationByUserEmail(email: string) {
+    const url = this.loginIp + this.reservationURL + '/email/' + email;
+
+    return new Promise( (resolve, reject) => {
+      this.http.get(url).subscribe({
+        next: (response: any) => {
+          if(response.status === 200) {
+            resolve(response.data);
+          }
+          else {
+            reject('error');
+          }
+        }, error: (error: any) => {
+          reject('error')
+        }
+      })
+    });
+  }
+  //get Reservation By Email --------------------------------------------
 
   //here we add new reservation -----------------------------------------
   addReservation(reservation: any) {
@@ -277,5 +297,26 @@ export class MovieService {
     })
   }
   //here we add new reservation -----------------------------------------
+
+  // here we delete a specific reservation ------------------------------
+  deleteReservation(_id: string) {
+    const url = this.loginIp + this.reservationURL + '/id/' + _id;
+
+    return new Promise( (resolve, reject) => {
+      this.http.delete(url).subscribe({
+        next: (response: any) => {
+          if(response.status === 200) {
+            resolve(response.data);
+          }
+          else {
+            reject('error');
+          }
+        }, error: (error: any) => {
+          reject('error')
+        }
+      })
+    });
+  }
+  // here we delete a specific reservation ------------------------------
 
 }

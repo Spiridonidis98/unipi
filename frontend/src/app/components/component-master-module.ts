@@ -23,6 +23,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { CreateScreeningComponent } from './admin/admin-screening/create-screening/create-screening.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { UserInfoComponent } from './user-settings/user-info/user-info.component';
+import { UserReservationComponent } from './user-settings/user-reservation/user-reservation.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { UserInfoComponent } from './user-settings/user-info/user-info.component
     AdminScreeningComponent,
     CreateScreeningComponent,
     UserSettingsComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    UserReservationComponent
   ],
   imports: [
     CommonModule,
@@ -67,7 +69,8 @@ import { UserInfoComponent } from './user-settings/user-info/user-info.component
     AdminScreeningComponent,
     CreateScreeningComponent,
     UserSettingsComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    UserReservationComponent
   ]
 })
 export class ComponentMasterModule {}

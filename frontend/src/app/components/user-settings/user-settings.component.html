@@ -1,10 +1,12 @@
 <div class='userComponent'>
   <div class="optionRow">
-    <div (click)="changeView('personalInfo')" [ngClass]="selectedView === 'personalInfo' ? 'option selectedOption' : 'option'">Προσωπικά</div>
-    <div (click)="changeView('myreservation')"  [ngClass]="selectedView === 'myreservation' ? 'option selectedOption' : 'option'">Οι κρατήσεις μου</div>
+    <div (click)="changeView('personalInfo')" [ngClass]="selectedView === 'personalInfo' ? 'option selectedOption cursor' : 'option cursor'">Προσωπικά</div>
+    <div (click)="changeView('myreservation')"  [ngClass]="selectedView === 'myreservation' ? 'option selectedOption cursor' : 'option cursor'">Οι κρατήσεις μου</div>
   </div>
 
   <div class="userInfo">
     <app-user-info *ngIf="selectedView === 'personalInfo'"></app-user-info>
+    <app-user-reservation *ngIf="selectedView === 'myreservation'"></app-user-reservation>
+
   </div>
 </div>
