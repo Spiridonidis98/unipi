@@ -25,8 +25,6 @@ export class ContactComponent {
   }
 
   closeModal(mode: string) {
-    console.log('sajfdhsjfsjfhjsdf');
-
     this.showContactEmitter.emit(mode);
   }
 

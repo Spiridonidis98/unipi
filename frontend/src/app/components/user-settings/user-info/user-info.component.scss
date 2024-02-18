@@ -1,0 +1,54 @@
+.userInfo, form {
+  width: 100%;
+  background: var(--light-background-color);
+  border-radius: 10px;
+}
+.row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  .col {
+    width: 45%;
+    padding: 10px 0;
+  }
+}
+
+.userLabel {
+  color: var(--blue-app-color);
+  font-size: 18px;
+}
+
+.userInfoInput {
+  margin-top: 5px;
+  outline: var(--blue-app-color);
+  background: var(--white-app-color);
+  border: 2px solid var(--blue-app-color);
+  padding: 10px;
+  color: var(--blue-app-color);
+  font-weight: bold;
+  caret-color: var(--blue-app-color);
+  width: 98%;
+  border-radius: 8px;
+}
+.buttonRow {
+  padding: 10px 0;
+  width: 98%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  outline: none;
+  margin: auto auto 0 auto;
+  button {
+    width: 30%;
+    padding: 10px;
+    outline: none;
+    cursor: pointer;
+    border-radius: 15px;
+    font-weight: bold;
+    margin-left: auto;
+    background: var(--blue-app-color);
+    color: var(--white-app-color);
+  }
+}

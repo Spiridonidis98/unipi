@@ -1,0 +1,35 @@
+<div class="userInfo">
+  <form [formGroup]="userInfo" (submit)="updateUserInfo()">
+    <div class="row">
+
+      <div class="col">
+        <div class="userLabel">Όνομα</div>
+        <input class="userInfoInput" formControlName="name" placeholder="Όνομα"/>
+      </div>
+
+      <div class="col">
+        <div class="userLabel">Επίθετο</div>
+        <input class="userInfoInput" formControlName="lastname" placeholder="Επίθετο"/>
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col">
+        <div class="userLabel">Email</div>
+        <input class="userInfoInput" formControlName="email" placeholder="Email"/>
+      </div>
+
+      <div class="col">
+        <div class="userLabel">Τηλέφωνο</div>
+        <input class="userInfoInput" formControlName="phone" placeholder="Τηλέφωνο"/>
+      </div>
+
+    </div>
+
+    <div class="buttonRow">
+      <button type="submit">Αποθήκευση</button>
+    </div>
+  </form>
+</div>

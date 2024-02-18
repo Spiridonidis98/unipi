@@ -39,7 +39,6 @@ export class MainComponent {
   }
 
   showContactFunction() {
-    console.log('sajfdhsjfsjfhjsdf');
     this.showContact = false;
   }
 

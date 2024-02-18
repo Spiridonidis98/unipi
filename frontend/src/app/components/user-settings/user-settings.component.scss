@@ -1,0 +1,37 @@
+.userComponent {
+  background: var(--white-app-color);
+  border-radius: 10px;
+  box-shadow: 0 0 5px var(--shadow-grey-color);
+  width: 90%;
+  max-width: 1000px;
+  margin: 10px auto;
+  padding: 10px;
+
+  .optionRow {
+    display: flex;
+    align-items: center;
+    width: auto;
+
+    .option:not(:last-child) {
+      border-right: 1px solid var(--shadow-grey-color);
+      margin-right: 5px;
+      padding-right: 5px;
+    }
+    .option {
+      background: var(--white-app-color);
+      max-width: 150px;
+      width: auto;
+      font-size: 15px;
+    }
+
+    .selectedOption {
+      background-color: var(--light-background-color);
+      font-weight: bold;
+      color: var(--blue-app-color);
+    }
+  }
+
+  .userInfo {
+    width: 100%;
+  }
+}
