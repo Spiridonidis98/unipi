@@ -1,4 +1,5 @@
 const user = require('../models/user');
+bcrypt = require('bcrypt')
 fs = require('fs')
 path = require('path');
 const permissions = [
@@ -77,24 +78,36 @@ exports.login = async (req, res) => {
     }
     else {
         try {
-            const filter = {email, password};
+            const filter = {email: email};
             let userFound = await user.findOne(filter);
-            if(!userFound.facebookId && !userFound.googleId) {
-                fixUserPhoto([userFound]);
-            }
-            if(userFound) {
-                return res.status(200).json({
-                    status: 200,
-                    msg: 'User found',
-                    data: userFound
-                });
-            }
-            else {
+            if(!userFound) {
                 return res.status(404).json({
                     status: 404,
                     msg: 'Unable to found user with given credentials'
                 });
             }
+            else {
+                const isValid = await bcrypt.compare(password, userFound.password);
+
+                if(isValid) {
+                    if(!userFound.facebookId && !userFound.googleId) {
+                        fixUserPhoto([userFound]);
+                    }
+                    return res.status(200).json({
+                        status: 200,
+                        msg: 'User found',
+                        data: userFound
+                    });
+
+                }
+                else {
+                    return res.status(404).json({
+                        status: 404,
+                        msg: 'Unable to found user with given credentials'
+                    });
+                }
+            }
+            
         }catch( error ) {
             return res.status(500).json({
                 status: 500,
@@ -207,7 +220,7 @@ exports.signup = async (req, res) => {
                 'lastname': lastname,
                 'email': email.toString().toLocaleLowerCase(),
                 'phone': phone,
-                'password': password,
+                'password': await bcrypt.hash(password, 10),
                 'roles': roles,
                 'type': Number(type),
                 'create_dt': formatDate(new Date()),

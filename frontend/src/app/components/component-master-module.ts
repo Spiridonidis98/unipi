@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { HomeComponent } from './home/home.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { HeaderComponent } from './header/header.component';
@@ -27,7 +26,6 @@ import { UserReservationComponent } from './user-settings/user-reservation/user-
 
 @NgModule({
   declarations: [
-    SidebarComponent,
     HomeComponent,
     HeaderComponent,
     LoginComponent,
@@ -57,7 +55,6 @@ import { UserReservationComponent } from './user-settings/user-reservation/user-
     GoogleSigninButtonModule
   ],
   exports: [
-    SidebarComponent,
     HomeComponent,
     HeaderComponent,
     LoginComponent,
