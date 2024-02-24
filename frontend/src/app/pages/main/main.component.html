@@ -16,7 +16,7 @@
     <div class="viewComponent">
       <app-home *ngIf="selectedComponent==='home'" (movieInfoEmitter)="openInfoModal($event)"></app-home>
       <app-admin-home *ngIf="selectedComponent==='admin'"></app-admin-home>
-      <app-user-settings *ngIf="selectedComponent==='user-settings'"></app-user-settings>
+      <app-user-settings *ngIf="selectedComponent==='user-settings'" (sidebarValue)="changeView($event)"></app-user-settings>
     </div>
 
     <!--

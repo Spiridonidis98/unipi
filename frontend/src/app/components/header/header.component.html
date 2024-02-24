@@ -7,8 +7,10 @@
 
   <div class="optionsContent">
     <div class="cursor" *ngFor="let option of headerOptions" (click)="changeView(option.id)">
-      <img class="whiteIcon" [src]="option.img" />
-      <p *ngIf="screenWidth > 1200">{{option.descr | translate}}</p>
+      <div *ngIf="checkIfAdmin(option)">
+        <img class="whiteIcon" [src]="option.img" />
+        <p *ngIf="screenWidth > 1200">{{option.descr | translate}}</p>
+      </div>
     </div>
   </div>
 

@@ -27,6 +27,8 @@ export class HelperService {
     this.translate.use(option);
   }
 
+
+  //Local Storage Implementation -----------------------
   async setItemToLocalStorage(type: string, data: any) {
     await localStorage.setItem(type, JSON.stringify(data))
   }
@@ -39,6 +41,7 @@ export class HelperService {
   async removeItemFromLocalStorage(type: string) {
     await localStorage.removeItem(type);
   }
+  //Local Storage Implementation -----------------------
 
   //returns background img for every movie
   returnCSS(img: string) {

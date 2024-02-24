@@ -7,6 +7,9 @@
   <div class="userInfo">
     <app-user-info *ngIf="selectedView === 'personalInfo'"></app-user-info>
     <app-user-reservation *ngIf="selectedView === 'myreservation'"></app-user-reservation>
+  </div>
 
+  <div class="logout cursor" (click)="logout()">
+    Αποσύνδεση
   </div>
 </div>

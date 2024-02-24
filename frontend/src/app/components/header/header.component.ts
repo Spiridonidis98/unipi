@@ -35,11 +35,6 @@ export class HeaderComponent {
       descr: 'sidebar.playingNow'
     },
     {
-      id: 'comingSoon',
-      img: 'assets/imgs/header/play.svg',
-      descr: 'sidebar.comingSoon'
-    },
-    {
       id: 'contact',
       img: 'assets/imgs/general/mail.svg',
       descr: 'sidebar.contact'
@@ -86,4 +81,18 @@ export class HeaderComponent {
       'background-image': 'url("' + img + '")'
     }
   }
+
+  //here we check if a user is an admin or not | returns true if it an admin false if not
+  checkIfAdmin(option: any) {
+    if(option.id === 'admin') {
+
+      if(this.data.user && this.data.user.roles.includes(0)) {
+        console.log(this.data.user)
+        return true;
+      }
+      return false;
+    }
+    return true;
+  }
+
 }

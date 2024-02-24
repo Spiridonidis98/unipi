@@ -12,7 +12,6 @@ import {MatSelectModule} from '@angular/material/select'
 import { MAT_DATE_LOCALE, MatOptionModule, provideNativeDateAdapter } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PlayingNowComponent } from './components/playing-now/playing-now.component';
-import { ComingSoonComponent } from './components/coming-soon/coming-soon.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FacebookLoginProvider,GoogleSigninButtonModule , GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
 import { ScreeningComponent } from './components/screening/screening.component';
@@ -30,7 +29,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     MainComponent,
     PlayingNowComponent,
-    ComingSoonComponent,
     ContactComponent,
     ScreeningComponent,
     RoomsComponent,

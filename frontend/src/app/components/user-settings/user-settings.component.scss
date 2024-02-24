@@ -35,3 +35,16 @@
     width: 100%;
   }
 }
+
+.logout {
+  margin-top: 10px;
+  background: var(--light-red-color);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  text-align: center;
+  color: var(--red-color);
+  font-weight: bold;
+}
