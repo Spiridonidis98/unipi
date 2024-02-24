@@ -40,7 +40,7 @@ export class UserReservationComponent {
 
   //delete specifir reservation -----------------------
   deleteReservation(reservation_id: string) {
-    this.helper.presentAlert('question', 'alerter.question', 'alerter.deleteSpecificReservation', true).then( (response: any) => {
+    this.helper.presentAlert('question', 'alert.question', 'alert.deleteSpecificReservation', true).then( (response: any) => {
       if(response.isConfirmed) {
         this.movieServ.deleteReservation(reservation_id).then(() => {
           this.getReservations();

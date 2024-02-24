@@ -146,10 +146,10 @@ export class ScreeningComponent {
       break;
       case 'next':
         if(this.stepperIndex === 1 && !this.chosenScreening) {
-          alert('chose a screening');
+          this.helper.presentAlert('question', 'alert.question', 'alert.chooseAScreening', false);
         }
         else if(this.stepperIndex === 2 && this.chosenSeats.length === 0) {
-          alert('choose seatings');
+          this.helper.presentAlert('question', 'alert.question', 'alert.chooseSeats', false);
         }
         else {
           this.stepperIndex++;
@@ -177,7 +177,7 @@ export class ScreeningComponent {
   reservationAction() {
 
     if(!this.data.user) {
-      this.helper.presentAlert('question', 'alert.question', 'Δεν είστε συνδεδεμένος/η. Θέλετε να συνδεθείτε για να συνεχίσετε με την κρατήση σας;', true).then( (questionResponse: any) => {
+      this.helper.presentAlert('question', 'alert.question', 'alert.loginToConfirnReservation', true).then( (questionResponse: any) => {
         if(questionResponse.isConfirmed) {
           this.helper.showLoginValue = true;
         }
