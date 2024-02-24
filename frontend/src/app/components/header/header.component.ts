@@ -67,7 +67,6 @@ export class HeaderComponent {
   }
 
   showLogin() {
-    console.log(this.screenWidth)
     this.showLoginEmitter.emit(true)
   }
 
@@ -87,7 +86,6 @@ export class HeaderComponent {
     if(option.id === 'admin') {
 
       if(this.data.user && this.data.user.roles.includes(0)) {
-        console.log(this.data.user)
         return true;
       }
       return false;

@@ -53,7 +53,6 @@ export class CreateScreeningComponent {
 
   //Add screening -------------------------------------------------
   addScreening() {
-    console.log(this.screeningForm)
     if(this.screeningForm.invalid) {
       this.helper.presentAlert('warning', 'alert.warning', 'alert.invalidForm', false)
     }

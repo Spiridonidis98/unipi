@@ -37,7 +37,6 @@ export class MovieInfoComponent {
   }
 
   ngOnInit(): void {
-    console.log(this.movie)
   }
 
   //returns background img for every movie

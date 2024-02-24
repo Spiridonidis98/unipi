@@ -34,7 +34,6 @@ export class UsersComponent {
 
   deleteUser(user: any) {
     this.helper.presentAlert('question', 'alert.deleteQuestion', 'alert.deleteUserQuestion', true).then((alert: any) => {
-      console.log(alert)
       if(alert.isConfirmed) {
         this.data.deleteUser(user).then( (response: any) => {
           if(response === 'success') {

@@ -42,7 +42,6 @@ export class MoviesComponent {
   updateAction(event: any) {
     this.movieInfo = null;
     this.showCreateEditMovie = false;
-    console.log(event)
     if(event) {
       this.getAllMovies();
     }

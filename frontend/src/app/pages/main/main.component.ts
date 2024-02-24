@@ -71,7 +71,6 @@ export class MainComponent {
   }
 
   openInfoModal(movie: any) {
-    console.log(movie)
     this.movieInfo = movie;
     this.showHideMovieInfoValue = true;
   }

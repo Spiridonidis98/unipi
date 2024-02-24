@@ -33,7 +33,6 @@ export class CreateEditMovieComponent {
   }
 
   ngOnChanges() {
-    console.log(this.movie)
     if(this.movie) {
       this.movieForm.get('name')?.setValue(this.movie.name);
       this.movieForm.get('description')?.setValue(this.movie.description);
@@ -71,7 +70,6 @@ export class CreateEditMovieComponent {
     else if (event.files.length == 1){
       this.movieForm.controls['file'].setValue(event.files[0])
       let data = event.files[0];
-      console.log("data --->",data)
       this.getBase64(data)
     }
     else{
@@ -100,7 +98,6 @@ export class CreateEditMovieComponent {
     var reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = function () {
-      console.log(reader.result);
       self.movieForm.get('fileBase64')?.setValue(reader.result)
     };
     reader.onerror = function (error) {
@@ -110,7 +107,6 @@ export class CreateEditMovieComponent {
 
   //upload Movie Function ----------------------------
   uploadMovie() {
-    console.log(this.movieForm)
     if(this.movieForm.invalid && !this.movie && !this.movieForm.controls['file'].value) { // form invalid and is not edit
       this.helper.presentAlert('warning', 'alert.warning', 'alert.invalidForm', false)
     }
@@ -133,7 +129,6 @@ export class CreateEditMovieComponent {
         this.movieServ.uploadMovieInfo(body).then( response => {
           console.log(response);
           setTimeout(() => {
-            console.log('emit value')
             this.update.emit(true);
 
           }, 500)

@@ -50,7 +50,6 @@ export class ScreeningComponent {
       if(elemStart) {
         let event = new Event('changeDate');
         elemStart?.dispatchEvent(event);
-        console.log(elemStart)
         this.calendarDate = new Datepicker(elemStart, {
           // options here
           format: 'dd/mm/yyyy',
@@ -75,7 +74,6 @@ export class ScreeningComponent {
       if(elemStart2) {
         let event = new Event('changeDate');
         elemStart2?.dispatchEvent(event);
-        console.log(elemStart)
         this.calendarDate = new Datepicker(elemStart2, {
           // options here
           format: 'dd/mm/yyyy',
@@ -116,10 +114,8 @@ export class ScreeningComponent {
   }
   getScreening(date: Date) {
     this.movieServ.getScreening(date, this.reservation._id).then( (response: any) => {
-      console.log(response);
       this.screenings = response;
     }).catch( error => {
-      console.log(error);
       this.screenings = [];
     })
   }
@@ -182,9 +178,7 @@ export class ScreeningComponent {
 
     if(!this.data.user) {
       this.helper.presentAlert('question', 'alert.question', 'Δεν είστε συνδεδεμένος/η. Θέλετε να συνδεθείτε για να συνεχίσετε με την κρατήση σας;', true).then( (questionResponse: any) => {
-        console.log(questionResponse)
         if(questionResponse.isConfirmed) {
-          console.log('im here')
           this.helper.showLoginValue = true;
         }
       })
@@ -204,7 +198,6 @@ export class ScreeningComponent {
       }
       body.seat = seat;
 
-      console.log(body)
       this.movieServ.addReservation(body).then( response => {
         if(response !== 'error') {
           this.printService.generatePDF(this.data.user, response )

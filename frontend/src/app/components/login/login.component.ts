@@ -41,7 +41,6 @@ export class LoginComponent {
   //Perform google Login ----------------------------------
   performGoogleLogin() {
     this.socialAuthService.authState.subscribe((user) => {
-      console.log(user);
       if(user.provider === 'GOOGLE') {
         this.data.checkIfEmailExists(user.email).then( response => {
           if(response === 'signup') {
@@ -124,10 +123,8 @@ export class LoginComponent {
   //Here we will perform the login Action
   loginAction(body: any) {
     this.data.login(body).then( response => {
-      console.log(response);
       this.closeModal('cancel');
     }).catch( error => {
-      console.log(error);
     })
   }
 
@@ -167,7 +164,6 @@ export class LoginComponent {
   //here we will perform the signup functionality
   signUpAction(body: any, email: string) {
     this.data.signUp(body, email).then( (response: any) => {
-      console.log(response);
       const loginBody = {
         email: response.email,
         password: response.password
@@ -175,14 +171,12 @@ export class LoginComponent {
       this.loginAction(loginBody);
 
     }).catch(error => {
-      console.log(error);
     })
   }
 
   //login with facebook --------------
   loginWithFacebook() {
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID).then(user => {
-      console.log(user);
       this.data.checkIfEmailExists(user.email).then( response => {
         if(response === 'signup') {
           let formData = new FormData();
@@ -230,7 +224,6 @@ export class LoginComponent {
     else if (event.files.length == 1){
       this.registerForm.controls['photo'].setValue(event.files[0])
       let data = event.files[0];
-      console.log("data --->",data)
       this.getBase64(data);
     }
     else{
@@ -252,7 +245,6 @@ export class LoginComponent {
       var reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = function () {
-        console.log(reader.result);
         self.registerForm.get('fileBase64')?.setValue(reader.result)
       };
       reader.onerror = function (error) {

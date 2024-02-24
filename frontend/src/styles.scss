@@ -204,3 +204,6 @@ p {
   opacity: 0.6 !important;
   pointer-events: none !important;
 }
+mat-option .mat-pseudo-checkbox-full.mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-full.mat-pseudo-checkbox-indeterminate{
+  background-color: var(--blue-app-color);
+}

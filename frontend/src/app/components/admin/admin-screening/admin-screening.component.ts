@@ -38,7 +38,6 @@ export class AdminScreeningComponent {
         this.movieServ.getReservation(screening.screening.screening_dt, screening.movie._id, screening.auditoriumInfo._id).then((response2: any) => {
           screening['reservedSeats'] = response2;
           this.formatScreeningReservedSeats(screening);
-        console.log(response);
         }).catch( error => {
           screening['reservedSeats'] = [];
         });

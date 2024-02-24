@@ -14,6 +14,5 @@ export class ConfirmComponent {
   constructor(public helper: HelperService) {}
 
   ngOnInit() {
-    console.log(this.screening)
   }
 }

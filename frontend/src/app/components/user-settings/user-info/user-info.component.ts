@@ -40,7 +40,6 @@ export class UserInfoComponent {
         phone: this.userInfo.value.phone
       }
       this.data.updateUser(user).then( (response: any) => {
-        console.log(response);
         this.data.user.name = this.userInfo.value.name;
         this.data.user.lastname = this.userInfo.value.lastname;
         this.data.user.phone = this.userInfo.value.phone;

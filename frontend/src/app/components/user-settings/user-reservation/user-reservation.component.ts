@@ -20,7 +20,6 @@ export class UserReservationComponent {
 
   getReservations() {
     this.movieServ.getReservationByUserEmail(this.data.user.email).then(response => {
-      console.log(response);
       this.reservations = response;
       this.reservations = this.reservations.sort( (a: any,b: any) => {
         return new Date(b.reservation.reservation_dt).getTime() - new Date(a.reservation.reservation_dt).getTime()

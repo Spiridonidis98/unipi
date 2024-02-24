@@ -56,11 +56,8 @@ export class ContactComponent {
   addContact(body: any) {
 
     this.data.addContact(body).then( response => {
-      console.log(response);
       this.closeModal('cancel');
     }).catch( error => {
-      console.log(body);
-      console.log(error);
       alert("Couldn't send message")
     })
   }

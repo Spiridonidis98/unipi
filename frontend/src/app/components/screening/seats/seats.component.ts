@@ -17,7 +17,6 @@ export class SeatsComponent {
   constructor(public helper: HelperService, private movieServ: MovieService) {}
 
   ngOnInit() {
-    console.log(this.chosenScreening);
     this.getReservedSeats();
   }
 
@@ -33,7 +32,6 @@ export class SeatsComponent {
 
   //here we select or we remove a seat
   selectSeat(row: any, seat: any) {
-    console.log(row, seat)
     const filtered = this.selectedSeats.filter((a: any) => {
       return a.row === row && a.seat === seat
     });
