@@ -1,7 +1,7 @@
 <div class="roomInfo">
   <div class="roomTitle">{{chosenScreening.auditoriumInfo.code}}</div>
 
-  <div class="screenLabel">ΟΘΟΝΗ</div>
+  <div class="screenLabel">{{'seatPicker.screen' | translate}}</div>
 </div>
 
 <div class="rooms" *ngIf="chosenScreening && chosenScreening.auditoriumInfo">
@@ -15,7 +15,7 @@
 </div>
 
 <div class="selectedSeats" *ngIf="selectedSeats.length > 0">
-  <div class="selectedLabel">Επιλεγμένες Θέσεις</div>
+  <div class="selectedLabel">{{'seatPicker.seats' | translate}}</div>
   <div class="selectedSeat" *ngFor="let selected of selectedSeats">
     {{selected.row}} {{selected.seat + 1}}
   </div>

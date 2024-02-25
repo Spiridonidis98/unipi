@@ -3,13 +3,13 @@
     <div class="row">
 
       <div class="col">
-        <div class="userLabel">Όνομα</div>
-        <input class="userInfoInput" formControlName="name" placeholder="Όνομα"/>
+        <div class="userLabel">{{'userProfile.name' | translate}}</div>
+        <input class="userInfoInput" formControlName="name" placeholder="{{'userProfile.name' | translate}}"/>
       </div>
 
       <div class="col">
-        <div class="userLabel">Επίθετο</div>
-        <input class="userInfoInput" formControlName="lastname" placeholder="Επίθετο"/>
+        <div class="userLabel">{{'userProfile.surname' | translate}}</div>
+        <input class="userInfoInput" formControlName="lastname" placeholder="{{'userProfile.surname' | translate}}"/>
       </div>
 
     </div>
@@ -22,14 +22,14 @@
       </div>
 
       <div class="col">
-        <div class="userLabel">Τηλέφωνο</div>
-        <input class="userInfoInput" formControlName="phone" placeholder="Τηλέφωνο"/>
+        <div class="userLabel">{{'userProfile.phoneNumber' | translate}}</div>
+        <input class="userInfoInput" formControlName="phone" placeholder="{{'userProfile.phoneNumber' | translate}}"/>
       </div>
 
     </div>
 
     <div class="buttonRow">
-      <button type="submit">Αποθήκευση</button>
+      <button type="submit">{{'button.save' | translate}}</button>
     </div>
   </form>
 </div>

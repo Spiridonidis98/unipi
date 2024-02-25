@@ -1,5 +1,5 @@
 <div class="rooms" *ngIf="screening && seats.length > 0">
-  <div class="confirmTitle">Κράτηση <span>StarLightCinemas&#64; {{screening.auditoriumInfo.code}}</span> Ταινία <span>{{screening.movie.name}}</span></div>
-  <div class="confirmTitle">Ημερομηνία <span>{{helper.formatDate(screening.screening.screening_dt)}} {{helper.formatTime(screening.screening.screening_dt)}}</span></div>
-  <div class="confirmTitle">Θέσεις <span *ngFor="let seat of seats">{{seat.row}} {{seat.seat + 1}} <span *ngIf="seat !== seats[seats.length - 1]">, </span> </span></div>
+  <div class="confirmTitle">{{'screening.reservation' | translate}} <span>StarLightCinemas&#64; {{screening.auditoriumInfo.code}}</span> {{'screening.movie' | translate}} <span>{{screening.movie.name}}</span></div>
+  <div class="confirmTitle">{{'screening.date' | translate}} <span>{{helper.formatDate(screening.screening.screening_dt)}} {{helper.formatTime(screening.screening.screening_dt)}}</span></div>
+  <div class="confirmTitle">{{'screening.seats' | translate}} <span *ngFor="let seat of seats">{{seat.row}} {{seat.seat + 1}} <span *ngIf="seat !== seats[seats.length - 1]">, </span> </span></div>
 </div>

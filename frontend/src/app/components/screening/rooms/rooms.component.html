@@ -1,6 +1,6 @@
 <div class="rooms">
   <div *ngIf="screenings.length === 0">
-    Δεν υπάρχουν διαθέσιμες προβολές για την επιλεγμένη ημερομηνία.
+    {{'screening.unavailable' | translate}}
   </div>
 
   <div *ngIf="screenings.length > 0">

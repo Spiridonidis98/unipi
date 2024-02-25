@@ -81,6 +81,7 @@ export class PrintService {
         name: user.name,
         lastname: user.lastname,
         email: user.email,
+        seat: reservationInfo.seat,
         reservation_id: reservationInfo._id
       };
 
