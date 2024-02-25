@@ -5,7 +5,7 @@
   <div class="modal-wrapper modal-wrapper-big">
     <div class="modal-content">
       <div class="modalTitle">
-        <p>Έκδοση Εισιτηρίου</p>
+        <p>{{'screening.bookTicket' | translate}}</p>
         <div class="modalClose" (click)="closeModal('cancel')">
           <img src="assets/imgs/general/close.svg"/>
         </div>
@@ -22,9 +22,9 @@
           </div>
 
           <div class="labelRow">
-            <div>Ημερομηνία / Αίθουσα</div>
-            <div>Θέσεις</div>
-            <div>Επιβεβαίωση</div>
+            <div>{{'screening.dateRoom' | translate}}</div>
+            <div>{{'screening.seats' | translate}}</div>
+            <div>{{'screening.confirm' | translate}}</div>
           </div>
         </div>
 
@@ -45,10 +45,10 @@
           </div>
           <div class="buttonRow">
 
-            <button *ngIf="stepperIndex > 1" (click)="changeStepper('prev')" class="previousButton">Προηγούμενο</button>
+            <button *ngIf="stepperIndex > 1" (click)="changeStepper('prev')" class="previousButton">{{'screening.previous' | translate}}</button>
 
-            <button *ngIf="stepperIndex !== 3" (click)="changeStepper('next')" class="continueButton">Επόμενο</button>
-            <button *ngIf="stepperIndex === 3" (click)="reservationAction()" class="continueButton">Κράτηση</button>
+            <button *ngIf="stepperIndex !== 3" (click)="changeStepper('next')" class="continueButton">{{'screening.next' | translate}}</button>
+            <button *ngIf="stepperIndex === 3" (click)="reservationAction()" class="continueButton">{{'screening.reservation' | translate}}</button>
 
           </div>
         </div>

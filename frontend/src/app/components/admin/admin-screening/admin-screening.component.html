@@ -1,5 +1,5 @@
 <div class='adminComponent'>
-  <div class="adminTitle">{{'movieAdmin.title' | translate}}</div>
+  <div class="adminTitle">{{'screeningAdmin.title' | translate}}</div>
   <div class="addNew">
     <button *ngIf="!showNewScreening" class="cursor" (click)="createNewScreening()">
       <img class="whiteIcon" src="assets/imgs/general/add.svg">
@@ -16,13 +16,13 @@
 
     <div class="filterRow">
       <div class="col">
-        <p>Εύρος ημερομηνιών</p>
+        <p>{{'screeningAdmin.dateRange' | translate}}</p>
         <div class="filterDiv">
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-date-range-picker #picker disabled="false"></mat-date-range-picker>
           <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
-            <input (dateChange)="filterScreening()" matStartDate formControlName="screening_dt_from" placeholder="Από">
-            <input (dateChange)="filterScreening()" matEndDate formControlName="screening_dt_to" placeholder="Έως">
+            <input (dateChange)="filterScreening()" matStartDate formControlName="screening_dt_from" placeholder="{{'screeningAdmin.from' | translate}}">
+            <input (dateChange)="filterScreening()" matEndDate formControlName="screening_dt_to" placeholder="{{'screeningAdmin.to' | translate}}">
           </mat-date-range-input>
         </div>
       </div>
@@ -30,10 +30,10 @@
 
     <div class="filterRow">
       <div class="col">
-        <p>Ταινία</p>
+        <p>{{'screeningAdmin.movie' | translate}}</p>
         <div class="filterDiv">
           <img class="blueIcon" src="assets/imgs/general/search.svg">
-          <input autocomplete="off" [(ngModel)]="movieFilter" (change)="filterScreening()" placeholder="Όνομα ταινίας">
+          <input autocomplete="off" [(ngModel)]="movieFilter" (change)="filterScreening()" placeholder="{{'screeningAdmin.movieName' | translate}}">
         </div>
       </div>
 
@@ -42,13 +42,13 @@
     <table>
       <tr>
         <th></th>
-        <th>Ημ/νία Προβολής</th>
-        <th>Αίθουσα</th>
-        <th>Ταινία</th>
-        <th>Κρατήσεις</th>
+        <th>{{'screeningAdmin.viewing_dt' | translate}}</th>
+        <th>{{'screeningAdmin.room' | translate}}</th>
+        <th>{{'screeningAdmin.movie' | translate}}</th>
+        <th>{{'screeningAdmin.reservations' | translate}}</th>
       </tr>
       <tr *ngIf="filterScreening().length === 0">
-        <td colspan="5">Δεν υπάρχει προβολή που να πληροί τα κριτήρια της αναζήτησης σας.</td>
+        <td colspan="5">{{'screeningAdmin.noScreenings' | translate}}</td>
       </tr>
       <tr *ngFor="let screening of filterScreening()">
         <td>

@@ -42,7 +42,7 @@
 
           <div class="row">
 
-            <div class="imgCol" (click)="fileUploadClick()">
+            <div class="imgCol cursor" (click)="fileUploadClick()">
               <div [ngClass]="registerForm.value.fileBase64.length > 0 ? '' : 'blueIcon'" class="imgBackground" [style]="registerForm.value.photo ? returnCSS(registerForm.value.fileBase64) : returnCSS('assets/imgs/header/person.svg')">
               </div>
               <input style="display: none" #userImage id="userImage" type="file" accept="image/jpeg, image/png, image/jpg" (change)="getFile($event.target)" [multiple]="false"/>
@@ -124,7 +124,7 @@
 
       <div class="loginButtons">
 
-        <asl-google-signin-button type='standard' size='medium'>
+        <asl-google-signin-button type='standard' size='large'>
         </asl-google-signin-button>
         <button class="facebookButton" (click)="loginWithFacebook()">
           <img src="assets/imgs/login/facebook-logo.svg">

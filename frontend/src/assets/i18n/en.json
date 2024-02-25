@@ -18,7 +18,7 @@
     "comingSoon": "Coming Soon",
     "admin": "Admin",
     "screening": "Screenings"
-  },  
+  },
   "login": {
     "title": "Login / Sign up",
     "email": "Email",
@@ -85,6 +85,7 @@
     "selectFile": "Select Image"
   },
   "alert": {
+    "question": "Question",
     "invalidForm": "Please complete the form with all the necessary information",
     "deleteQuestion": "Delete?",
     "warning": "Warning",
@@ -120,10 +121,30 @@
     "reservation" : "Reservation",
     "date" : "Date",
     "seats" : "Seats",
-    "movie" : "Movie"
+    "movie" : "Movie",
+    "bookTicket": "Ticket Booking",
+    "dateRoom": "Date / Room",
+    "confirm": "Confirm",
+    "previous": "Previous",
+    "next": "Next"
   },
   "screeningAdmin": {
-    "title": "Manage Screenings"
+    "title": "Manage Screenings",
+    "dateRange": "Date Range",
+    "from": "From",
+    "to": "To",
+    "movie": "Movie",
+    "movieName": "Movie name",
+    "viewing_dt": "Viewing Date",
+    "room": "Room",
+    "reservations": "Reservations",
+    "noScreenings": "No screenings match the criteria of your search."
+  },
+  "createScreening": {
+    "selectDate": "Select date",
+    "selectHour": "Select hour",
+    "selectRoom": "Select room",
+    "selectMovie": "Select movie"
   },
   "userProfile": {
     "personalInfo" : "Personal info",
@@ -139,5 +160,14 @@
   "seatPicker" : {
     "screen" : "SCREEN",
     "seats" : "Selected seats"
+  },
+  "print": {
+    "room": " Room ",
+    "thankyouMessage": "Thank you for your reservation.",
+    "infobelow": "Your reservation information below.",
+    "dateHour": "Date and Hour",
+    "movie": "Movie",
+    "seat": "Seat",
+    "requiredAtEntrance": "Required for your entrance."
   }
 }

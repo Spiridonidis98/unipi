@@ -35,7 +35,7 @@ export class PrintService {
         let temp = [
           this.helper.formatDate(new Date(reservation.reservation.reservation_dt)) + ' ' + this.helper.formatTime(new Date(reservation.reservation.reservation_dt)),
           reservation.movieInfo.name,
-          'Starlight@' + ' Αίθουσα ' + reservation.auditoriumInfo.code,
+          'Starlight@' + this.helper.translate.instant('print.room') + reservation.auditoriumInfo.code,
           seat
         ]
         seats.push(temp);
@@ -54,8 +54,8 @@ export class PrintService {
 
       doc.setFont('MyFont');
       doc.setFontSize(14)
-      doc.text('Ευχαριστούμε για την κράτηση σας.', 10, 50);
-      doc.text('Ακολουθούν οι πληροφορίες της κρατησής σας.', 10, 55);
+      doc.text(this.helper.translate.instant('print.thankyouMessage'), 10, 50);
+      doc.text(this.helper.translate.instant('print.infobelow'), 10, 55);
 
       //set line
       doc.line(10,70, 200, 70)
@@ -64,7 +64,7 @@ export class PrintService {
       doc.setFont('MyFont');
 
       autotable(doc, {
-        head: [['Ημερομηνία και Ώρα', 'Ταινία' , 'Αίθουσα', 'Θέση']],
+        head: [[this.helper.translate.instant('print.dateHour'), this.helper.translate.instant('print.movie') , this.helper.translate.instant('print.room') , this.helper.translate.instant('print.seat') ]],
         body: seats,
         margin: {top: 90},
         styles: {
@@ -90,7 +90,7 @@ export class PrintService {
 
       doc.setFont('MyFont');
       doc.setFontSize(14)
-      doc.text('Απαιτείται κατά την είσοδο σας.', 110, 260, {maxWidth: 50});
+      doc.text(this.helper.translate.instant('print.requiredAtEntrance'), 110, 260, {maxWidth: 50});
 
       doc.addImage(qr.image.src, 160, 250, 40, 40);
       doc.output('dataurlnewwindow');
