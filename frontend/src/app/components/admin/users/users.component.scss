@@ -48,7 +48,8 @@
     }
   }
   .movieList {
-    width: 95%;
+    width: 98%;
+    margin: auto;
 
 
     .redBorder {
@@ -65,15 +66,12 @@
       }
     }
     .movie {
-      width: 100%;
-      margin: auto;
       margin-top: 15px;
       padding: 10px;
 
       border-radius: 0 10px 10px 0;
       border: 2px solid var(--blue-app-color);
       border-left-width: 5px;
-      width: 100%;
       display: flex;
       align-items: flex-start;
       .imgDiv {

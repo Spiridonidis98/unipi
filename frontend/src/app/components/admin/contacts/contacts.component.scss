@@ -15,54 +15,51 @@
       justify-content: center;
     }
     .List {
-      width: 95%;
-  
-  
+      width: 98%;
+      margin: auto;
+
       .redBorder {
         border-color: var(--smooth-red-color) !important;
-  
+
         .movieInfo {
           .title {
             color: var(--smooth-red-color) !important;
           }
-  
+
           .descr {
             color: var(--smooth-red-color) !important;
           }
         }
       }
       .contact {
-        width: 100%;
-        margin: auto;
         margin-top: 15px;
         padding: 10px;
-  
+
         border-radius: 0 10px 10px 0;
         border: 2px solid var(--blue-app-color);
         border-left-width: 5px;
-        width: 100%;
         display: flex;
         align-items: flex-start;
         .imgDiv {
           width: 100px;
           height: 100px;
-  
+
           img {
             width: 100px;
             height: 100px;
           }
         }
-  
+
         .Info {
           width: calc(100% - 100px);
           padding-left: 10px;
-  
+
           .title {
             font-weight: bold;
             font-size: 20px;
             color: var(--blue-app-color);
           }
-  
+
           .descr {
             margin-top: 15px;
             font-size: 18px;
@@ -71,11 +68,11 @@
         }
       }
     }
-  
+
     .titleRow {
       width: 100%;
       display: flex;
-  
+
       .delete {
         margin-left: auto;
         background: var(--light-red-color);
@@ -88,8 +85,7 @@
           width: 30px;
           height: 30px;
         }
-  
+
       }
     }
   }
-  
