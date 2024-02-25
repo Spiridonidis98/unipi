@@ -1,7 +1,7 @@
 <div class='userComponent'>
   <div class="optionRow">
-    <div (click)="changeView('personalInfo')" [ngClass]="selectedView === 'personalInfo' ? 'option selectedOption cursor' : 'option cursor'">Προσωπικά</div>
-    <div (click)="changeView('myreservation')"  [ngClass]="selectedView === 'myreservation' ? 'option selectedOption cursor' : 'option cursor'">Οι κρατήσεις μου</div>
+    <div (click)="changeView('personalInfo')" [ngClass]="selectedView === 'personalInfo' ? 'option selectedOption cursor' : 'option cursor'">{{'userProfile.personalInfo' | translate}}</div>
+    <div (click)="changeView('myreservation')"  [ngClass]="selectedView === 'myreservation' ? 'option selectedOption cursor' : 'option cursor'">{{'userProfile.reservations' | translate}}</div>
   </div>
 
   <div class="userInfo">
@@ -10,6 +10,6 @@
   </div>
 
   <div class="logout cursor" (click)="logout()">
-    Αποσύνδεση
+    {{'login.logout' | translate}}
   </div>
 </div>
