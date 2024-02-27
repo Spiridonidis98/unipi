@@ -33,6 +33,9 @@ router.route('/')
 .get(controller.getMovies)
 .delete(controller.deleteMovies)
 
+router.route('/id/:_id')
+.delete(controller.deleteMovie);
+
 router.route('/upload').patch(controller.patchMovie);
 
 

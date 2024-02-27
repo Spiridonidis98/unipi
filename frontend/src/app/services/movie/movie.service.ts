@@ -11,6 +11,7 @@ export class MovieService {
 
   //URL ---------------------------
   getMoviesURL = '/api/v1/movie';
+  movieIdUrl = '/api/v1/movie/id/';
   uploadMovieURL = '/api/v1/movie/upload';
 
   getScreeningURL = '/api/v1/screening';
@@ -319,4 +320,25 @@ export class MovieService {
   }
   // here we delete a specific reservation ------------------------------
 
+    //Delete movie ---------------------------------------
+    deleteMovie(movie: any) {
+      const url = this.loginIp + this.movieIdUrl + movie._id;
+  
+      return new Promise( (resolve, reject) => {
+        this.http.delete(url).subscribe({
+          next: (response: any) => {
+            console.log(response);
+            if(response.status === 200) {
+              resolve('success');
+            }
+            else {
+              reject('error');
+            }
+          }, error: (error => {
+            console.log(error);
+            reject('error');
+          })
+        })
+      })
+    }
 }

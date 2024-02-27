@@ -167,6 +167,30 @@ exports.deleteMovies = async (req, res) => {
     }
 }
 
+exports.deleteMovie = async (req, res) => {
+    try {
+        const movieFound = await movie.findByIdAndDelete(req.params._id);
+
+        if (movieFound) {
+            return res.status(200).json({
+                msg: 'movie deleted successfully',
+                status: 200
+            });
+        }
+        else {
+            return res.status(404).json({
+                msg: 'movie not found',
+                status: 404
+            });
+        }
+    }catch( error ) {
+        return res.status(500).json({
+            data: JSON.stringify(error, null, '\t'),
+            msg: 'movie delete error',
+            status: 500
+        });
+    }
+}
 
 
 function formatDate(date) {

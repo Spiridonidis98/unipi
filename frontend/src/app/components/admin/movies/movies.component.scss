@@ -92,4 +92,22 @@
     }
   }
 
+  .titleRow {
+    width: 100%;
+    display: flex;
+
+    .delete {
+      margin-left: auto;
+      background: var(--light-red-color);
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MovieService } from '../../../services/movie/movie.service';
+import { HelperService } from '../../../services/helper/helper.service';
 
 @Component({
   selector: 'app-movies',
@@ -12,7 +13,7 @@ export class MoviesComponent {
 
   movies: any = [];
 
-  constructor(private movieServ: MovieService) {
+  constructor(private movieServ: MovieService, private helper: HelperService) {
     this.getAllMovies();
   }
 
@@ -29,6 +30,18 @@ export class MoviesComponent {
   createEditMovie(option: any) {
     this.movieInfo = option;
     this.showCreateEditMovie = true;
+  }
+
+  deleteMovie(movie: any) {
+    this.helper.presentAlert('question', 'alert.deleteQuestion', 'alert.deleteMovieQuestion', true).then((alert: any) => {
+      if(alert.isConfirmed) {
+        this.movieServ.deleteMovie(movie).then( (response: any) => {
+          if(response === 'success') {
+            this.getAllMovies();
+          }
+        });
+      }
+    });
   }
 
   //returns background img for every movie

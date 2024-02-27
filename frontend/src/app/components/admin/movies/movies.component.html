@@ -8,16 +8,21 @@
   <app-create-edit-movie *ngIf="showCreateEditMovie" (update)="updateAction($event)" [movie]="movieInfo"></app-create-edit-movie>
 
   <div class="movieList" *ngIf="!showCreateEditMovie">
-    <div [ngClass]="movie.inactive ? 'redBorder' : ''" class="movie cursor" *ngFor="let movie of movies" (click)="createEditMovie(movie)">
+    <div [ngClass]="movie.inactive ? 'redBorder' : ''" class="movie" *ngFor="let movie of movies">
 
       <div class="imgDiv" [style]="returnCSS('http://127.0.0.1:8080' + movie.imageName)"></div>
 
-      <div class="movieInfo cursor">
+      <div class="movieInfo">
         <div class="titleRow">
           <p class="title">{{movie.name}}</p>
         </div>
         <div class="titleRow">
           <p class="descr">{{movie.description}}</p>
+        </div>
+        <div class="titleRow">
+          <div class="delete cursor" (click)="deleteMovie(movie)">
+            <img class="redIcon" src="assets/imgs/general/trash.svg">
+          </div>
         </div>
 
         <div class="addNew">
