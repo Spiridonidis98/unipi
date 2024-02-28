@@ -1,10 +1,10 @@
 <form [formGroup]="screeningForm">
   <table>
     <tr>
-      <th>Επιλογή Ημερομηνίας</th>
-      <th>Επιλογή Ώρα προβολής</th>
-      <th>Επιλογή αίθουσας</th>
-      <th>Επιλογή Ταινίας</th>
+      <th>{{'createScreening.selectDate' | translate}}</th>
+      <th>{{'createScreening.selectHour' | translate}}</th>
+      <th>{{'createScreening.selectRoom' | translate}}</th>
+      <th>{{'createScreening.selectMovie' | translate}}</th>
     </tr>
 
     <tr>
@@ -35,9 +35,9 @@
   </table>
   <div class="buttonRow">
 
-    <button (click)="cancel()" class="previousButton">Ακύρωση</button>
+    <button (click)="cancel()" class="previousButton">{{'button.cancel' | translate}}</button>
 
-    <button (click)="addScreening()" class="continueButton">Αποθήκευση</button>
+    <button (click)="addScreening()" class="continueButton">{{'button.save' | translate}}</button>
 
   </div>
 
